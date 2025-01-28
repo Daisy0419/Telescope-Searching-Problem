@@ -1,0 +1,3 @@
+/home/daisy/Documents/Research/APT/telescope/Telescope-Searching-Problem/build/CMakeFiles/ts.dir
+/home/daisy/Documents/Research/APT/telescope/Telescope-Searching-Problem/build/CMakeFiles/edit_cache.dir
+/home/daisy/Documents/Research/APT/telescope/Telescope-Searching-Problem/build/CMakeFiles/rebuild_cache.dir

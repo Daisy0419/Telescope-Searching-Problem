@@ -12,7 +12,6 @@
 #include <string>
 #include <chrono>
 
-
 AntColony::AntColony(std::vector<std::vector<double>>& costs) {
     distances = costs;
     NUM_CITIES = costs.size();
@@ -33,16 +32,16 @@ void AntColony::initialize_heuristic() {
     }
 }
 
-
-// Function to choose the next city for an ant
-std::pair<int, double> AntColony::choose_next_city(int current_city, const std::vector<int> &visited, double budget) {
+std::pair<int, double> AntColony::choose_next_city(int current_city, const std::vector<int>& visited, double budget, const std::vector<double>& prizes) {
     std::vector<double> probabilities(NUM_CITIES, 0.0);
     double sum = 0.0;
 
     for (int j = 0; j < NUM_CITIES; j++) {
         if (distances[current_city][j] <= budget &&
             std::find(visited.begin(), visited.end(), j) == visited.end()) {
+            // Incorporate prize into the probability calculation
             probabilities[j] = std::pow(pheromones[current_city][j], ALPHA) *
+                               std::pow(prizes[j], GAMMA) *  // New: Influence of prize
                                std::pow(1.0 / distances[current_city][j], BETA);
             sum += probabilities[j];
         }
@@ -66,24 +65,14 @@ std::pair<int, double> AntColony::choose_next_city(int current_city, const std::
     return {-1, 0.0};
 }
 
-// Function to simulate a single ant's tour
-std::vector<int> AntColony::ant_tour(double budget) {
-    // std::default_random_engine generator;
-    // std::uniform_int_distribution<int> distribution(0, NUM_CITIES - 1);
-    // int start_city = distribution(generator);
-    // std::cout << "start_city: " << start_city << std::endl;
-    std::default_random_engine generator(std::random_device{}());
-    std::uniform_int_distribution<int> distribution(0, NUM_CITIES - 1);
-    int start_city = distribution(generator);
-    // std::cout << "start_city: " << start_city << std::endl;
-
+std::vector<int> AntColony::ant_tour(double budget, const std::vector<double>& prizes, int start_city) {
     std::vector<int> visited;
     visited.push_back(start_city);
     int current_city = start_city;
     double remaining_budget = budget;
 
     while (remaining_budget > 0) {
-        auto [next_city, cost] = choose_next_city(current_city, visited, remaining_budget);
+        auto [next_city, cost] = choose_next_city(current_city, visited, remaining_budget, prizes);
         if (next_city == -1) break;
 
         visited.push_back(next_city);
@@ -94,46 +83,41 @@ std::vector<int> AntColony::ant_tour(double budget) {
     return visited;
 }
 
-
-double AntColony::simulate_ants(std::vector<int> &best_tour, double initial_budget) {
+double AntColony::simulate_ants(std::vector<int>& best_tour, double initial_budget, const std::vector<double>& prizes) {
     double best_prize = 0;
     std::vector<std::vector<int>> visited(NUM_ANTS);
 
-    // Parallelize the ant tours using OpenMP
-    // #pragma omp parallel for
+    // Simulate each ant's tour
     for (int ant = 0; ant < NUM_ANTS; ant++) {
-        visited[ant] = ant_tour(initial_budget);
+        visited[ant] = ant_tour(initial_budget, prizes, 0);
     }
 
     // Evaporate pheromones
-    // #pragma omp parallel for
     for (int i = 0; i < NUM_CITIES; i++) {
-        #pragma omp parallel for
         for (int j = 0; j < NUM_CITIES; j++) {
             pheromones[i][j] *= (1.0 - EVAPORATION_RATE);
         }
     }
 
     // Update pheromones
-    // #pragma omp parallel for reduction(max : best_prize)
     for (int ant = 0; ant < NUM_ANTS; ant++) {
         if (visited[ant].size() < 2) continue;
 
         double tour_cost = 0.0;
+        double tour_prize = 0.0;
         for (size_t i = 0; i < visited[ant].size() - 1; i++) {
             tour_cost += distances[visited[ant][i]][visited[ant][i + 1]];
         }
+        for (int city : visited[ant]) {
+            tour_prize += prizes[city];
+        }
 
-        double tour_prize = visited[ant].size();
-
-        // #pragma omp critical
         if (tour_prize > best_prize) {
             best_prize = tour_prize;
             best_tour = visited[ant];
         }
 
         double contribution = Q * tour_prize / tour_cost;
-        // #pragma omp critical
         for (size_t i = 0; i < visited[ant].size() - 1; i++) {
             pheromones[visited[ant][i]][visited[ant][i + 1]] += contribution;
         }
@@ -142,69 +126,18 @@ double AntColony::simulate_ants(std::vector<int> &best_tour, double initial_budg
     return best_prize;
 }
 
-
-
-// double AntColony::simulate_ants(std::vector<int> &best_tour, double initial_budget) {
-//     double best_prize = 0;
-//     std::vector<std::vector<int>> visited(NUM_ANTS);
-
-//     // Parallelize the ant tours using OpenMP
-//     for (int ant = 0; ant < NUM_ANTS; ant++) {
-//         visited[ant] = ant_tour(initial_budget);
-//     }
-
-//     // Evaporate pheromones
-//     for (int i = 0; i < NUM_CITIES; i++) {
-//         for (int j = 0; j < NUM_CITIES; j++) {
-//             pheromones[i][j] *= (1.0 - EVAPORATION_RATE);
-//         }
-//     }
-
-//     // Update pheromones
-//     for (int ant = 0; ant < NUM_ANTS; ant++) {
-//         if (visited[ant].size() < 2) continue;
-
-//         double tour_cost = 0.0;
-//         for (size_t i = 0; i < visited[ant].size() - 1; i++) {
-//             tour_cost += distances[visited[ant][i]][visited[ant][i + 1]];
-//         }
-
-//         double tour_prize = visited[ant].size();
-
-
-//         if (tour_prize > best_prize) {
-//             best_prize = tour_prize;
-//             best_tour = visited[ant];
-//         }
-
-//         double contribution = Q * tour_prize / tour_cost;
-
-//         for (size_t i = 0; i < visited[ant].size() - 1; i++) {
-//             pheromones[visited[ant][i]][visited[ant][i + 1]] += contribution;
-//         }
-//     }
-
-//     return best_prize;
-// }
-
-
-void AntColony::ant_colony_optimization(double budget) {
+void AntColony::ant_colony_optimization(double budget, const std::vector<double>& prizes) {
     std::vector<int> best_tour;
     double best_prize = 0;
-    // double budget = 47358.8;
 
     for (int iteration = 0; iteration < MAX_ITERATIONS; iteration++) {
-        double prize = simulate_ants(best_tour, budget);
+        double prize = simulate_ants(best_tour, budget, prizes);
         best_prize = std::max(best_prize, prize);
-
-        // std::cout << "Iteration " << iteration + 1 << " Best Prize: " << best_prize << std::endl;
-    //     std::cout << "Best Tour: ";
-    //     for (int city : best_tour) {
-    //         std::cout << city << " ";
-    //     }
-    //     std::cout << std::endl;
     }
-    std::cout << "Best Prize: " << best_tour.size() << std::endl;
+
+    std::cout << "Best Prize: " << best_prize << std::endl;
+    std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
+    // std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
     std::cout << "Best Tour: ";
     for (int city : best_tour) {
         std::cout << city << " ";
@@ -218,5 +151,4 @@ void AntColony::ant_colony_optimization(double budget) {
 
     std::cout << "Total Cost: " << total_cost << std::endl;
 }
-
 

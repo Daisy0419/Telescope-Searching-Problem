@@ -1,0 +1,1 @@
+/usr/lib/ccache/c++ -O3 -DNDEBUG -O3 CMakeFiles/ts.dir/main.cpp.o CMakeFiles/ts.dir/helplers.cpp.o CMakeFiles/ts.dir/AntColony.cpp.o CMakeFiles/ts.dir/Genetic.cpp.o CMakeFiles/ts.dir/Greedy.cpp.o CMakeFiles/ts.dir/kMST.cpp.o CMakeFiles/ts.dir/Christofides.cpp.o CMakeFiles/ts.dir/ReadData.cpp.o -o ts 

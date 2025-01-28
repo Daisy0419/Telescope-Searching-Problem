@@ -25,6 +25,7 @@ set(SOURCES
     Greedy.cpp
     kMST.cpp
     Christofides.cpp
+    ReadData.cpp
 )
 
 # Header files (not needed in add_executable)
@@ -35,6 +36,7 @@ set(HEADERS
     Greedy.h
     kMST.h
     Christofides.h
+    ReadData.h
 )
 
 # Create executable
