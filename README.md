@@ -43,44 +43,49 @@ The problem is modeled as an extension of the prize-collecting Traveling Salesma
     Fix to 1, 10, 60, 600 seconds
 
 ## Initial Test Result:
-1. **7DT (Combined)**  
-| Algorithm | Dwell Time (S) | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) | Path |
-|-----------|----------------|-----------------|------------|-------------------|----------------------|------|---|
-| Greedy Strategy   | 1 | 30 | 0.884264 | 29.8567 | 16 | 3.0e-06 |
-| Ant Colony        | 1 | 30 | 0.923233 | 29.1531 | 19 | 6.7289 |
-| Genetic Algorithm | 1 | 30 | 0.931198 | 29.9756   | 21 | 0.2734 |
-| Greedy Strategy   |10 | 300 | 0.97527 | 292.229 | 28 | 1.5e-05 |
-| Ant Colony        |10 | 300 | 0.978318 | 299.929 | 29 | 10.829 |
-| Genetic Algorithm |10 | 300 | 0.978318 | 299.368 | 29 | 0.3762 |
-| Greedy Strategy   |60 | 1800 | 0.981164 | 1762.79 | 30 | 3.5e-05 |
-| Ant Colony        |60 | 1800 | 0.981164 | 1768.08 | 30 | 11.6985 |
-| Genetic Algorithm |60 | 1800 | 0.981164 | 1778.42 | 30 | 0.4031 |
-| Greedy Strategy   |600| 18000 | 0.981164 | 17422.8 | 30 | 1.5e-05 |
-| Ant Colony        |600| 18000 | 0.981164 | 17429.8 | 30 | 11.6959 |
-| Genetic Algorithm |600| 18000 | 0.981164 | 17440.8 | 30 | 0.4231 |
 
-2. **7DT (Separate)**  
-| Algorithm | Dwell Time (S) | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) | Path |
-|-----------|----------------|-----------------|------------|-------------------|----------------------|------|---|
-| Greedy Strategy   | 1 | 20 | 0.975682 | 19.0878 | 10 | 1.7e-06 |
-| Ant Colony        | 1 | 20 | 0.984177 | 19.6886 | 11 | 0.3917 |
-| Genetic Algorithm | 1 | 20 | 0.990751 | 19.7647   | 14 | 0.178 |
-| Greedy Strategy   |10 | 200 | 0.995453 | 198.602 | 19 | 1.6e-06 |
-| Ant Colony        |10 | 200 | 0.995453 | 197.284 | 19 | 0.7505 |
-| Genetic Algorithm |10 | 200 | 0.995453 | 198.059 | 19 | 0.2305 |
-| Greedy Strategy   |60 | 1200 | 0.995981 | 1159.55 | 20 | 1.8e-06 |
-| Ant Colony        |60 | 1200 | 0.995981 | 1157.27 | 20 | 11.6985 |
-| Genetic Algorithm |60 | 1200 | 0.995981 | 1174.21 | 20 | 0.8262 |
-| Greedy Strategy   |600| 12000 | 0.995981 | 11419.5 | 20 | 1.9e-06 |
-| Ant Colony        |600| 12000 | 0.995981 | 11417.5 | 20 | 0.7859 |
-| Genetic Algorithm |600| 12000 | 0.995981 | 11434.4 | 20 | 0.2393 |
+### 1. **7DT (Combined)**  
+| Algorithm          | Dwell Time (S) | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) |
+|------------------- |----------------|------------|-----------------|------------|-------------------|----------------------|
+| Greedy Strategy    | 1              | 30         | 0.852429        | 29.9094    | 14                | 2.9e-05              |
+| Ant Colony         | 1              | 30         | 0.852429       | 29.9094    | 14                | 4.7569               |
+| Genetic Algorithm  | 1              | 30         | 0.939657        | 29.9756    | 22                | 0.2823               |
+| Greedy Strategy    | 10             | 300        | 0.970533       | 298.332    | 27                | 7.1e-06              |
+| Ant Colony         | 10             | 300        | 0.970533        | 298.714    | 27                | 10.306               |
+| Genetic Algorithm  | 10             | 300        | 0.97527        | 297.902    | 28                | 0.3762               |
+| Greedy Strategy    | 60             | 1800       | 0.978318       | 1769.1    | 29                | 6.8e-06              |
+| Ant Colony         | 60             | 1800       | 0.978318        | 1798.67   | 29                | 11.4599              |
+| Genetic Algorithm  | 60             | 1800       | 0.978318        | 1786.08   | 29                | 0.3874               |
+| Greedy Strategy    | 600            | 18000      | 0.978318        | 17422.8    | 30                | 6.2e-06              |
+| Ant Colony         | 600            | 18000      | 0.978318        | 17455.5    | 30                | 11.23.6              |
+| Genetic Algorithm  | 600            | 18000      | 0.978318        | 17478.5    | 30                | 0.3785               |
 
-3. **Deep Slow Telescope**  
-| Algorithm | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) | Path |
-|-----------|----------------|-----------------|------------|-------------------|----------------------|------|---|
-| Greedy Strategy   | 1000 | 0.966239 | 995.53 | 8 | 1.9e-06 |
-| Ant Colony        | 1000 | 0.987839 | 995.53 | 11 | 0.3120 |
-| Genetic Algorithm | 1000 | 0.951076 | 999.051| 8 | 0.1580 |
-| Greedy Strategy   |2000 | 0.996134 | 1977.31 | 20 | 1.6e-06 |
-| Ant Colony        |2000 | 0.995453 | 1963.19 | 19 | 0.7505 |
-| Genetic Algorithm |2000 | 0.999826 | 1974.91 | 20 | 0.2305 |
+---
+
+### 2. **7DT (Separate)**  
+| Algorithm          | Dwell Time (S) | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) |
+|------------------- |----------------|------------|-----------------|------------|-------------------|----------------------|
+| Greedy Strategy    | 1              | 50         | 0.99691        | 49.0781    | 22                | 5.5e-06              |
+| Ant Colony         | 1              | 50         | 0.997138        | 48.7641    | 24                | 0.8194               |
+| Genetic Algorithm  | 1              | 50         | 0.99985        | 49.9598    | 39                | 0.4688                |
+| Greedy Strategy    | 10             | 200        | 0.994884        | 198.849    | 18                | 1.6e-06              |
+| Ant Colony         | 10             | 200        | 0.994884        | 198.849    | 18                | 0.6935               |
+| Genetic Algorithm  | 10             | 200        | 0.994884        | 196.755    | 18                | 0.2241               |
+| Greedy Strategy    | 60             | 1000       | 0.993745        | 977.701    | 16                | 5.9e-06              |
+| Ant Colony         | 60             | 1000       | 0.993745        | 979.998    | 16                | 0.6411              |
+| Genetic Algorithm  | 60             | 1000       | 0.993745        | 996.068    | 16                | 0.1958               |
+| Greedy Strategy    | 600            | 10000      | 0.993745        | 9617.7     | 16                | 6.7e-06              |
+| Ant Colony         | 600            | 10000      | 0.993745        | 9617.7     | 16                |  0.6690               |
+| Genetic Algorithm  | 600            | 10000      | 0.993745        | 9635.5     | 16                | 0.2005               |
+
+---
+
+### 3. **Deep Slow Telescope**  
+| Algorithm          | Budget (S) | Sum Probability | Total Cost | Num Tiles in Path | Computation Time (S) |
+|------------------- |------------|-----------------|------------|---------------|----------------------|
+| Greedy Strategy    | 500        | 0.272592        | 496.815    | 10                | 3.7e-05              |
+| Ant Colony         | 500        | 0.709269        | 498.767    | 29                | 175.177              |
+| Genetic Algorithm  | 500        | 0.849264        | 499.51     | 68                | 1.19056              |
+| Greedy Strategy    | 1000       | 0.53719         | 999.779    | 23                | 1.6e-06              |
+| Ant Colony         | 1000       | 0.912846        | 999.967    | 55                | 377.565               |
+| Genetic Algorithm  | 1000       | 0.956065        | 999.199     | 116                | 3.4668               |

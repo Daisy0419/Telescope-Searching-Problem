@@ -39,9 +39,8 @@ std::pair<int, double> AntColony::choose_next_city(int current_city, const std::
     for (int j = 0; j < NUM_CITIES; j++) {
         if (distances[current_city][j] <= budget &&
             std::find(visited.begin(), visited.end(), j) == visited.end()) {
-            // Incorporate prize into the probability calculation
             probabilities[j] = std::pow(pheromones[current_city][j], ALPHA) *
-                               std::pow(prizes[j], GAMMA) *  // New: Influence of prize
+                               std::pow(prizes[j], GAMMA) *  // Influence of prize
                                std::pow(1.0 / distances[current_city][j], BETA);
             sum += probabilities[j];
         }
@@ -126,7 +125,7 @@ double AntColony::simulate_ants(std::vector<int>& best_tour, double initial_budg
     return best_prize;
 }
 
-void AntColony::ant_colony_optimization(double budget, const std::vector<double>& prizes) {
+std::vector<int> AntColony::ant_colony_optimization(double budget, const std::vector<double>& prizes) {
     std::vector<int> best_tour;
     double best_prize = 0;
 
@@ -134,21 +133,23 @@ void AntColony::ant_colony_optimization(double budget, const std::vector<double>
         double prize = simulate_ants(best_tour, budget, prizes);
         best_prize = std::max(best_prize, prize);
     }
+    return best_tour;
 
-    std::cout << "Best Prize: " << best_prize << std::endl;
-    std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
+
+    // std::cout << "Best Prize: " << best_prize << std::endl;
     // std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
-    std::cout << "Best Tour: ";
-    for (int city : best_tour) {
-        std::cout << city << " ";
-    }
-    std::cout << std::endl;
+    // // std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
+    // std::cout << "Best Tour: ";
+    // for (int city : best_tour) {
+    //     std::cout << city << " ";
+    // }
+    // std::cout << std::endl;
 
-    double total_cost = 0.0;
-    for (size_t i = 0; i < best_tour.size() - 1; i++) {
-        total_cost += distances[best_tour[i]][best_tour[i + 1]];
-    }
+    // double total_cost = 0.0;
+    // for (size_t i = 0; i < best_tour.size() - 1; i++) {
+    //     total_cost += distances[best_tour[i]][best_tour[i + 1]];
+    // }
 
-    std::cout << "Total Cost: " << total_cost << std::endl;
+    // std::cout << "Total Cost: " << total_cost << std::endl;
 }
 

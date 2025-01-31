@@ -59,7 +59,7 @@ std::vector<int> evolution(const std::vector<std::vector<double>>& costs,
                            const std::vector<double>& prizes, int start_city, 
                            int num_path, double budget, int evolution_itr);
 
-void genetic_optimization(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
+std::vector<int> genetic_optimization(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
                           double budget, int start_city);
 
 std::vector<int> get_best_path(const std::vector<std::vector<int>>& paths, const std::vector<double>& prizes);

@@ -637,26 +637,29 @@ std::vector<int> evolution(const std::vector<std::vector<double>>& costs,
 }
 
 
-void genetic_optimization(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
+std::vector<int> genetic_optimization(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
                           double budget, int start_city) {
     std::vector<int> best_tour = evolution(costs, prizes, start_city, 100, budget, 1000);
+    return best_tour;
 
-    double total_prize = 0.0;
-    double total_cost = 0.0;
-    for (size_t i = 0; i < best_tour.size(); ++i) {
-        total_prize += prizes[best_tour[i]];
-        if (i > 0) {
-            total_cost += costs[best_tour[i - 1]][best_tour[i]];
-        }
-    }
+    // double total_prize = 0.0;
+    // double total_cost = 0.0;
+    // for (size_t i = 0; i < best_tour.size(); ++i) {
+    //     total_prize += prizes[best_tour[i]];
+    //     if (i > 0) {
+    //         total_cost += costs[best_tour[i - 1]][best_tour[i]];
+    //     }
+    // }
 
-    std::cout << "Final Best Prize: " << total_prize << std::endl;
-    std::cout << "Total Cost: " << total_cost << std::endl;
-    std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
-    std::cout << "Best Tour: ";
-    for (int city : best_tour) {
-        std::cout << city << " ";
-    }
-    std::cout << std::endl;
+    // std::cout << "Final Best Prize: " << total_prize << std::endl;
+    // std::cout << "Total Cost: " << total_cost << std::endl;
+    // std::cout << "Num Tiles in Path: " << best_tour.size() << std::endl;
+    // std::cout << "Best Tour: ";
+    // for (int city : best_tour) {
+    //     std::cout << city << " ";
+    // }
+    // std::cout << std::endl;
+
+    // my_print_path(costs, prizes, best_tour);
 }
 

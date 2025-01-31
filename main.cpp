@@ -12,7 +12,7 @@
 #include <fstream>
 
 void print_path(const std::vector<std::vector<double>>& costs, const std::vector<double>& probability, 
-                std::vector<int> best_path) {
+                std::vector<int> best_path, double dwell_time) {
     double sum_probability = 0.0;
     std::cout << "Path(tile rank): ";
     for (int tile : best_path) {
@@ -21,7 +21,7 @@ void print_path(const std::vector<std::vector<double>>& costs, const std::vector
     }
     std::cout << std::endl;
 
-    double total_cost = 0.0;
+    double total_cost = dwell_time;
     for (size_t i = 0; i < best_path.size() - 1; i++) {
         total_cost += costs[best_path[i]][best_path[i + 1]]; // Compute total cost
     }
@@ -34,22 +34,17 @@ void print_path(const std::vector<std::vector<double>>& costs, const std::vector
 
 int main() {
     // std::string file = "../data/7dt_combined.csv";
-    // std::string file = "../data/7dt_separate.csv";
-    std::string file = "../data/deep_slow.csv";
+    std::string file = "../data/7dt_separate.csv";
+    // std::string file = "../data/deep_slow.csv";
     double budget = 500;
-    double slew_rate = 1;
-    double dwell_time = 1;
+    double slew_rate = 50;
+    double dwell_time = 10;
 
     std::vector<std::vector<double>> costs;
     std::vector<double> probability;
 
     // read_data(file, costs, probability, slew_rate, dwell_time);
     read_data_deep_slow(file, costs, probability, slew_rate, dwell_time);
-    double sum = 0.0;
-    for(int i = 0; i < 20; ++i) {
-        sum += probability[i];
-    }
-    std::cout << sum << std::endl;
         
     std::chrono::high_resolution_clock::time_point start;
     std::chrono::high_resolution_clock::time_point end;
@@ -59,28 +54,28 @@ int main() {
     std::cout << "*********running ant colony*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
     AntColony ac = AntColony(costs);
-    ac.ant_colony_optimization(budget, probability);
+    std::vector<int> ac_path = ac.ant_colony_optimization(budget-dwell_time, probability);
     end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, ac_path, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-
-
 
     // genetic
     std::cout << "*********running genetic*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
     // genetic_optimization(costs, budget, 0);
-    genetic_optimization(costs, probability, budget, 0);
+    std::vector<int> genetic_path = genetic_optimization(costs, probability, budget-dwell_time, 0);
     end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, genetic_path, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
 
     //greedy
     std::cout << "*********running greedy*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
-    std::vector<int> path = prize_greedy_path(costs, probability, 0, budget);
+    std::vector<int> greedy_path = prize_greedy_path(costs, probability, 0, budget-dwell_time);
     end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, path);
+    print_path(costs, probability, greedy_path, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
 

@@ -30,5 +30,5 @@ private:
 public:
     AntColony(std::vector<std::vector<double>>&);
 
-    void ant_colony_optimization(double budget, const std::vector<double>& prizes);
+    std::vector<int> ant_colony_optimization(double budget, const std::vector<double>& prizes);
 };
