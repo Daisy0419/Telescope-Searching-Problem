@@ -6,7 +6,8 @@ Telescope Searching Problem focuses on optimizing telescope observation schedule
 ### Key Components
 - **Probability**: The probability for observing GRB in each tile, total probability sum up to 1.
 - **Slew Time**: The time required to move between tiles, calculated from the angular distance and telescope slewing speed.
-- **Dwell Time**: The observation time for a tile, determining the probability of detecting the transient. Linear probability growth until certainty (1) after a complete dwell time is also considered.
+- **Dwell Time**: The observation time for a tile, min time for a meaningful observation. 
+
 
 ### Key Components in modeled TSP problem
 The problem is modeled as an extension of the prize-collecting Traveling Salesman Problem (TSP) with a budget constraint, where:
