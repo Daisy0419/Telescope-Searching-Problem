@@ -16,6 +16,14 @@ endif()
 # Set compiler flags
 set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} -O3")
 
+# if(NOT CMAKE_BUILD_TYPE)
+#     message(STATUS "Setting build type to Debug as none was specified.")
+#     set(CMAKE_BUILD_TYPE Debug CACHE STRING "Choose the build type: Debug, Release, RelWithDebInfo, MinSizeRel" FORCE)
+# endif()
+
+# set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -g -O0")
+
+
 # Source files
 set(SOURCES
     main.cpp
@@ -26,6 +34,7 @@ set(SOURCES
     kMST.cpp
     Christofides.cpp
     ReadData.cpp
+    BranchBound.cpp
 )
 
 # Header files (not needed in add_executable)
@@ -37,6 +46,7 @@ set(HEADERS
     kMST.h
     Christofides.h
     ReadData.h
+    BranchBound.h
 )
 
 # Create executable
