@@ -1,0 +1,40 @@
+# model tsp.mod;
+# data input.dat;
+# display Budget, is_end, x, Cost, Prize;
+
+# "next" for route reconstruction
+# let u[start] := 2;
+# fix u[start];
+
+var next{NODES} integer;
+subject to Next_Definition{i in NODES}:
+    next[i] = sum{j in NODES: j != i} j * x[i,j];
+
+solve;
+# display Budget, is_end, x, Cost, Prize;
+
+
+# Display objective value
+display Total_Prize + Prize[start];
+
+# Display total cost
+display sum{i in NODES, j in NODES} Cost[i,j]*x[i,j];
+
+# Reconstruct the route
+param route_len integer := card(NODES);
+param route{1..route_len} default 0;
+
+let route[1] := start;
+for {k in 1..route_len} {
+  let route[k+1] := next[route[k]];
+  if is_end[route[k+1]] = 1 then {
+    break;
+  }
+}
+
+display route;
+display Cost;
+display is_end;
+display x;
+# display Prize;
+# display Cost[1]+Cost[5]+Cost[3]+Cost[4]+Cost[2];
