@@ -5,7 +5,8 @@
 #include <limits>
 
 
-int solveWithGurobi(const ProblemData& data) {
+std::vector<int> solveWithGurobi(const ProblemData& data) {
+    std::vector<int> route;
     try {
 
         GRBEnv env(true);
@@ -144,6 +145,37 @@ int solveWithGurobi(const ProblemData& data) {
         if(status == GRB_OPTIMAL) {
             double objVal = model.get(GRB_DoubleAttr_ObjVal);
             std::cout << "Optimal objective: " << objVal << "\n";
+            
+            // Build the route
+            route.push_back(start);
+            int currentNode = start;
+            while(true) {
+                bool foundNext = false;
+                for(int nextNode = 0; nextNode < N; nextNode++){
+                    if(nextNode == currentNode) continue;
+                    double val = x[currentNode][nextNode].get(GRB_DoubleAttr_X);
+                    if(val > 0.5){
+                        route.push_back(nextNode);
+                        currentNode = nextNode;
+                        foundNext = true;
+                        break;
+                    }
+                }
+                if(!foundNext) {
+                    break;
+                }
+            }
+
+            // // Print the route
+            // std::cout << "Route found: ";
+            // for(size_t i=0; i<route.size(); i++){
+            //     std::cout << route[i];
+            //     if(i < route.size() - 1){
+            //         std::cout << " -> ";
+            //     }
+            // }
+            // std::cout << "\n";
+
 
         } else {
             std::cout << "No optimal solution found. Status = " << status << "\n";
@@ -151,20 +183,20 @@ int solveWithGurobi(const ProblemData& data) {
 
     } catch(GRBException &e) {
         std::cerr << "Gurobi error: " << e.getMessage() << "\n";
-        return -1;
+        return route;
     } catch(...) {
         std::cerr << "Unknown error in solveWithGurobi.\n";
-        return -1;
+        return route;
     }
 
-    return 0;
+    return route;
 }
 
 
-int gurobiSolve(const std::vector<std::vector<double>> &Cost, const std::vector<double> &Prize,
+std::vector<int> gurobiSolve(const std::vector<std::vector<double>> &Cost, const std::vector<double> &Prize,
                 int start, double Budget) {
     int N = Prize.size();
     ProblemData data(N, start, Budget, Cost, Prize);
-    int rc = solveWithGurobi(data);
-    return rc;
+    std::vector<int> path = solveWithGurobi(data);
+    return path;
 }

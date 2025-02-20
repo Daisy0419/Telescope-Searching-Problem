@@ -9,8 +9,6 @@ param start;
 var is_end{NODES} binary;
 var x{NODES, NODES} binary;
 var u{NODES} >= 2 <= card(NODES);
-# var z{NODES} binary;  # z[i] = 1 if node i is included in the route
-
 
 maximize Total_Prize:
     sum{i in NODES, j in NODES: i != j} Prize[j] * x[i, j];
@@ -37,30 +35,9 @@ subject to Budget_Constraint:
     sum{i in NODES, j in NODES: i != j} Cost[i, j] * x[i, j] <= Budget;
 
 # # Subtour elimination constraints (Miller-Tucker-Zemlin)
-# subject to Subtour_Elimination{i in NODES, j in NODES: i != j}:
-subject to Subtour_Elimination {i in NODES, j in NODES: i != j and i != start and j != start}:
-    u[i] - u[j] + card(NODES) * x[i, j] <= card(NODES) - 1;
-# subject to Subtour_Elimination {i in NODES, j in NODES: i != j}:
-#     u[i] - u[j] + card(NODES)*x[i,j] <= card(NODES) - 1;
-
-
-
-# # MTZ subtour elimination
+subject to Subtour_Elimination{i in NODES, j in NODES: i != j}:
 # subject to Subtour_Elimination {i in NODES, j in NODES: i != j and i != start and j != start}:
-#     u[i] - u[j] + 1  <= (card(NODES) - 1) * (1 - x[i,j]);
+    u[i] - u[j] + card(NODES) * x[i, j] <= card(NODES) - 1;
 
 
-
-
-# subject to Subtour_Elimination{i in NODES: i != start, j in NODES: j != start, i != j}:
-#     # u[i] - u[j] + card(NODES) * x[i, j] <= card(NODES) - 1;
-#     u[i] - u[j] + card(NODES)*x[i,j] <= card(NODES) - 1;
-#     # u[i] - u[j] + 1  <= (card(NODES) - 1) * (1 - x[i,j])
-
-
-# # Then, each node i can only have incoming and outgoing edges if z[i] = 1
-# subject to Link_Visit{i in NODES, j in NODES: i != j}:
-#     x[i,j] <= z[i];
-# subject to Link_Visit2{i in NODES, j in NODES: i != j}:
-#     x[i,j] <= z[j];
 

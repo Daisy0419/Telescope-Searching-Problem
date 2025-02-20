@@ -1,4 +1,4 @@
-#include <omp.h>
+// #include <omp.h>
 #include <iostream>
 #include <climits>
 #include <algorithm>
@@ -108,7 +108,7 @@ std::pair<double, std::vector<int>> branchAndBound(
                                      best_prize);
                 // std::cout << "prize : " << result.first << std::endl;
                 // std::cout << "best prize : " << best_prize << std::endl;
-                if (result.first > best_prize) {
+                if (result.first >= best_prize) {
                     best_prize = result.first;
                     best_path = result.second;
                 }

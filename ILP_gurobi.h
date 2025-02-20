@@ -15,4 +15,6 @@ struct ProblemData {
     {}
 };
 
-int solveWithGurobi(const ProblemData& data);
+std::vector<int> solveWithGurobi(const ProblemData& data);
+std::vector<int> gurobiSolve(const std::vector<std::vector<double>> &Cost, const std::vector<double> &Prize,
+                int start, double Budget);

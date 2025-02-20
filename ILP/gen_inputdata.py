@@ -70,7 +70,7 @@ def main():
     input_file = "../data/7dt_separate.csv"   
     output_file = "ampl_input_matrix.dat"     
 
-    telescope_speed = 5.0
+    telescope_speed = 50.0
     dwell_time = 1.0
 
     costs, probability = read_data(input_file, telescope_speed, dwell_time)
@@ -80,7 +80,7 @@ def main():
         costs=costs,
         probability=probability,
         start=1,
-        budget=39
+        budget=19
     )
     print(f"AMPL data (matrix form) written to {output_file}")
 

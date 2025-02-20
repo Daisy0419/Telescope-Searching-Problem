@@ -3,8 +3,8 @@
 # display Budget, is_end, x, Cost, Prize;
 
 # "next" for route reconstruction
-# let u[start] := 2;
-# fix u[start];
+let u[start] := 2;
+fix u[start];
 
 var next{NODES} integer;
 subject to Next_Definition{i in NODES}:
@@ -13,14 +13,12 @@ subject to Next_Definition{i in NODES}:
 solve;
 # display Budget, is_end, x, Cost, Prize;
 
+display Total_Prize;
 
-# Display objective value
-display Total_Prize + Prize[start];
-
-# Display total cost
+#cost
 display sum{i in NODES, j in NODES} Cost[i,j]*x[i,j];
 
-# Reconstruct the route
+#route
 param route_len integer := card(NODES);
 param route{1..route_len} default 0;
 
