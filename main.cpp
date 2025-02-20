@@ -5,6 +5,8 @@
 #include "kMST.h"
 #include "ReadData.h"
 #include "BranchBound.h"
+#include "ILP_scip.h"
+#include "ILP_gurobi.h"
 
 #include <chrono>
 #include <string>
@@ -91,19 +93,19 @@ int main() {
     // genetic_optimization(costs, budget, 0);
     std::vector<int> genetic_path = genetic_optimization(costs, probability, budget-dwell_time, 0);
     end = std::chrono::high_resolution_clock::now();
-    best_prize = print_path(costs, probability, genetic_path, dwell_time);
+    print_path(costs, probability, genetic_path, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
 
 
-    // branch and bound
-    std::cout << "*********running branch and bound*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<int> true_path = run_branch_bound(costs, probability, budget-dwell_time, 0, genetic_path, best_prize);
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, true_path, dwell_time);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    // // branch and bound
+    // std::cout << "*********running branch and bound*********" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // std::vector<int> true_path = run_branch_bound(costs, probability, budget-dwell_time, 0, ac_path, best_prize);
+    // end = std::chrono::high_resolution_clock::now();
+    // print_path(costs, probability, true_path, dwell_time);
+    // elapsed_seconds = end - start;
+    // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
 
 
     //greedy
@@ -112,6 +114,16 @@ int main() {
     std::vector<int> greedy_path = prize_greedy_path(costs, probability, 0, budget-dwell_time);
     end = std::chrono::high_resolution_clock::now();
     print_path(costs, probability, greedy_path, dwell_time);
+    elapsed_seconds = end - start;
+    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+
+
+    //gurobi
+    std::cout << "*********running gurobi solver*********" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
+    std::vector<int> ilp_path = gurobiSolve(costs, probability, 0, budget-dwell_time);
+    end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, ilp_path, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
 
@@ -127,11 +139,3 @@ int main() {
 }
 
 
-
-
-
-// Path(tile rank): 0 7 8 1 9 10 2 3 13 4 5 18 6 
-// Num Tiles in Path: 13
-// Sum Probability: 0.986869
-// Total Cost: 19.6305
-// running time (wallclock): 2344.72seconds
