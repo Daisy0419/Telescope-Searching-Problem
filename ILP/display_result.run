@@ -13,6 +13,8 @@ subject to Next_Definition{i in NODES}:
 solve;
 # display Budget, is_end, x, Cost, Prize;
 
+display "Solver Time (seconds):", _solve_time;
+
 display Total_Prize;
 
 #cost

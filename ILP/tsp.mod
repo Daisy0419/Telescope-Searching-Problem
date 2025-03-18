@@ -34,7 +34,7 @@ subject to Start_Flow:
 subject to Budget_Constraint:
     sum{i in NODES, j in NODES: i != j} Cost[i, j] * x[i, j] <= Budget;
 
-# # Subtour elimination constraints (Miller-Tucker-Zemlin)
+# Subtour elimination constraints (Miller-Tucker-Zemlin)
 subject to Subtour_Elimination{i in NODES, j in NODES: i != j}:
 # subject to Subtour_Elimination {i in NODES, j in NODES: i != j and i != start and j != start}:
     u[i] - u[j] + card(NODES) * x[i, j] <= card(NODES) - 1;

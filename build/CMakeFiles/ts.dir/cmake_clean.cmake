@@ -11,8 +11,6 @@ file(REMOVE_RECURSE
   "CMakeFiles/ts.dir/Greedy.cpp.o.d"
   "CMakeFiles/ts.dir/ILP_gurobi.cpp.o"
   "CMakeFiles/ts.dir/ILP_gurobi.cpp.o.d"
-  "CMakeFiles/ts.dir/ILP_scip.cpp.o"
-  "CMakeFiles/ts.dir/ILP_scip.cpp.o.d"
   "CMakeFiles/ts.dir/ReadData.cpp.o"
   "CMakeFiles/ts.dir/ReadData.cpp.o.d"
   "CMakeFiles/ts.dir/helplers.cpp.o"

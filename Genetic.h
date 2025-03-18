@@ -55,12 +55,11 @@ std::vector<std::vector<int>> select_top_paths(const std::vector<std::vector<int
                                                const std::vector<std::vector<double>>& costs, 
                                                const std::vector<double>& prizes, size_t top_n);
 
-std::vector<int> evolution(const std::vector<std::vector<double>>& costs, 
-                           const std::vector<double>& prizes, int start_city, 
-                           int num_path, double budget, int evolution_itr);
+std::vector<int> evolution(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, int start_city, 
+                           int num_path, double budget, int evolution_itr, std::vector<std::vector<int>>& init_paths);
 
 std::vector<int> genetic_optimization(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
-                          double budget, int start_city);
+                          double budget, int start_city, std::vector<std::vector<int>> init_paths={});
 
 std::vector<int> get_best_path(const std::vector<std::vector<int>>& paths, const std::vector<double>& prizes);
 void my_print_path(const std::vector<std::vector<double>>& distances, const std::vector<double>& probability, 

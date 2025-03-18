@@ -1,3 +1,3 @@
-/Users/w.yanwang/Documents/Research/Telescope/Telescope-Searching-Problem/build/CMakeFiles/ts.dir
-/Users/w.yanwang/Documents/Research/Telescope/Telescope-Searching-Problem/build/CMakeFiles/edit_cache.dir
-/Users/w.yanwang/Documents/Research/Telescope/Telescope-Searching-Problem/build/CMakeFiles/rebuild_cache.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/ts.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/edit_cache.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/rebuild_cache.dir

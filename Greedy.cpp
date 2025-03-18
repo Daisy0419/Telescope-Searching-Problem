@@ -72,6 +72,54 @@ std::vector<int> prize_greedy_path(const std::vector<std::vector<double>>& costs
 }
 
 
+std::vector<int> partial_prize_greedy_path(const std::vector<std::vector<double>>& costs, 
+                                   const std::vector<double>& probability, 
+                                   std::vector<int>& visited,
+                                   int init_tile, double budget) {
+
+    std::vector<std::pair<double, int>> prize(probability.size());
+
+    for (int i = 0; i < probability.size(); ++i) {
+        if (i != init_tile) {
+            prize[i] = {probability[i], i};
+        } else {
+            prize[i] = {0.0, i};  
+        }
+    }
+
+    std::sort(prize.begin(), prize.end(),
+              [](const std::pair<double, int>& a, const std::pair<double, int>& b) {
+                  return a.first > b.first;
+              });
+
+    if (init_tile == -1) {
+        init_tile = prize.front().second;
+    }
+
+    std::vector<int> path;
+    int current_tile = init_tile;
+
+    for (const auto& [tile_probability, tile] : prize) {
+
+        if (tile == current_tile || tile_probability == 0.0 || costs[current_tile][tile] > budget) {
+            continue;
+        }
+
+        if (std::find(visited.begin(), visited.end(), tile) != visited.end()) {
+            continue;
+        }
+
+        budget -= costs[current_tile][tile];
+        current_tile = tile;
+        path.push_back(current_tile);
+
+        if (budget <= 0) break;
+    }
+
+    visited.insert(visited.end(), path.begin(), path.end());
+    return visited;
+}
+
 
 std::vector<int> cost_greedy_path(const std::vector<std::vector<double>>& distances, int current_city, double budget) {
     std::vector<int> visited;
@@ -96,7 +144,6 @@ std::vector<int> cost_greedy_path(const std::vector<std::vector<double>>& distan
         visited.push_back(next_city);
         budget -= min_dis;
         current_city = next_city;
-
         // std::cout << "budget: " << budget << std::endl;
     }
 
