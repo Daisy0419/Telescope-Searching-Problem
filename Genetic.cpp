@@ -56,7 +56,7 @@ std::vector<std::vector<int>> random_paths(const std::vector<std::vector<double>
                                             
     std::vector<std::vector<int>> paths(num_paths);
 
-    // #pragma omp parallel for 
+    #pragma omp parallel for 
     for (int i = 0; i < num_paths; ++i) {
         paths[i] = generate_random_path(costs, current_city, budget);
     }
@@ -543,7 +543,6 @@ void my_print_path(const std::vector<std::vector<double>>& distances, const std:
     std::cout << "Total Cost: " << total_cost << std::endl;
 }
 
-
 std::vector<int> evolution(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
                            int start_city, int num_path, double budget, int evolution_itr,
                            std::vector<std::vector<int>>& init_paths) {
@@ -580,8 +579,6 @@ std::vector<int> evolution(const std::vector<std::vector<double>>& costs, const 
         std::vector<std::vector<int>> all_paths = paths;
         all_paths.insert(all_paths.end(), mutate_paths.begin(), mutate_paths.end());
         all_paths.insert(all_paths.end(), cross_over_paths.begin(), cross_over_paths.end());
-
-        
 
         //top paths
         paths = std::move(select_top_paths(all_paths, costs, prizes, top_n));

@@ -150,6 +150,51 @@ std::vector<int> cost_greedy_path(const std::vector<std::vector<double>>& distan
     return visited;
 }
 
+std::vector<int> prize_ratio_greedy_path(const std::vector<std::vector<double>>& costs, 
+                                   const std::vector<double>& probability, 
+                                   int init_tile, double budget) {
+    int n = probability.size();
+
+    if (init_tile == -1) {
+        init_tile = std::max_element(probability.begin(), probability.end()) - probability.begin();
+    }
+
+    std::vector<int> path;
+    std::vector<bool> visited(n, false);
+
+    int current_tile = init_tile;
+    path.push_back(current_tile);
+    visited[current_tile] = true;
+
+    while (true) {
+        double best_score = -1.0;
+        int best_tile = -1;
+
+        for (int j = 0; j < n; ++j) {
+            if (visited[j] || j == current_tile) continue;
+
+            double cost = costs[current_tile][j];
+            if (cost <= budget) {
+                double score = probability[j] / (cost + 1E-10);
+                if (score > best_score) {
+                    best_score = score;
+                    best_tile = j;
+                }
+            }
+        }
+
+        if (best_tile == -1) break;
+
+        budget -= costs[current_tile][best_tile];
+        current_tile = best_tile;
+        visited[current_tile] = true;
+        path.push_back(current_tile);
+
+        if (budget <= 0) break;
+    }
+
+    return path;
+}
 
 
 // std::vector<int> max_unrooted_path(const std::vector<std::vector<double>>& distances, int budget) {

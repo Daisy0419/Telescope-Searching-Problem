@@ -226,21 +226,3 @@ std::pair<double, std::vector<int>> branchAndBoundParallel(
     return {global_best_prize, global_best_path};
 }
 
-// std::vector<int> run_branch_bound_parallel(const std::vector<std::vector<double>>& costs, 
-//                                            const std::vector<double>& prizes, 
-//                                            double budget, 
-//                                            int current_tile) {
-
-//     std::vector<bool> unvisited(costs.size(), true);
-//     unvisited[current_tile] = false;
-
-//     std::vector<int> initial_path;
-//     double initial_prize = 0.0;
-
-//     std::pair<double, std::vector<int>> result = branchAndBoundParallel(
-//         costs, prizes, budget, current_tile, unvisited, initial_path, initial_prize
-//     );
-
-//     return result.second;
-// }
-

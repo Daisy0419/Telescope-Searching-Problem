@@ -129,6 +129,19 @@ ts/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/build
 .PHONY : ts/fast
 
+#=============================================================================
+# Target rules for targets named pctsp_lib
+
+# Build rule for target.
+pctsp_lib: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 pctsp_lib
+.PHONY : pctsp_lib
+
+# fast build rule for target.
+pctsp_lib/fast:
+	$(MAKE) $(MAKESILENT) -f Prize-Collecting-TSP-with-Budget/CMakeFiles/pctsp_lib.dir/build.make Prize-Collecting-TSP-with-Budget/CMakeFiles/pctsp_lib.dir/build
+.PHONY : pctsp_lib/fast
+
 AntColony.o: AntColony.cpp.o
 .PHONY : AntColony.o
 
@@ -152,54 +165,6 @@ AntColony.s: AntColony.cpp.s
 AntColony.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/AntColony.cpp.s
 .PHONY : AntColony.cpp.s
-
-BranchBound.o: BranchBound.cpp.o
-.PHONY : BranchBound.o
-
-# target to build an object file
-BranchBound.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/BranchBound.cpp.o
-.PHONY : BranchBound.cpp.o
-
-BranchBound.i: BranchBound.cpp.i
-.PHONY : BranchBound.i
-
-# target to preprocess a source file
-BranchBound.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/BranchBound.cpp.i
-.PHONY : BranchBound.cpp.i
-
-BranchBound.s: BranchBound.cpp.s
-.PHONY : BranchBound.s
-
-# target to generate assembly for a file
-BranchBound.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/BranchBound.cpp.s
-.PHONY : BranchBound.cpp.s
-
-Christofides.o: Christofides.cpp.o
-.PHONY : Christofides.o
-
-# target to build an object file
-Christofides.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Christofides.cpp.o
-.PHONY : Christofides.cpp.o
-
-Christofides.i: Christofides.cpp.i
-.PHONY : Christofides.i
-
-# target to preprocess a source file
-Christofides.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Christofides.cpp.i
-.PHONY : Christofides.cpp.i
-
-Christofides.s: Christofides.cpp.s
-.PHONY : Christofides.s
-
-# target to generate assembly for a file
-Christofides.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Christofides.cpp.s
-.PHONY : Christofides.cpp.s
 
 Genetic.o: Genetic.cpp.o
 .PHONY : Genetic.o
@@ -297,6 +262,30 @@ ReadData.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/ReadData.cpp.s
 .PHONY : ReadData.cpp.s
 
+SimulatedAnnealing.o: SimulatedAnnealing.cpp.o
+.PHONY : SimulatedAnnealing.o
+
+# target to build an object file
+SimulatedAnnealing.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o
+.PHONY : SimulatedAnnealing.cpp.o
+
+SimulatedAnnealing.i: SimulatedAnnealing.cpp.i
+.PHONY : SimulatedAnnealing.i
+
+# target to preprocess a source file
+SimulatedAnnealing.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/SimulatedAnnealing.cpp.i
+.PHONY : SimulatedAnnealing.cpp.i
+
+SimulatedAnnealing.s: SimulatedAnnealing.cpp.s
+.PHONY : SimulatedAnnealing.s
+
+# target to generate assembly for a file
+SimulatedAnnealing.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/SimulatedAnnealing.cpp.s
+.PHONY : SimulatedAnnealing.cpp.s
+
 helplers.o: helplers.cpp.o
 .PHONY : helplers.o
 
@@ -320,30 +309,6 @@ helplers.s: helplers.cpp.s
 helplers.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/helplers.cpp.s
 .PHONY : helplers.cpp.s
-
-kMST.o: kMST.cpp.o
-.PHONY : kMST.o
-
-# target to build an object file
-kMST.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/kMST.cpp.o
-.PHONY : kMST.cpp.o
-
-kMST.i: kMST.cpp.i
-.PHONY : kMST.i
-
-# target to preprocess a source file
-kMST.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/kMST.cpp.i
-.PHONY : kMST.cpp.i
-
-kMST.s: kMST.cpp.s
-.PHONY : kMST.s
-
-# target to generate assembly for a file
-kMST.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/kMST.cpp.s
-.PHONY : kMST.cpp.s
 
 main.o: main.cpp.o
 .PHONY : main.o
@@ -369,6 +334,30 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+mst.o: mst.cpp.o
+.PHONY : mst.o
+
+# target to build an object file
+mst.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mst.cpp.o
+.PHONY : mst.cpp.o
+
+mst.i: mst.cpp.i
+.PHONY : mst.i
+
+# target to preprocess a source file
+mst.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mst.cpp.i
+.PHONY : mst.cpp.i
+
+mst.s: mst.cpp.s
+.PHONY : mst.s
+
+# target to generate assembly for a file
+mst.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mst.cpp.s
+.PHONY : mst.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -377,16 +366,11 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... pctsp_lib"
 	@echo "... ts"
 	@echo "... AntColony.o"
 	@echo "... AntColony.i"
 	@echo "... AntColony.s"
-	@echo "... BranchBound.o"
-	@echo "... BranchBound.i"
-	@echo "... BranchBound.s"
-	@echo "... Christofides.o"
-	@echo "... Christofides.i"
-	@echo "... Christofides.s"
 	@echo "... Genetic.o"
 	@echo "... Genetic.i"
 	@echo "... Genetic.s"
@@ -399,15 +383,18 @@ help:
 	@echo "... ReadData.o"
 	@echo "... ReadData.i"
 	@echo "... ReadData.s"
+	@echo "... SimulatedAnnealing.o"
+	@echo "... SimulatedAnnealing.i"
+	@echo "... SimulatedAnnealing.s"
 	@echo "... helplers.o"
 	@echo "... helplers.i"
 	@echo "... helplers.s"
-	@echo "... kMST.o"
-	@echo "... kMST.i"
-	@echo "... kMST.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... mst.o"
+	@echo "... mst.i"
+	@echo "... mst.s"
 .PHONY : help
 
 

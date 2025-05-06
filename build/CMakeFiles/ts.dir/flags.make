@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/research/w.yanwang/Gurobi/gurobi1201/linux64/include
+CXX_INCLUDES = -I/home/research/w.yanwang/Gurobi/gurobi1201/linux64/include -I/home/research/w.yanwang/lemon-1.3.1 -I/home/research/w.yanwang/lemon-1.3.1/build -I/home/research/w.yanwang/Telescope-Searching-Problem/Prize-Collecting-TSP-with-Budget
 
-CXX_FLAGS = -std=gnu++17 -fopenmp
+CXX_FLAGS = -O3 -DNDEBUG -std=gnu++17 -fopenmp
 

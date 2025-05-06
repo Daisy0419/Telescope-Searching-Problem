@@ -111,24 +111,10 @@ CMakeFiles/ts.dir/AntColony.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/AntColony.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/AntColony.cpp -o CMakeFiles/ts.dir/AntColony.cpp.s
 
-CMakeFiles/ts.dir/Genetic.cpp.o: CMakeFiles/ts.dir/flags.make
-CMakeFiles/ts.dir/Genetic.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp
-CMakeFiles/ts.dir/Genetic.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ts.dir/Genetic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/Genetic.cpp.o -MF CMakeFiles/ts.dir/Genetic.cpp.o.d -o CMakeFiles/ts.dir/Genetic.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp
-
-CMakeFiles/ts.dir/Genetic.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/Genetic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp > CMakeFiles/ts.dir/Genetic.cpp.i
-
-CMakeFiles/ts.dir/Genetic.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/Genetic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp -o CMakeFiles/ts.dir/Genetic.cpp.s
-
 CMakeFiles/ts.dir/Greedy.cpp.o: CMakeFiles/ts.dir/flags.make
 CMakeFiles/ts.dir/Greedy.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.cpp
 CMakeFiles/ts.dir/Greedy.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ts.dir/Greedy.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/ts.dir/Greedy.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/Greedy.cpp.o -MF CMakeFiles/ts.dir/Greedy.cpp.o.d -o CMakeFiles/ts.dir/Greedy.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.cpp
 
 CMakeFiles/ts.dir/Greedy.cpp.i: cmake_force
@@ -139,38 +125,10 @@ CMakeFiles/ts.dir/Greedy.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/Greedy.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.cpp -o CMakeFiles/ts.dir/Greedy.cpp.s
 
-CMakeFiles/ts.dir/kMST.cpp.o: CMakeFiles/ts.dir/flags.make
-CMakeFiles/ts.dir/kMST.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/kMST.cpp
-CMakeFiles/ts.dir/kMST.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ts.dir/kMST.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/kMST.cpp.o -MF CMakeFiles/ts.dir/kMST.cpp.o.d -o CMakeFiles/ts.dir/kMST.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/kMST.cpp
-
-CMakeFiles/ts.dir/kMST.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/kMST.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/kMST.cpp > CMakeFiles/ts.dir/kMST.cpp.i
-
-CMakeFiles/ts.dir/kMST.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/kMST.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/kMST.cpp -o CMakeFiles/ts.dir/kMST.cpp.s
-
-CMakeFiles/ts.dir/Christofides.cpp.o: CMakeFiles/ts.dir/flags.make
-CMakeFiles/ts.dir/Christofides.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.cpp
-CMakeFiles/ts.dir/Christofides.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ts.dir/Christofides.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/Christofides.cpp.o -MF CMakeFiles/ts.dir/Christofides.cpp.o.d -o CMakeFiles/ts.dir/Christofides.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.cpp
-
-CMakeFiles/ts.dir/Christofides.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/Christofides.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.cpp > CMakeFiles/ts.dir/Christofides.cpp.i
-
-CMakeFiles/ts.dir/Christofides.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/Christofides.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.cpp -o CMakeFiles/ts.dir/Christofides.cpp.s
-
 CMakeFiles/ts.dir/ReadData.cpp.o: CMakeFiles/ts.dir/flags.make
 CMakeFiles/ts.dir/ReadData.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.cpp
 CMakeFiles/ts.dir/ReadData.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ts.dir/ReadData.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/ts.dir/ReadData.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/ReadData.cpp.o -MF CMakeFiles/ts.dir/ReadData.cpp.o.d -o CMakeFiles/ts.dir/ReadData.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.cpp
 
 CMakeFiles/ts.dir/ReadData.cpp.i: cmake_force
@@ -181,24 +139,10 @@ CMakeFiles/ts.dir/ReadData.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/ReadData.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.cpp -o CMakeFiles/ts.dir/ReadData.cpp.s
 
-CMakeFiles/ts.dir/BranchBound.cpp.o: CMakeFiles/ts.dir/flags.make
-CMakeFiles/ts.dir/BranchBound.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.cpp
-CMakeFiles/ts.dir/BranchBound.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ts.dir/BranchBound.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/BranchBound.cpp.o -MF CMakeFiles/ts.dir/BranchBound.cpp.o.d -o CMakeFiles/ts.dir/BranchBound.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.cpp
-
-CMakeFiles/ts.dir/BranchBound.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/BranchBound.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.cpp > CMakeFiles/ts.dir/BranchBound.cpp.i
-
-CMakeFiles/ts.dir/BranchBound.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/BranchBound.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.cpp -o CMakeFiles/ts.dir/BranchBound.cpp.s
-
 CMakeFiles/ts.dir/ILP_gurobi.cpp.o: CMakeFiles/ts.dir/flags.make
 CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp
 CMakeFiles/ts.dir/ILP_gurobi.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/ts.dir/ILP_gurobi.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/ts.dir/ILP_gurobi.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/ILP_gurobi.cpp.o -MF CMakeFiles/ts.dir/ILP_gurobi.cpp.o.d -o CMakeFiles/ts.dir/ILP_gurobi.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp
 
 CMakeFiles/ts.dir/ILP_gurobi.cpp.i: cmake_force
@@ -209,18 +153,59 @@ CMakeFiles/ts.dir/ILP_gurobi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/ILP_gurobi.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp -o CMakeFiles/ts.dir/ILP_gurobi.cpp.s
 
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o: CMakeFiles/ts.dir/flags.make
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o -MF CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o.d -o CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp
+
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/SimulatedAnnealing.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp > CMakeFiles/ts.dir/SimulatedAnnealing.cpp.i
+
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/SimulatedAnnealing.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp -o CMakeFiles/ts.dir/SimulatedAnnealing.cpp.s
+
+CMakeFiles/ts.dir/mst.cpp.o: CMakeFiles/ts.dir/flags.make
+CMakeFiles/ts.dir/mst.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp
+CMakeFiles/ts.dir/mst.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/ts.dir/mst.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/mst.cpp.o -MF CMakeFiles/ts.dir/mst.cpp.o.d -o CMakeFiles/ts.dir/mst.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp
+
+CMakeFiles/ts.dir/mst.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/mst.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp > CMakeFiles/ts.dir/mst.cpp.i
+
+CMakeFiles/ts.dir/mst.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/mst.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp -o CMakeFiles/ts.dir/mst.cpp.s
+
+CMakeFiles/ts.dir/Genetic.cpp.o: CMakeFiles/ts.dir/flags.make
+CMakeFiles/ts.dir/Genetic.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp
+CMakeFiles/ts.dir/Genetic.cpp.o: CMakeFiles/ts.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/ts.dir/Genetic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/ts.dir/Genetic.cpp.o -MF CMakeFiles/ts.dir/Genetic.cpp.o.d -o CMakeFiles/ts.dir/Genetic.cpp.o -c /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp
+
+CMakeFiles/ts.dir/Genetic.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/ts.dir/Genetic.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp > CMakeFiles/ts.dir/Genetic.cpp.i
+
+CMakeFiles/ts.dir/Genetic.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/ts.dir/Genetic.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp -o CMakeFiles/ts.dir/Genetic.cpp.s
+
 # Object files for target ts
 ts_OBJECTS = \
 "CMakeFiles/ts.dir/main.cpp.o" \
 "CMakeFiles/ts.dir/helplers.cpp.o" \
 "CMakeFiles/ts.dir/AntColony.cpp.o" \
-"CMakeFiles/ts.dir/Genetic.cpp.o" \
 "CMakeFiles/ts.dir/Greedy.cpp.o" \
-"CMakeFiles/ts.dir/kMST.cpp.o" \
-"CMakeFiles/ts.dir/Christofides.cpp.o" \
 "CMakeFiles/ts.dir/ReadData.cpp.o" \
-"CMakeFiles/ts.dir/BranchBound.cpp.o" \
-"CMakeFiles/ts.dir/ILP_gurobi.cpp.o"
+"CMakeFiles/ts.dir/ILP_gurobi.cpp.o" \
+"CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o" \
+"CMakeFiles/ts.dir/mst.cpp.o" \
+"CMakeFiles/ts.dir/Genetic.cpp.o"
 
 # External object files for target ts
 ts_EXTERNAL_OBJECTS =
@@ -228,20 +213,20 @@ ts_EXTERNAL_OBJECTS =
 ts: CMakeFiles/ts.dir/main.cpp.o
 ts: CMakeFiles/ts.dir/helplers.cpp.o
 ts: CMakeFiles/ts.dir/AntColony.cpp.o
-ts: CMakeFiles/ts.dir/Genetic.cpp.o
 ts: CMakeFiles/ts.dir/Greedy.cpp.o
-ts: CMakeFiles/ts.dir/kMST.cpp.o
-ts: CMakeFiles/ts.dir/Christofides.cpp.o
 ts: CMakeFiles/ts.dir/ReadData.cpp.o
-ts: CMakeFiles/ts.dir/BranchBound.cpp.o
 ts: CMakeFiles/ts.dir/ILP_gurobi.cpp.o
+ts: CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o
+ts: CMakeFiles/ts.dir/mst.cpp.o
+ts: CMakeFiles/ts.dir/Genetic.cpp.o
 ts: CMakeFiles/ts.dir/build.make
 ts: /home/research/w.yanwang/Gurobi/gurobi1201/linux64/lib/libgurobi120.so
 ts: /home/research/w.yanwang/Gurobi/gurobi1201/linux64/lib/libgurobi_g++8.5.a
+ts: Prize-Collecting-TSP-with-Budget/libpctsp_lib.a
 ts: /usr/lib/gcc/x86_64-redhat-linux/8/libgomp.so
 ts: /usr/lib64/libpthread.so
 ts: CMakeFiles/ts.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Linking CXX executable ts"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking CXX executable ts"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/ts.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

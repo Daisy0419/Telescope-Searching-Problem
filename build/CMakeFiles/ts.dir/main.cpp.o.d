@@ -87,17 +87,17 @@ CMakeFiles/ts.dir/main.cpp.o: \
  /usr/include/bits/waitstatus.h /usr/include/sys/types.h \
  /usr/include/sys/select.h /usr/include/bits/select.h \
  /usr/include/bits/types/sigset_t.h /usr/include/bits/types/__sigset_t.h \
- /usr/include/alloca.h /usr/include/bits/stdlib-float.h \
- /usr/include/c++/8/bits/std_abs.h /usr/include/c++/8/cstdio \
- /usr/include/stdio.h /usr/include/bits/types/__fpos_t.h \
- /usr/include/bits/types/__fpos64_t.h \
+ /usr/include/alloca.h /usr/include/bits/stdlib-bsearch.h \
+ /usr/include/bits/stdlib-float.h /usr/include/c++/8/bits/std_abs.h \
+ /usr/include/c++/8/cstdio /usr/include/stdio.h \
+ /usr/include/bits/types/__fpos_t.h /usr/include/bits/types/__fpos64_t.h \
  /usr/include/bits/types/struct_FILE.h \
  /usr/include/bits/types/cookie_io_functions_t.h \
  /usr/include/bits/stdio_lim.h /usr/include/bits/sys_errlist.h \
- /usr/include/c++/8/cerrno /usr/include/errno.h /usr/include/bits/errno.h \
- /usr/include/linux/errno.h /usr/include/asm/errno.h \
- /usr/include/asm-generic/errno.h /usr/include/asm-generic/errno-base.h \
- /usr/include/bits/types/error_t.h \
+ /usr/include/bits/stdio.h /usr/include/c++/8/cerrno /usr/include/errno.h \
+ /usr/include/bits/errno.h /usr/include/linux/errno.h \
+ /usr/include/asm/errno.h /usr/include/asm-generic/errno.h \
+ /usr/include/asm-generic/errno-base.h /usr/include/bits/types/error_t.h \
  /usr/include/c++/8/bits/basic_string.tcc \
  /usr/include/c++/8/bits/locale_classes.tcc \
  /usr/include/c++/8/system_error \
@@ -129,50 +129,14 @@ CMakeFiles/ts.dir/main.cpp.o: \
  /usr/include/c++/8/bits/enable_special_members.h \
  /usr/include/c++/8/bits/unordered_set.h \
  /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.h \
- /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.h \
- /home/research/w.yanwang/Telescope-Searching-Problem/kMST.h \
- /usr/include/c++/8/memory /usr/include/c++/8/bits/stl_tempbuf.h \
- /usr/include/c++/8/bits/stl_raw_storage_iter.h \
- /usr/include/c++/8/ext/concurrence.h \
- /usr/include/c++/8/bits/unique_ptr.h \
- /usr/include/c++/8/bits/shared_ptr.h \
- /usr/include/c++/8/bits/shared_ptr_base.h \
- /usr/include/c++/8/bits/allocated_ptr.h \
- /usr/include/c++/8/bits/refwrap.h \
- /usr/include/c++/8/bits/shared_ptr_atomic.h \
- /usr/include/c++/8/bits/atomic_base.h \
- /usr/include/c++/8/bits/atomic_lockfree_defines.h \
- /usr/include/c++/8/backward/auto_ptr.h /usr/include/c++/8/cmath \
- /usr/include/math.h /usr/include/bits/math-vector.h \
- /usr/include/bits/libm-simd-decl-stubs.h \
- /usr/include/bits/flt-eval-method.h /usr/include/bits/fp-logb.h \
- /usr/include/bits/fp-fast.h \
- /usr/include/bits/mathcalls-helper-functions.h \
- /usr/include/bits/mathcalls.h /usr/include/bits/mathcalls-narrow.h \
- /usr/include/bits/iscanonical.h /usr/include/c++/8/bits/specfun.h \
- /usr/include/c++/8/tr1/gamma.tcc \
- /usr/include/c++/8/tr1/special_function_util.h \
- /usr/include/c++/8/tr1/bessel_function.tcc \
- /usr/include/c++/8/tr1/special_function_util.h \
- /usr/include/c++/8/tr1/beta_function.tcc \
- /usr/include/c++/8/tr1/ell_integral.tcc \
- /usr/include/c++/8/tr1/exp_integral.tcc \
- /usr/include/c++/8/tr1/hypergeometric.tcc \
- /usr/include/c++/8/tr1/legendre_function.tcc \
- /usr/include/c++/8/tr1/modified_bessel_func.tcc \
- /usr/include/c++/8/tr1/poly_hermite.tcc \
- /usr/include/c++/8/tr1/poly_laguerre.tcc \
- /usr/include/c++/8/tr1/riemann_zeta.tcc /usr/include/c++/8/unordered_map \
- /usr/include/c++/8/bits/unordered_map.h /usr/include/c++/8/list \
- /usr/include/c++/8/bits/stl_list.h /usr/include/c++/8/bits/list.tcc \
- /usr/include/c++/8/set /usr/include/c++/8/bits/stl_tree.h \
- /usr/include/c++/8/bits/stl_set.h /usr/include/c++/8/bits/stl_multiset.h \
  /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h \
- /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h \
  /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.h \
  /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.h \
  /home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c++.h \
  /home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c.h \
+ /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.h \
+ /home/research/w.yanwang/Telescope-Searching-Problem/Prize-Collecting-TSP-with-Budget/bpc_tsp.h \
+ /home/research/w.yanwang/Telescope-Searching-Problem/mst.h \
  /usr/include/c++/8/chrono /usr/include/c++/8/ratio \
  /usr/include/c++/8/ctime /usr/include/c++/8/bits/parse_numbers.h \
  /usr/include/c++/8/sstream /usr/include/c++/8/bits/sstream.tcc \
@@ -185,6 +149,12 @@ CMakeFiles/ts.dir/main.cpp.o: \
  /usr/include/c++/8/x86_64-redhat-linux/bits/time_members.h \
  /usr/include/c++/8/x86_64-redhat-linux/bits/messages_members.h \
  /usr/include/libintl.h /usr/include/c++/8/bits/locale_facets_nonio.tcc \
- /usr/include/c++/8/bits/locale_conv.h /usr/include/c++/8/codecvt \
+ /usr/include/c++/8/bits/locale_conv.h \
+ /usr/include/c++/8/bits/unique_ptr.h /usr/include/c++/8/codecvt \
  /usr/include/c++/8/bits/quoted_string.h /usr/include/c++/8/bits/fs_dir.h \
- /usr/include/c++/8/bits/fs_ops.h
+ /usr/include/c++/8/ext/concurrence.h \
+ /usr/include/c++/8/bits/shared_ptr.h \
+ /usr/include/c++/8/bits/shared_ptr_base.h \
+ /usr/include/c++/8/bits/allocated_ptr.h \
+ /usr/include/c++/8/bits/refwrap.h /usr/include/c++/8/bits/fs_ops.h \
+ /usr/include/c++/8/numeric /usr/include/c++/8/bits/stl_numeric.h

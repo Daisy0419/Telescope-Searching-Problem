@@ -41,21 +41,20 @@ void fix_cross(std::vector<int>& path, const std::vector<std::vector<double>>& c
     if (path.size() > costs.size()) {
         throw std::invalid_argument("Path contains nodes outside cost matrix bounds.");
     }
-    if (path.size() < 4) { // Need at least 4 nodes to swap internal segments
+    if (path.size() < 4) { // at least 4 nodes
         return;  
     }
 
     for (size_t i = 1; i < path.size() - 2; ++i) {
         for (size_t j = i + 1; j < path.size() - 2; ++j) {
-            int a = path[i - 1]; // Before the segment
-            int b = path[i];     // Start of segment
-            int c = path[j];     // End of segment
-            int d = path[j + 1]; // After the segment
+            int a = path[i - 1]; 
+            int b = path[i];   
+            int c = path[j];    
+            int d = path[j + 1]; 
 
             double original_cost = costs[a][b] + costs[c][d];
             double uncrossed_cost = costs[a][c] + costs[b][d];
 
-            // Check if swap improves cost while keeping endpoints fixed
             if (uncrossed_cost < original_cost - 1e-9) {
                 std::reverse(path.begin() + i, path.begin() + j + 1);
             }

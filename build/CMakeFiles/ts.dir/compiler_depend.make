@@ -133,6 +133,7 @@ CMakeFiles/ts.dir/AntColony.cpp.o: /home/research/w.yanwang/Telescope-Searching-
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/c++/8/bits/std_abs.h \
   /usr/include/c++/8/cstdio \
@@ -143,6 +144,7 @@ CMakeFiles/ts.dir/AntColony.cpp.o: /home/research/w.yanwang/Telescope-Searching-
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
   /usr/include/c++/8/cerrno \
   /usr/include/errno.h \
   /usr/include/bits/errno.h \
@@ -191,6 +193,7 @@ CMakeFiles/ts.dir/AntColony.cpp.o: /home/research/w.yanwang/Telescope-Searching-
   /usr/include/bits/mathcalls.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
   /usr/include/c++/8/bits/specfun.h \
   /usr/include/c++/8/tr1/gamma.tcc \
   /usr/include/c++/8/tr1/special_function_util.h \
@@ -229,6 +232,481 @@ CMakeFiles/ts.dir/AntColony.cpp.o: /home/research/w.yanwang/Telescope-Searching-
   /usr/include/c++/8/ctime \
   /usr/include/c++/8/bits/parse_numbers.h \
   /usr/lib/gcc/x86_64-redhat-linux/8/include/omp.h
+
+CMakeFiles/ts.dir/Genetic.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp \
+  /usr/include/stdc-predef.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_algobase.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/8/bits/functexcept.h \
+  /usr/include/c++/8/bits/exception_defines.h \
+  /usr/include/c++/8/bits/cpp_type_traits.h \
+  /usr/include/c++/8/ext/type_traits.h \
+  /usr/include/c++/8/ext/numeric_traits.h \
+  /usr/include/c++/8/bits/stl_pair.h \
+  /usr/include/c++/8/bits/move.h \
+  /usr/include/c++/8/bits/concept_check.h \
+  /usr/include/c++/8/type_traits \
+  /usr/include/c++/8/bits/stl_iterator_base_types.h \
+  /usr/include/c++/8/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/8/debug/assertions.h \
+  /usr/include/c++/8/bits/stl_iterator.h \
+  /usr/include/c++/8/bits/ptr_traits.h \
+  /usr/include/c++/8/debug/debug.h \
+  /usr/include/c++/8/bits/predefined_ops.h \
+  /usr/include/c++/8/bits/allocator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/include/c++/8/ext/new_allocator.h \
+  /usr/include/c++/8/new \
+  /usr/include/c++/8/exception \
+  /usr/include/c++/8/bits/exception.h \
+  /usr/include/c++/8/bits/exception_ptr.h \
+  /usr/include/c++/8/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stddef.h \
+  /usr/include/c++/8/typeinfo \
+  /usr/include/c++/8/bits/hash_bytes.h \
+  /usr/include/c++/8/bits/nested_exception.h \
+  /usr/include/c++/8/bits/memoryfwd.h \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/ext/alloc_traits.h \
+  /usr/include/c++/8/bits/alloc_traits.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/utility \
+  /usr/include/c++/8/bits/stl_relops.h \
+  /usr/include/c++/8/initializer_list \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/functional_hash.h \
+  /usr/include/c++/8/bits/range_access.h \
+  /usr/include/c++/8/bits/vector.tcc \
+  /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.h \
+  /usr/include/c++/8/string \
+  /usr/include/c++/8/bits/stringfwd.h \
+  /usr/include/c++/8/bits/char_traits.h \
+  /usr/include/c++/8/bits/postypes.h \
+  /usr/include/c++/8/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/c++/8/cstdint \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/c++/8/bits/localefwd.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/include/c++/8/clocale \
+  /usr/include/locale.h \
+  /usr/include/bits/locale.h \
+  /usr/include/c++/8/iosfwd \
+  /usr/include/c++/8/cctype \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/c++/8/bits/ostream_insert.h \
+  /usr/include/c++/8/bits/cxxabi_forced.h \
+  /usr/include/c++/8/bits/stl_function.h \
+  /usr/include/c++/8/backward/binders.h \
+  /usr/include/c++/8/bits/basic_string.h \
+  /usr/include/c++/8/ext/atomicity.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/8/string_view \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/bits/string_view.tcc \
+  /usr/include/c++/8/ext/string_conversions.h \
+  /usr/include/c++/8/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/sys/types.h \
+  /usr/include/sys/select.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/c++/8/bits/std_abs.h \
+  /usr/include/c++/8/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
+  /usr/include/c++/8/cerrno \
+  /usr/include/errno.h \
+  /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/bits/types/error_t.h \
+  /usr/include/c++/8/bits/basic_string.tcc \
+  /usr/include/c++/8/unordered_set \
+  /usr/include/c++/8/ext/aligned_buffer.h \
+  /usr/include/c++/8/bits/hashtable.h \
+  /usr/include/c++/8/bits/hashtable_policy.h \
+  /usr/include/c++/8/tuple \
+  /usr/include/c++/8/array \
+  /usr/include/c++/8/stdexcept \
+  /usr/include/c++/8/bits/uses_allocator.h \
+  /usr/include/c++/8/bits/invoke.h \
+  /usr/include/c++/8/bits/node_handle.h \
+  /usr/include/c++/8/optional \
+  /usr/include/c++/8/bits/enable_special_members.h \
+  /usr/include/c++/8/bits/unordered_set.h \
+  /usr/include/c++/8/iostream \
+  /usr/include/c++/8/ostream \
+  /usr/include/c++/8/ios \
+  /usr/include/c++/8/bits/ios_base.h \
+  /usr/include/c++/8/bits/locale_classes.h \
+  /usr/include/c++/8/bits/locale_classes.tcc \
+  /usr/include/c++/8/system_error \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/error_constants.h \
+  /usr/include/c++/8/streambuf \
+  /usr/include/c++/8/bits/streambuf.tcc \
+  /usr/include/c++/8/bits/basic_ios.h \
+  /usr/include/c++/8/bits/locale_facets.h \
+  /usr/include/c++/8/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/bits/wctype-wchar.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_base.h \
+  /usr/include/c++/8/bits/streambuf_iterator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h \
+  /usr/include/c++/8/bits/locale_facets.tcc \
+  /usr/include/c++/8/bits/basic_ios.tcc \
+  /usr/include/c++/8/bits/ostream.tcc \
+  /usr/include/c++/8/istream \
+  /usr/include/c++/8/bits/istream.tcc \
+  /usr/include/c++/8/cmath \
+  /usr/include/math.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
+  /usr/include/c++/8/bits/specfun.h \
+  /usr/include/c++/8/tr1/gamma.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/bessel_function.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/beta_function.tcc \
+  /usr/include/c++/8/tr1/ell_integral.tcc \
+  /usr/include/c++/8/tr1/exp_integral.tcc \
+  /usr/include/c++/8/tr1/hypergeometric.tcc \
+  /usr/include/c++/8/tr1/legendre_function.tcc \
+  /usr/include/c++/8/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/8/tr1/poly_hermite.tcc \
+  /usr/include/c++/8/tr1/poly_laguerre.tcc \
+  /usr/include/c++/8/tr1/riemann_zeta.tcc \
+  /usr/include/c++/8/algorithm \
+  /usr/include/c++/8/bits/stl_algo.h \
+  /usr/include/c++/8/bits/algorithmfwd.h \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/include/c++/8/bits/uniform_int_dist.h \
+  /usr/include/c++/8/random \
+  /usr/include/c++/8/bits/random.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/opt_random.h \
+  /usr/include/c++/8/bits/random.tcc \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h \
+  /usr/include/c++/8/fstream \
+  /usr/include/c++/8/bits/codecvt.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/basic_file.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++io.h \
+  /usr/include/c++/8/bits/fstream.tcc \
+  /usr/include/c++/8/sstream \
+  /usr/include/c++/8/bits/sstream.tcc \
+  /usr/include/c++/8/chrono \
+  /usr/include/c++/8/ratio \
+  /usr/include/c++/8/ctime \
+  /usr/include/c++/8/bits/parse_numbers.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/omp.h
+
+CMakeFiles/ts.dir/Greedy.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.cpp \
+  /usr/include/stdc-predef.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_algobase.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/8/bits/functexcept.h \
+  /usr/include/c++/8/bits/exception_defines.h \
+  /usr/include/c++/8/bits/cpp_type_traits.h \
+  /usr/include/c++/8/ext/type_traits.h \
+  /usr/include/c++/8/ext/numeric_traits.h \
+  /usr/include/c++/8/bits/stl_pair.h \
+  /usr/include/c++/8/bits/move.h \
+  /usr/include/c++/8/bits/concept_check.h \
+  /usr/include/c++/8/type_traits \
+  /usr/include/c++/8/bits/stl_iterator_base_types.h \
+  /usr/include/c++/8/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/8/debug/assertions.h \
+  /usr/include/c++/8/bits/stl_iterator.h \
+  /usr/include/c++/8/bits/ptr_traits.h \
+  /usr/include/c++/8/debug/debug.h \
+  /usr/include/c++/8/bits/predefined_ops.h \
+  /usr/include/c++/8/bits/allocator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/include/c++/8/ext/new_allocator.h \
+  /usr/include/c++/8/new \
+  /usr/include/c++/8/exception \
+  /usr/include/c++/8/bits/exception.h \
+  /usr/include/c++/8/bits/exception_ptr.h \
+  /usr/include/c++/8/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stddef.h \
+  /usr/include/c++/8/typeinfo \
+  /usr/include/c++/8/bits/hash_bytes.h \
+  /usr/include/c++/8/bits/nested_exception.h \
+  /usr/include/c++/8/bits/memoryfwd.h \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/ext/alloc_traits.h \
+  /usr/include/c++/8/bits/alloc_traits.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/utility \
+  /usr/include/c++/8/bits/stl_relops.h \
+  /usr/include/c++/8/initializer_list \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/functional_hash.h \
+  /usr/include/c++/8/bits/range_access.h \
+  /usr/include/c++/8/bits/vector.tcc \
+  /usr/include/c++/8/iostream \
+  /usr/include/c++/8/ostream \
+  /usr/include/c++/8/ios \
+  /usr/include/c++/8/iosfwd \
+  /usr/include/c++/8/bits/stringfwd.h \
+  /usr/include/c++/8/bits/postypes.h \
+  /usr/include/c++/8/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/c++/8/bits/char_traits.h \
+  /usr/include/c++/8/cstdint \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/c++/8/bits/localefwd.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/include/c++/8/clocale \
+  /usr/include/locale.h \
+  /usr/include/bits/locale.h \
+  /usr/include/c++/8/cctype \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/c++/8/bits/ios_base.h \
+  /usr/include/c++/8/ext/atomicity.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/8/bits/locale_classes.h \
+  /usr/include/c++/8/string \
+  /usr/include/c++/8/bits/ostream_insert.h \
+  /usr/include/c++/8/bits/cxxabi_forced.h \
+  /usr/include/c++/8/bits/stl_function.h \
+  /usr/include/c++/8/backward/binders.h \
+  /usr/include/c++/8/bits/basic_string.h \
+  /usr/include/c++/8/string_view \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/bits/string_view.tcc \
+  /usr/include/c++/8/ext/string_conversions.h \
+  /usr/include/c++/8/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/sys/types.h \
+  /usr/include/sys/select.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/c++/8/bits/std_abs.h \
+  /usr/include/c++/8/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
+  /usr/include/c++/8/cerrno \
+  /usr/include/errno.h \
+  /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/bits/types/error_t.h \
+  /usr/include/c++/8/bits/basic_string.tcc \
+  /usr/include/c++/8/bits/locale_classes.tcc \
+  /usr/include/c++/8/system_error \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/error_constants.h \
+  /usr/include/c++/8/stdexcept \
+  /usr/include/c++/8/streambuf \
+  /usr/include/c++/8/bits/streambuf.tcc \
+  /usr/include/c++/8/bits/basic_ios.h \
+  /usr/include/c++/8/bits/locale_facets.h \
+  /usr/include/c++/8/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/bits/wctype-wchar.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_base.h \
+  /usr/include/c++/8/bits/streambuf_iterator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h \
+  /usr/include/c++/8/bits/locale_facets.tcc \
+  /usr/include/c++/8/bits/basic_ios.tcc \
+  /usr/include/c++/8/bits/ostream.tcc \
+  /usr/include/c++/8/istream \
+  /usr/include/c++/8/bits/istream.tcc \
+  /usr/include/c++/8/cmath \
+  /usr/include/math.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
+  /usr/include/c++/8/bits/specfun.h \
+  /usr/include/c++/8/tr1/gamma.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/bessel_function.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/beta_function.tcc \
+  /usr/include/c++/8/tr1/ell_integral.tcc \
+  /usr/include/c++/8/tr1/exp_integral.tcc \
+  /usr/include/c++/8/tr1/hypergeometric.tcc \
+  /usr/include/c++/8/tr1/legendre_function.tcc \
+  /usr/include/c++/8/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/8/tr1/poly_hermite.tcc \
+  /usr/include/c++/8/tr1/poly_laguerre.tcc \
+  /usr/include/c++/8/tr1/riemann_zeta.tcc \
+  /usr/include/c++/8/algorithm \
+  /usr/include/c++/8/bits/stl_algo.h \
+  /usr/include/c++/8/bits/algorithmfwd.h \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/include/c++/8/bits/uniform_int_dist.h \
+  /usr/include/c++/8/random \
+  /usr/include/c++/8/bits/random.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/opt_random.h \
+  /usr/include/c++/8/bits/random.tcc \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h \
+  /usr/include/c++/8/fstream \
+  /usr/include/c++/8/bits/codecvt.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/basic_file.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++io.h \
+  /usr/include/c++/8/bits/fstream.tcc \
+  /usr/include/c++/8/sstream \
+  /usr/include/c++/8/bits/sstream.tcc \
+  /usr/include/c++/8/chrono \
+  /usr/include/c++/8/ratio \
+  /usr/include/c++/8/ctime \
+  /usr/include/c++/8/bits/parse_numbers.h
 
 CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp \
   /usr/include/stdc-predef.h \
@@ -363,6 +841,7 @@ CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/c++/8/bits/std_abs.h \
   /usr/include/c++/8/cstdio \
@@ -373,6 +852,7 @@ CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
   /usr/include/c++/8/cerrno \
   /usr/include/errno.h \
   /usr/include/bits/errno.h \
@@ -421,6 +901,7 @@ CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching
   /usr/include/bits/mathcalls.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
   /usr/include/c++/8/bits/specfun.h \
   /usr/include/c++/8/tr1/gamma.tcc \
   /usr/include/c++/8/tr1/special_function_util.h \
@@ -435,6 +916,451 @@ CMakeFiles/ts.dir/ILP_gurobi.cpp.o: /home/research/w.yanwang/Telescope-Searching
   /usr/include/c++/8/tr1/poly_hermite.tcc \
   /usr/include/c++/8/tr1/poly_laguerre.tcc \
   /usr/include/c++/8/tr1/riemann_zeta.tcc
+
+CMakeFiles/ts.dir/ReadData.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.cpp \
+  /usr/include/stdc-predef.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_algobase.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/8/bits/functexcept.h \
+  /usr/include/c++/8/bits/exception_defines.h \
+  /usr/include/c++/8/bits/cpp_type_traits.h \
+  /usr/include/c++/8/ext/type_traits.h \
+  /usr/include/c++/8/ext/numeric_traits.h \
+  /usr/include/c++/8/bits/stl_pair.h \
+  /usr/include/c++/8/bits/move.h \
+  /usr/include/c++/8/bits/concept_check.h \
+  /usr/include/c++/8/type_traits \
+  /usr/include/c++/8/bits/stl_iterator_base_types.h \
+  /usr/include/c++/8/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/8/debug/assertions.h \
+  /usr/include/c++/8/bits/stl_iterator.h \
+  /usr/include/c++/8/bits/ptr_traits.h \
+  /usr/include/c++/8/debug/debug.h \
+  /usr/include/c++/8/bits/predefined_ops.h \
+  /usr/include/c++/8/bits/allocator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/include/c++/8/ext/new_allocator.h \
+  /usr/include/c++/8/new \
+  /usr/include/c++/8/exception \
+  /usr/include/c++/8/bits/exception.h \
+  /usr/include/c++/8/bits/exception_ptr.h \
+  /usr/include/c++/8/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stddef.h \
+  /usr/include/c++/8/typeinfo \
+  /usr/include/c++/8/bits/hash_bytes.h \
+  /usr/include/c++/8/bits/nested_exception.h \
+  /usr/include/c++/8/bits/memoryfwd.h \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/ext/alloc_traits.h \
+  /usr/include/c++/8/bits/alloc_traits.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/utility \
+  /usr/include/c++/8/bits/stl_relops.h \
+  /usr/include/c++/8/initializer_list \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/functional_hash.h \
+  /usr/include/c++/8/bits/range_access.h \
+  /usr/include/c++/8/bits/vector.tcc \
+  /usr/include/c++/8/string \
+  /usr/include/c++/8/bits/stringfwd.h \
+  /usr/include/c++/8/bits/char_traits.h \
+  /usr/include/c++/8/bits/postypes.h \
+  /usr/include/c++/8/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/c++/8/cstdint \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/c++/8/bits/localefwd.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/include/c++/8/clocale \
+  /usr/include/locale.h \
+  /usr/include/bits/locale.h \
+  /usr/include/c++/8/iosfwd \
+  /usr/include/c++/8/cctype \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/c++/8/bits/ostream_insert.h \
+  /usr/include/c++/8/bits/cxxabi_forced.h \
+  /usr/include/c++/8/bits/stl_function.h \
+  /usr/include/c++/8/backward/binders.h \
+  /usr/include/c++/8/bits/basic_string.h \
+  /usr/include/c++/8/ext/atomicity.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/8/string_view \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/bits/string_view.tcc \
+  /usr/include/c++/8/ext/string_conversions.h \
+  /usr/include/c++/8/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/sys/types.h \
+  /usr/include/sys/select.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/c++/8/bits/std_abs.h \
+  /usr/include/c++/8/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
+  /usr/include/c++/8/cerrno \
+  /usr/include/errno.h \
+  /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/bits/types/error_t.h \
+  /usr/include/c++/8/bits/basic_string.tcc \
+  /usr/include/c++/8/iostream \
+  /usr/include/c++/8/ostream \
+  /usr/include/c++/8/ios \
+  /usr/include/c++/8/bits/ios_base.h \
+  /usr/include/c++/8/bits/locale_classes.h \
+  /usr/include/c++/8/bits/locale_classes.tcc \
+  /usr/include/c++/8/system_error \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/error_constants.h \
+  /usr/include/c++/8/stdexcept \
+  /usr/include/c++/8/streambuf \
+  /usr/include/c++/8/bits/streambuf.tcc \
+  /usr/include/c++/8/bits/basic_ios.h \
+  /usr/include/c++/8/bits/locale_facets.h \
+  /usr/include/c++/8/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/bits/wctype-wchar.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_base.h \
+  /usr/include/c++/8/bits/streambuf_iterator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h \
+  /usr/include/c++/8/bits/locale_facets.tcc \
+  /usr/include/c++/8/bits/basic_ios.tcc \
+  /usr/include/c++/8/bits/ostream.tcc \
+  /usr/include/c++/8/istream \
+  /usr/include/c++/8/bits/istream.tcc \
+  /usr/include/c++/8/fstream \
+  /usr/include/c++/8/bits/codecvt.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/basic_file.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++io.h \
+  /usr/include/c++/8/bits/fstream.tcc \
+  /usr/include/c++/8/sstream \
+  /usr/include/c++/8/bits/sstream.tcc \
+  /usr/include/c++/8/cmath \
+  /usr/include/math.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
+  /usr/include/c++/8/bits/specfun.h \
+  /usr/include/c++/8/tr1/gamma.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/bessel_function.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/beta_function.tcc \
+  /usr/include/c++/8/tr1/ell_integral.tcc \
+  /usr/include/c++/8/tr1/exp_integral.tcc \
+  /usr/include/c++/8/tr1/hypergeometric.tcc \
+  /usr/include/c++/8/tr1/legendre_function.tcc \
+  /usr/include/c++/8/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/8/tr1/poly_hermite.tcc \
+  /usr/include/c++/8/tr1/poly_laguerre.tcc \
+  /usr/include/c++/8/tr1/riemann_zeta.tcc \
+  /usr/include/c++/8/iomanip \
+  /usr/include/c++/8/locale \
+  /usr/include/c++/8/bits/locale_facets_nonio.h \
+  /usr/include/c++/8/ctime \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/time_members.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/messages_members.h \
+  /usr/include/libintl.h \
+  /usr/include/c++/8/bits/locale_facets_nonio.tcc \
+  /usr/include/c++/8/bits/locale_conv.h \
+  /usr/include/c++/8/bits/unique_ptr.h \
+  /usr/include/c++/8/tuple \
+  /usr/include/c++/8/array \
+  /usr/include/c++/8/bits/uses_allocator.h \
+  /usr/include/c++/8/bits/invoke.h \
+  /usr/include/c++/8/bits/quoted_string.h \
+  /usr/include/c++/8/random \
+  /usr/include/c++/8/bits/random.h \
+  /usr/include/c++/8/bits/uniform_int_dist.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/opt_random.h \
+  /usr/include/c++/8/bits/random.tcc \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h \
+  /usr/include/c++/8/algorithm \
+  /usr/include/c++/8/bits/stl_algo.h \
+  /usr/include/c++/8/bits/algorithmfwd.h \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/include/c++/8/unordered_set \
+  /usr/include/c++/8/ext/aligned_buffer.h \
+  /usr/include/c++/8/bits/hashtable.h \
+  /usr/include/c++/8/bits/hashtable_policy.h \
+  /usr/include/c++/8/bits/node_handle.h \
+  /usr/include/c++/8/optional \
+  /usr/include/c++/8/bits/enable_special_members.h \
+  /usr/include/c++/8/bits/unordered_set.h
+
+CMakeFiles/ts.dir/SimulatedAnnealing.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp \
+  /usr/include/stdc-predef.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_algobase.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/8/bits/functexcept.h \
+  /usr/include/c++/8/bits/exception_defines.h \
+  /usr/include/c++/8/bits/cpp_type_traits.h \
+  /usr/include/c++/8/ext/type_traits.h \
+  /usr/include/c++/8/ext/numeric_traits.h \
+  /usr/include/c++/8/bits/stl_pair.h \
+  /usr/include/c++/8/bits/move.h \
+  /usr/include/c++/8/bits/concept_check.h \
+  /usr/include/c++/8/type_traits \
+  /usr/include/c++/8/bits/stl_iterator_base_types.h \
+  /usr/include/c++/8/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/8/debug/assertions.h \
+  /usr/include/c++/8/bits/stl_iterator.h \
+  /usr/include/c++/8/bits/ptr_traits.h \
+  /usr/include/c++/8/debug/debug.h \
+  /usr/include/c++/8/bits/predefined_ops.h \
+  /usr/include/c++/8/bits/allocator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/include/c++/8/ext/new_allocator.h \
+  /usr/include/c++/8/new \
+  /usr/include/c++/8/exception \
+  /usr/include/c++/8/bits/exception.h \
+  /usr/include/c++/8/bits/exception_ptr.h \
+  /usr/include/c++/8/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stddef.h \
+  /usr/include/c++/8/typeinfo \
+  /usr/include/c++/8/bits/hash_bytes.h \
+  /usr/include/c++/8/bits/nested_exception.h \
+  /usr/include/c++/8/bits/memoryfwd.h \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/ext/alloc_traits.h \
+  /usr/include/c++/8/bits/alloc_traits.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/utility \
+  /usr/include/c++/8/bits/stl_relops.h \
+  /usr/include/c++/8/initializer_list \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/functional_hash.h \
+  /usr/include/c++/8/bits/range_access.h \
+  /usr/include/c++/8/bits/vector.tcc \
+  /usr/include/c++/8/random \
+  /usr/include/c++/8/cmath \
+  /usr/include/math.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/math-vector.h \
+  /usr/include/bits/libm-simd-decl-stubs.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/include/bits/flt-eval-method.h \
+  /usr/include/bits/fp-logb.h \
+  /usr/include/bits/fp-fast.h \
+  /usr/include/bits/mathcalls-helper-functions.h \
+  /usr/include/bits/mathcalls.h \
+  /usr/include/bits/mathcalls-narrow.h \
+  /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
+  /usr/include/c++/8/bits/std_abs.h \
+  /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/sys/types.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/endian.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/sys/select.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/c++/8/bits/specfun.h \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/tr1/gamma.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/bessel_function.tcc \
+  /usr/include/c++/8/tr1/special_function_util.h \
+  /usr/include/c++/8/tr1/beta_function.tcc \
+  /usr/include/c++/8/tr1/ell_integral.tcc \
+  /usr/include/c++/8/tr1/exp_integral.tcc \
+  /usr/include/c++/8/tr1/hypergeometric.tcc \
+  /usr/include/c++/8/tr1/legendre_function.tcc \
+  /usr/include/c++/8/tr1/modified_bessel_func.tcc \
+  /usr/include/c++/8/tr1/poly_hermite.tcc \
+  /usr/include/c++/8/tr1/poly_laguerre.tcc \
+  /usr/include/c++/8/tr1/riemann_zeta.tcc \
+  /usr/include/c++/8/cstdlib \
+  /usr/include/c++/8/string \
+  /usr/include/c++/8/bits/stringfwd.h \
+  /usr/include/c++/8/bits/char_traits.h \
+  /usr/include/c++/8/bits/postypes.h \
+  /usr/include/c++/8/cwchar \
+  /usr/include/wchar.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/c++/8/cstdint \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/c++/8/bits/localefwd.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/include/c++/8/clocale \
+  /usr/include/locale.h \
+  /usr/include/bits/locale.h \
+  /usr/include/c++/8/iosfwd \
+  /usr/include/c++/8/cctype \
+  /usr/include/ctype.h \
+  /usr/include/c++/8/bits/ostream_insert.h \
+  /usr/include/c++/8/bits/cxxabi_forced.h \
+  /usr/include/c++/8/bits/stl_function.h \
+  /usr/include/c++/8/backward/binders.h \
+  /usr/include/c++/8/bits/basic_string.h \
+  /usr/include/c++/8/ext/atomicity.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/8/string_view \
+  /usr/include/c++/8/bits/string_view.tcc \
+  /usr/include/c++/8/ext/string_conversions.h \
+  /usr/include/c++/8/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
+  /usr/include/c++/8/cerrno \
+  /usr/include/errno.h \
+  /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/bits/types/error_t.h \
+  /usr/include/c++/8/bits/basic_string.tcc \
+  /usr/include/c++/8/bits/random.h \
+  /usr/include/c++/8/bits/uniform_int_dist.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/opt_random.h \
+  /usr/include/c++/8/bits/random.tcc \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h \
+  /usr/include/c++/8/algorithm \
+  /usr/include/c++/8/bits/stl_algo.h \
+  /usr/include/c++/8/bits/algorithmfwd.h \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/omp.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.h
 
 CMakeFiles/ts.dir/helplers.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/helplers.cpp \
   /usr/include/stdc-predef.h \
@@ -567,6 +1493,7 @@ CMakeFiles/ts.dir/helplers.cpp.o: /home/research/w.yanwang/Telescope-Searching-P
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/c++/8/bits/std_abs.h \
   /usr/include/c++/8/cstdio \
@@ -577,6 +1504,7 @@ CMakeFiles/ts.dir/helplers.cpp.o: /home/research/w.yanwang/Telescope-Searching-P
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
   /usr/include/c++/8/cerrno \
   /usr/include/errno.h \
   /usr/include/bits/errno.h \
@@ -617,6 +1545,7 @@ CMakeFiles/ts.dir/helplers.cpp.o: /home/research/w.yanwang/Telescope-Searching-P
   /usr/include/bits/mathcalls.h \
   /usr/include/bits/mathcalls-narrow.h \
   /usr/include/bits/iscanonical.h \
+  /usr/include/bits/mathinline.h \
   /usr/include/c++/8/bits/specfun.h \
   /usr/include/c++/8/tr1/gamma.tcc \
   /usr/include/c++/8/tr1/special_function_util.h \
@@ -784,6 +1713,7 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
   /usr/include/bits/types/sigset_t.h \
   /usr/include/bits/types/__sigset_t.h \
   /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
   /usr/include/bits/stdlib-float.h \
   /usr/include/c++/8/bits/std_abs.h \
   /usr/include/c++/8/cstdio \
@@ -794,6 +1724,7 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
   /usr/include/bits/types/cookie_io_functions_t.h \
   /usr/include/bits/stdio_lim.h \
   /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
   /usr/include/c++/8/cerrno \
   /usr/include/errno.h \
   /usr/include/bits/errno.h \
@@ -844,61 +1775,14 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
   /usr/include/c++/8/bits/enable_special_members.h \
   /usr/include/c++/8/bits/unordered_set.h \
   /home/research/w.yanwang/Telescope-Searching-Problem/Greedy.h \
-  /home/research/w.yanwang/Telescope-Searching-Problem/Christofides.h \
-  /home/research/w.yanwang/Telescope-Searching-Problem/kMST.h \
-  /usr/include/c++/8/memory \
-  /usr/include/c++/8/bits/stl_tempbuf.h \
-  /usr/include/c++/8/bits/stl_raw_storage_iter.h \
-  /usr/include/c++/8/ext/concurrence.h \
-  /usr/include/c++/8/bits/unique_ptr.h \
-  /usr/include/c++/8/bits/shared_ptr.h \
-  /usr/include/c++/8/bits/shared_ptr_base.h \
-  /usr/include/c++/8/bits/allocated_ptr.h \
-  /usr/include/c++/8/bits/refwrap.h \
-  /usr/include/c++/8/bits/shared_ptr_atomic.h \
-  /usr/include/c++/8/bits/atomic_base.h \
-  /usr/include/c++/8/bits/atomic_lockfree_defines.h \
-  /usr/include/c++/8/backward/auto_ptr.h \
-  /usr/include/c++/8/cmath \
-  /usr/include/math.h \
-  /usr/include/bits/math-vector.h \
-  /usr/include/bits/libm-simd-decl-stubs.h \
-  /usr/include/bits/flt-eval-method.h \
-  /usr/include/bits/fp-logb.h \
-  /usr/include/bits/fp-fast.h \
-  /usr/include/bits/mathcalls-helper-functions.h \
-  /usr/include/bits/mathcalls.h \
-  /usr/include/bits/mathcalls-narrow.h \
-  /usr/include/bits/iscanonical.h \
-  /usr/include/c++/8/bits/specfun.h \
-  /usr/include/c++/8/tr1/gamma.tcc \
-  /usr/include/c++/8/tr1/special_function_util.h \
-  /usr/include/c++/8/tr1/bessel_function.tcc \
-  /usr/include/c++/8/tr1/special_function_util.h \
-  /usr/include/c++/8/tr1/beta_function.tcc \
-  /usr/include/c++/8/tr1/ell_integral.tcc \
-  /usr/include/c++/8/tr1/exp_integral.tcc \
-  /usr/include/c++/8/tr1/hypergeometric.tcc \
-  /usr/include/c++/8/tr1/legendre_function.tcc \
-  /usr/include/c++/8/tr1/modified_bessel_func.tcc \
-  /usr/include/c++/8/tr1/poly_hermite.tcc \
-  /usr/include/c++/8/tr1/poly_laguerre.tcc \
-  /usr/include/c++/8/tr1/riemann_zeta.tcc \
-  /usr/include/c++/8/unordered_map \
-  /usr/include/c++/8/bits/unordered_map.h \
-  /usr/include/c++/8/list \
-  /usr/include/c++/8/bits/stl_list.h \
-  /usr/include/c++/8/bits/list.tcc \
-  /usr/include/c++/8/set \
-  /usr/include/c++/8/bits/stl_tree.h \
-  /usr/include/c++/8/bits/stl_set.h \
-  /usr/include/c++/8/bits/stl_multiset.h \
   /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h \
-  /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h \
   /home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.h \
   /home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.h \
   /home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c++.h \
   /home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/Prize-Collecting-TSP-with-Budget/bpc_tsp.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/mst.h \
   /usr/include/c++/8/chrono \
   /usr/include/c++/8/ratio \
   /usr/include/c++/8/ctime \
@@ -920,33 +1804,329 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
   /usr/include/libintl.h \
   /usr/include/c++/8/bits/locale_facets_nonio.tcc \
   /usr/include/c++/8/bits/locale_conv.h \
+  /usr/include/c++/8/bits/unique_ptr.h \
   /usr/include/c++/8/codecvt \
   /usr/include/c++/8/bits/quoted_string.h \
   /usr/include/c++/8/bits/fs_dir.h \
-  /usr/include/c++/8/bits/fs_ops.h
+  /usr/include/c++/8/ext/concurrence.h \
+  /usr/include/c++/8/bits/shared_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr_base.h \
+  /usr/include/c++/8/bits/allocated_ptr.h \
+  /usr/include/c++/8/bits/refwrap.h \
+  /usr/include/c++/8/bits/fs_ops.h \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h
+
+CMakeFiles/ts.dir/mst.cpp.o: /home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp \
+  /usr/include/stdc-predef.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/mst.h \
+  /usr/include/c++/8/vector \
+  /usr/include/c++/8/bits/stl_algobase.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/bits/wordsize.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/os_defines.h \
+  /usr/include/features.h \
+  /usr/include/sys/cdefs.h \
+  /usr/include/bits/long-double.h \
+  /usr/include/gnu/stubs.h \
+  /usr/include/gnu/stubs-64.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/cpu_defines.h \
+  /usr/include/c++/8/bits/functexcept.h \
+  /usr/include/c++/8/bits/exception_defines.h \
+  /usr/include/c++/8/bits/cpp_type_traits.h \
+  /usr/include/c++/8/ext/type_traits.h \
+  /usr/include/c++/8/ext/numeric_traits.h \
+  /usr/include/c++/8/bits/stl_pair.h \
+  /usr/include/c++/8/bits/move.h \
+  /usr/include/c++/8/bits/concept_check.h \
+  /usr/include/c++/8/type_traits \
+  /usr/include/c++/8/bits/stl_iterator_base_types.h \
+  /usr/include/c++/8/bits/stl_iterator_base_funcs.h \
+  /usr/include/c++/8/debug/assertions.h \
+  /usr/include/c++/8/bits/stl_iterator.h \
+  /usr/include/c++/8/bits/ptr_traits.h \
+  /usr/include/c++/8/debug/debug.h \
+  /usr/include/c++/8/bits/predefined_ops.h \
+  /usr/include/c++/8/bits/allocator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++allocator.h \
+  /usr/include/c++/8/ext/new_allocator.h \
+  /usr/include/c++/8/new \
+  /usr/include/c++/8/exception \
+  /usr/include/c++/8/bits/exception.h \
+  /usr/include/c++/8/bits/exception_ptr.h \
+  /usr/include/c++/8/bits/cxxabi_init_exception.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stddef.h \
+  /usr/include/c++/8/typeinfo \
+  /usr/include/c++/8/bits/hash_bytes.h \
+  /usr/include/c++/8/bits/nested_exception.h \
+  /usr/include/c++/8/bits/memoryfwd.h \
+  /usr/include/c++/8/bits/stl_construct.h \
+  /usr/include/c++/8/ext/alloc_traits.h \
+  /usr/include/c++/8/bits/alloc_traits.h \
+  /usr/include/c++/8/bits/stl_uninitialized.h \
+  /usr/include/c++/8/utility \
+  /usr/include/c++/8/bits/stl_relops.h \
+  /usr/include/c++/8/initializer_list \
+  /usr/include/c++/8/bits/stl_vector.h \
+  /usr/include/c++/8/bits/stl_bvector.h \
+  /usr/include/c++/8/bits/functional_hash.h \
+  /usr/include/c++/8/bits/range_access.h \
+  /usr/include/c++/8/bits/vector.tcc \
+  /usr/include/c++/8/string \
+  /usr/include/c++/8/bits/stringfwd.h \
+  /usr/include/c++/8/bits/char_traits.h \
+  /usr/include/c++/8/bits/postypes.h \
+  /usr/include/c++/8/cwchar \
+  /usr/include/wchar.h \
+  /usr/include/bits/libc-header-start.h \
+  /usr/include/bits/floatn.h \
+  /usr/include/bits/floatn-common.h \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdarg.h \
+  /usr/include/bits/wchar.h \
+  /usr/include/bits/types/wint_t.h \
+  /usr/include/bits/types/mbstate_t.h \
+  /usr/include/bits/types/__mbstate_t.h \
+  /usr/include/bits/types/__FILE.h \
+  /usr/include/bits/types/FILE.h \
+  /usr/include/bits/types/locale_t.h \
+  /usr/include/bits/types/__locale_t.h \
+  /usr/include/c++/8/cstdint \
+  /usr/lib/gcc/x86_64-redhat-linux/8/include/stdint.h \
+  /usr/include/stdint.h \
+  /usr/include/bits/types.h \
+  /usr/include/bits/typesizes.h \
+  /usr/include/bits/stdint-intn.h \
+  /usr/include/bits/stdint-uintn.h \
+  /usr/include/c++/8/bits/localefwd.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++locale.h \
+  /usr/include/c++/8/clocale \
+  /usr/include/locale.h \
+  /usr/include/bits/locale.h \
+  /usr/include/c++/8/iosfwd \
+  /usr/include/c++/8/cctype \
+  /usr/include/ctype.h \
+  /usr/include/endian.h \
+  /usr/include/bits/endian.h \
+  /usr/include/bits/byteswap.h \
+  /usr/include/bits/uintn-identity.h \
+  /usr/include/c++/8/bits/ostream_insert.h \
+  /usr/include/c++/8/bits/cxxabi_forced.h \
+  /usr/include/c++/8/bits/stl_function.h \
+  /usr/include/c++/8/backward/binders.h \
+  /usr/include/c++/8/bits/basic_string.h \
+  /usr/include/c++/8/ext/atomicity.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/gthr-default.h \
+  /usr/include/pthread.h \
+  /usr/include/sched.h \
+  /usr/include/bits/types/time_t.h \
+  /usr/include/bits/types/struct_timespec.h \
+  /usr/include/bits/sched.h \
+  /usr/include/bits/types/struct_sched_param.h \
+  /usr/include/bits/cpu-set.h \
+  /usr/include/time.h \
+  /usr/include/bits/time.h \
+  /usr/include/bits/timex.h \
+  /usr/include/bits/types/struct_timeval.h \
+  /usr/include/bits/types/clock_t.h \
+  /usr/include/bits/types/struct_tm.h \
+  /usr/include/bits/types/clockid_t.h \
+  /usr/include/bits/types/timer_t.h \
+  /usr/include/bits/types/struct_itimerspec.h \
+  /usr/include/bits/pthreadtypes.h \
+  /usr/include/bits/thread-shared-types.h \
+  /usr/include/bits/pthreadtypes-arch.h \
+  /usr/include/bits/setjmp.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/8/string_view \
+  /usr/include/c++/8/limits \
+  /usr/include/c++/8/bits/string_view.tcc \
+  /usr/include/c++/8/ext/string_conversions.h \
+  /usr/include/c++/8/cstdlib \
+  /usr/include/stdlib.h \
+  /usr/include/bits/waitflags.h \
+  /usr/include/bits/waitstatus.h \
+  /usr/include/sys/types.h \
+  /usr/include/sys/select.h \
+  /usr/include/bits/select.h \
+  /usr/include/bits/types/sigset_t.h \
+  /usr/include/bits/types/__sigset_t.h \
+  /usr/include/alloca.h \
+  /usr/include/bits/stdlib-bsearch.h \
+  /usr/include/bits/stdlib-float.h \
+  /usr/include/c++/8/bits/std_abs.h \
+  /usr/include/c++/8/cstdio \
+  /usr/include/stdio.h \
+  /usr/include/bits/types/__fpos_t.h \
+  /usr/include/bits/types/__fpos64_t.h \
+  /usr/include/bits/types/struct_FILE.h \
+  /usr/include/bits/types/cookie_io_functions_t.h \
+  /usr/include/bits/stdio_lim.h \
+  /usr/include/bits/sys_errlist.h \
+  /usr/include/bits/stdio.h \
+  /usr/include/c++/8/cerrno \
+  /usr/include/errno.h \
+  /usr/include/bits/errno.h \
+  /usr/include/linux/errno.h \
+  /usr/include/asm/errno.h \
+  /usr/include/asm-generic/errno.h \
+  /usr/include/asm-generic/errno-base.h \
+  /usr/include/bits/types/error_t.h \
+  /usr/include/c++/8/bits/basic_string.tcc \
+  /home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h \
+  /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h \
+  /usr/include/c++/8/list \
+  /usr/include/c++/8/bits/stl_list.h \
+  /usr/include/c++/8/bits/allocated_ptr.h \
+  /usr/include/c++/8/ext/aligned_buffer.h \
+  /usr/include/c++/8/bits/list.tcc \
+  /usr/include/c++/8/queue \
+  /usr/include/c++/8/deque \
+  /usr/include/c++/8/bits/stl_deque.h \
+  /usr/include/c++/8/bits/deque.tcc \
+  /usr/include/c++/8/bits/stl_heap.h \
+  /usr/include/c++/8/bits/stl_queue.h \
+  /usr/include/c++/8/bits/uses_allocator.h \
+  /usr/include/c++/8/algorithm \
+  /usr/include/c++/8/bits/stl_algo.h \
+  /usr/include/c++/8/bits/algorithmfwd.h \
+  /usr/include/c++/8/bits/stl_tempbuf.h \
+  /usr/include/c++/8/bits/uniform_int_dist.h \
+  /usr/include/c++/8/tuple \
+  /usr/include/c++/8/array \
+  /usr/include/c++/8/stdexcept \
+  /usr/include/c++/8/bits/invoke.h \
+  /usr/include/c++/8/functional \
+  /usr/include/c++/8/bits/refwrap.h \
+  /usr/include/c++/8/bits/std_function.h \
+  /usr/include/c++/8/unordered_map \
+  /usr/include/c++/8/bits/hashtable.h \
+  /usr/include/c++/8/bits/hashtable_policy.h \
+  /usr/include/c++/8/bits/node_handle.h \
+  /usr/include/c++/8/optional \
+  /usr/include/c++/8/bits/enable_special_members.h \
+  /usr/include/c++/8/bits/unordered_map.h \
+  /usr/include/c++/8/unordered_set \
+  /usr/include/c++/8/bits/unordered_set.h \
+  /usr/include/c++/8/numeric \
+  /usr/include/c++/8/bits/stl_numeric.h \
+  /usr/include/c++/8/iostream \
+  /usr/include/c++/8/ostream \
+  /usr/include/c++/8/ios \
+  /usr/include/c++/8/bits/ios_base.h \
+  /usr/include/c++/8/bits/locale_classes.h \
+  /usr/include/c++/8/bits/locale_classes.tcc \
+  /usr/include/c++/8/system_error \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/error_constants.h \
+  /usr/include/c++/8/streambuf \
+  /usr/include/c++/8/bits/streambuf.tcc \
+  /usr/include/c++/8/bits/basic_ios.h \
+  /usr/include/c++/8/bits/locale_facets.h \
+  /usr/include/c++/8/cwctype \
+  /usr/include/wctype.h \
+  /usr/include/bits/wctype-wchar.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_base.h \
+  /usr/include/c++/8/bits/streambuf_iterator.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h \
+  /usr/include/c++/8/bits/locale_facets.tcc \
+  /usr/include/c++/8/bits/basic_ios.tcc \
+  /usr/include/c++/8/bits/ostream.tcc \
+  /usr/include/c++/8/istream \
+  /usr/include/c++/8/bits/istream.tcc \
+  /usr/include/c++/8/stack \
+  /usr/include/c++/8/bits/stl_stack.h \
+  /usr/include/c++/8/fstream \
+  /usr/include/c++/8/bits/codecvt.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/basic_file.h \
+  /usr/include/c++/8/x86_64-redhat-linux/bits/c++io.h \
+  /usr/include/c++/8/bits/fstream.tcc \
+  /usr/include/c++/8/sstream \
+  /usr/include/c++/8/bits/sstream.tcc \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/list_graph.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/core.h \
+  /home/research/w.yanwang/lemon-1.3.1/build/lemon/config.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/enable_if.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/traits.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/assert.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/error.h \
+  /usr/include/c++/8/memory \
+  /usr/include/c++/8/bits/stl_raw_storage_iter.h \
+  /usr/include/c++/8/ext/concurrence.h \
+  /usr/include/c++/8/bits/unique_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr.h \
+  /usr/include/c++/8/bits/shared_ptr_base.h \
+  /usr/include/c++/8/bits/shared_ptr_atomic.h \
+  /usr/include/c++/8/bits/atomic_base.h \
+  /usr/include/c++/8/bits/atomic_lockfree_defines.h \
+  /usr/include/c++/8/backward/auto_ptr.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/graph_extender.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/map_extender.h \
+  /usr/include/c++/8/iterator \
+  /usr/include/c++/8/bits/stream_iterator.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/concept_check.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/concepts/maps.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/default_map.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/array_map.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/alteration_notifier.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/lock.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bits/vector_map.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/kruskal.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/unionfind.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/maps.h \
+  /usr/include/c++/8/map \
+  /usr/include/c++/8/bits/stl_tree.h \
+  /usr/include/c++/8/bits/stl_map.h \
+  /usr/include/c++/8/bits/stl_multimap.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/matching.h \
+  /usr/include/c++/8/set \
+  /usr/include/c++/8/bits/stl_set.h \
+  /usr/include/c++/8/bits/stl_multiset.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/bin_heap.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/fractional_matching.h \
+  /home/research/w.yanwang/lemon-1.3.1/lemon/elevator.h
 
 
-/usr/include/c++/8/bits/quoted_string.h:
+/home/research/w.yanwang/lemon-1.3.1/lemon/elevator.h:
 
-/usr/include/c++/8/codecvt:
-
-/usr/include/c++/8/bits/locale_facets_nonio.tcc:
-
-/usr/include/libintl.h:
-
-/usr/include/c++/8/x86_64-redhat-linux/bits/time_members.h:
-
-/usr/include/c++/8/bits/fs_path.h:
-
-/home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.h:
-
-/home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h:
+/home/research/w.yanwang/lemon-1.3.1/lemon/fractional_matching.h:
 
 /usr/include/c++/8/bits/stl_multiset.h:
 
+/usr/include/c++/8/set:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/matching.h:
+
+/usr/include/c++/8/bits/stl_multimap.h:
+
 /usr/include/c++/8/bits/stl_tree.h:
 
-/usr/include/c++/8/set:
+/usr/include/c++/8/map:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/maps.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/unionfind.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/alteration_notifier.h:
+
+/usr/include/c++/8/bits/atomic_lockfree_defines.h:
+
+/usr/include/c++/8/memory:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/traits.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/vector_map.h:
+
+/home/research/w.yanwang/lemon-1.3.1/build/lemon/config.h:
+
+/usr/include/c++/8/bits/stl_stack.h:
+
+/usr/include/c++/8/stack:
+
+/usr/include/c++/8/bits/unordered_map.h:
+
+/usr/include/c++/8/bits/std_function.h:
+
+/usr/include/c++/8/functional:
 
 /usr/include/c++/8/bits/list.tcc:
 
@@ -954,31 +2134,55 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/list:
 
-/usr/include/c++/8/bits/unordered_map.h:
-
-/usr/include/c++/8/bits/atomic_lockfree_defines.h:
-
 /usr/include/c++/8/bits/allocated_ptr.h:
 
 /usr/include/c++/8/bits/shared_ptr_base.h:
 
-/usr/include/c++/8/bits/unique_ptr.h:
-
 /usr/include/c++/8/ext/concurrence.h:
 
-/usr/include/c++/8/memory:
+/usr/include/c++/8/codecvt:
+
+/usr/include/c++/8/bits/fs_path.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/core.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/mst.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/BranchBound.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/main.cpp:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/helplers.cpp:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.cpp:
+
+/usr/include/c++/8/bits/quoted_string.h:
+
+/usr/include/c++/8/bits/unique_ptr.h:
+
+/usr/include/c++/8/bits/locale_facets_nonio.tcc:
+
+/usr/include/libintl.h:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/messages_members.h:
 
-/home/research/w.yanwang/Telescope-Searching-Problem/Christofides.h:
+/usr/include/c++/8/x86_64-redhat-linux/bits/time_members.h:
 
-/home/research/w.yanwang/Telescope-Searching-Problem/Greedy.h:
+/home/research/w.yanwang/Telescope-Searching-Problem/ReadData.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/ReadData.cpp:
+
+/home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c++.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp:
 
 /usr/include/c++/8/bits/unordered_set.h:
 
 /usr/include/c++/8/bits/enable_special_members.h:
 
 /usr/include/c++/8/optional:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/list_graph.h:
 
 /usr/include/c++/8/bits/uses_allocator.h:
 
@@ -992,13 +2196,7 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /home/research/w.yanwang/Telescope-Searching-Problem/Genetic.h:
 
-/home/research/w.yanwang/Telescope-Searching-Problem/main.cpp:
-
-/home/research/w.yanwang/Telescope-Searching-Problem/helplers.cpp:
-
-/home/research/w.yanwang/Gurobi/gurobi1201/linux64/include/gurobi_c++.h:
-
-/home/research/w.yanwang/Telescope-Searching-Problem/ILP_gurobi.cpp:
+/home/research/w.yanwang/Telescope-Searching-Problem/Greedy.h:
 
 /usr/lib/gcc/x86_64-redhat-linux/8/include/omp.h:
 
@@ -1009,6 +2207,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/c++/8/bits/hashtable_policy.h:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/c++io.h:
+
+/usr/include/c++/8/bits/stl_deque.h:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/basic_file.h:
 
@@ -1024,6 +2224,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/bits/stl_set.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/lock.h:
+
 /usr/include/c++/8/bits/stl_tempbuf.h:
 
 /usr/include/c++/8/bits/algorithmfwd.h:
@@ -1038,6 +2240,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/tr1/hypergeometric.tcc:
 
+/usr/include/c++/8/deque:
+
 /usr/include/c++/8/tr1/ell_integral.tcc:
 
 /usr/include/c++/8/tr1/bessel_function.tcc:
@@ -1048,11 +2252,17 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/bits/specfun.h:
 
+/usr/include/bits/mathinline.h:
+
 /usr/include/bits/iscanonical.h:
 
 /usr/include/bits/mathcalls-narrow.h:
 
 /usr/include/bits/mathcalls.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/default_map.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/concepts/maps.h:
 
 /usr/include/bits/mathcalls-helper-functions.h:
 
@@ -1068,7 +2278,13 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/math.h:
 
+/home/research/w.yanwang/Telescope-Searching-Problem/Genetic.cpp:
+
 /home/research/w.yanwang/Telescope-Searching-Problem/helplers.h:
+
+/usr/include/c++/8/bits/stl_queue.h:
+
+/usr/include/c++/8/bits/deque.tcc:
 
 /usr/include/c++/8/bits/vector.tcc:
 
@@ -1078,11 +2294,15 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/vector:
 
+/usr/include/c++/8/iomanip:
+
 /usr/include/c++/8/istream:
 
 /usr/include/c++/8/bits/ostream.tcc:
 
 /usr/include/c++/8/bits/basic_ios.tcc:
+
+/usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h:
 
 /usr/include/bits/libm-simd-decl-stubs.h:
 
@@ -1105,6 +2325,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/endian.h:
 
 /usr/include/bits/types.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/mst.cpp:
 
 /usr/include/c++/8/unordered_set:
 
@@ -1150,6 +2372,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/gthr.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/map_extender.h:
+
 /usr/include/c++/8/algorithm:
 
 /usr/include/c++/8/x86_64-redhat-linux/bits/atomic_word.h:
@@ -1166,9 +2390,9 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/bits/types/FILE.h:
 
-/usr/include/c++/8/bits/fs_ops.h:
-
 /usr/include/c++/8/bits/stl_raw_storage_iter.h:
+
+/usr/include/c++/8/bits/fs_ops.h:
 
 /usr/include/bits/stdlib-float.h:
 
@@ -1181,8 +2405,6 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/bits/errno.h:
 
 /usr/include/c++/8/bits/basic_ios.h:
-
-/usr/include/c++/8/x86_64-redhat-linux/bits/ctype_inline.h:
 
 /usr/include/c++/8/bits/streambuf.tcc:
 
@@ -1248,9 +2470,13 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/bits/cpu-set.h:
 
+/usr/include/c++/8/bits/stream_iterator.h:
+
 /usr/include/c++/8/bits/node_handle.h:
 
 /usr/include/bits/types/mbstate_t.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/error.h:
 
 /home/research/w.yanwang/Telescope-Searching-Problem/AntColony.cpp:
 
@@ -1260,9 +2486,13 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/bits/random.h:
 
+/usr/include/bits/stdio.h:
+
 /usr/include/features.h:
 
 /usr/include/sys/types.h:
+
+/usr/include/c++/8/queue:
 
 /usr/include/bits/types/__fpos64_t.h:
 
@@ -1280,6 +2510,10 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/bits/types/struct_timeval.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/enable_if.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/Prize-Collecting-TSP-with-Budget/bpc_tsp.h:
+
 /usr/include/ctype.h:
 
 /usr/include/c++/8/cwchar:
@@ -1288,11 +2522,11 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/bits/ostream_insert.h:
 
-/home/research/w.yanwang/Telescope-Searching-Problem/kMST.h:
-
 /usr/include/c++/8/stdexcept:
 
 /usr/include/bits/libc-header-start.h:
+
+/usr/include/c++/8/iterator:
 
 /usr/include/c++/8/ios:
 
@@ -1364,6 +2598,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/bits/types/time_t.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/concept_check.h:
+
 /usr/include/c++/8/tr1/modified_bessel_func.tcc:
 
 /usr/include/bits/types/struct_timespec.h:
@@ -1371,6 +2607,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/time.h:
 
 /usr/include/bits/types/struct_sched_param.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/kruskal.h:
 
 /usr/include/bits/time.h:
 
@@ -1400,6 +2638,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/bits/streambuf_iterator.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/graph_extender.h:
+
 /usr/include/c++/8/type_traits:
 
 /usr/include/bits/types/__mbstate_t.h:
@@ -1418,13 +2658,21 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/c++/8/ext/new_allocator.h:
 
+/home/research/w.yanwang/lemon-1.3.1/lemon/bin_heap.h:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/assert.h:
+
 /usr/include/c++/8/bits/alloc_traits.h:
 
 /usr/include/c++/8/bits/range_access.h:
 
 /usr/include/c++/8/bits/cxxabi_forced.h:
 
+/usr/include/c++/8/bits/stl_map.h:
+
 /usr/include/c++/8/bits/stl_function.h:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/SimulatedAnnealing.h:
 
 /usr/include/c++/8/bits/nested_exception.h:
 
@@ -1441,6 +2689,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/c++/8/fstream:
 
 /usr/include/c++/8/cstdlib:
+
+/home/research/w.yanwang/Telescope-Searching-Problem/Greedy.cpp:
 
 /usr/include/bits/waitflags.h:
 
@@ -1460,6 +2710,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 
 /usr/include/alloca.h:
 
+/usr/include/bits/stdlib-bsearch.h:
+
 /usr/include/c++/8/tr1/exp_integral.tcc:
 
 /usr/include/c++/8/bits/stl_vector.h:
@@ -1471,6 +2723,8 @@ CMakeFiles/ts.dir/main.cpp.o: /home/research/w.yanwang/Telescope-Searching-Probl
 /usr/include/c++/8/tr1/poly_laguerre.tcc:
 
 /usr/include/c++/8/bits/locale_classes.tcc:
+
+/home/research/w.yanwang/lemon-1.3.1/lemon/bits/array_map.h:
 
 /usr/include/stdio.h:
 

@@ -1,3 +1,6 @@
 /home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/ts.dir
 /home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/edit_cache.dir
 /home/research/w.yanwang/Telescope-Searching-Problem/build/CMakeFiles/rebuild_cache.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/Prize-Collecting-TSP-with-Budget/CMakeFiles/pctsp_lib.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/Prize-Collecting-TSP-with-Budget/CMakeFiles/edit_cache.dir
+/home/research/w.yanwang/Telescope-Searching-Problem/build/Prize-Collecting-TSP-with-Budget/CMakeFiles/rebuild_cache.dir

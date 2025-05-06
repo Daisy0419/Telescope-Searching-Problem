@@ -20,12 +20,6 @@
 // std::vector<int> gurobiSolve(const std::vector<std::vector<double>> &Cost, const std::vector<double> &Prize,
 //                 int start, double Budget);
 
-// // std::vector<int> solveWithGurobi(const ProblemData& data, const std::vector<int>& initialSolution = {});
-// // std::vector<int> gurobiSolve(const std::vector<std::vector<double>> &Cost, 
-// //                              const std::vector<double> &Prize,
-// //                              int start, 
-// //                              double Budget, 
-// //                              const std::vector<int>& initialSolution = {});
 
 
 #include <gurobi_c++.h>
