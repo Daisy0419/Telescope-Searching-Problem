@@ -51,6 +51,25 @@ void sortNodes(const std::vector<double>& prizes, std::vector<double>& prizes_so
     }
 }
 
+
+void sortNodesInRange(const std::vector<double>& prizes, std::vector<int>& indices, std::pair<int, int> range) {
+    int n = prizes.size();
+    if (range.second <= 0 || range.first < 0 || range.first >= range.second) {
+        std::cerr << "Invalid inputs to sortNodesInRange\n";
+        return;
+    }
+    if (range.second > n) range.second = n;
+
+    //partial partition
+    std::nth_element(indices.begin() + range.first, indices.begin() + range.second, indices.end(),
+                     [&prizes](int a, int b) { return prizes[a] > prizes[b]; });
+
+    //sort within [range.first, range.second)
+    std::sort(indices.begin() + range.first, indices.begin() + range.second,
+              [&prizes](int a, int b) { return prizes[a] > prizes[b]; });
+
+}
+
 //select nodes by prize ratio w.r.t current position
 void selectNodes(const std::vector<std::vector<double>>& costs, 
                             const std::vector<double>& prizes, 
@@ -108,7 +127,6 @@ void selectNodes(const std::vector<std::vector<double>>& costs,
         }
     }
 }
-
 
 //select nodes by prize ratio w.r.t closest node already selected
 void selectNodesPrizeRatio(const std::vector<std::vector<double>>& costs,
@@ -284,6 +302,57 @@ std::list<std::pair<int, int>> buildMSTKruskal(const std::vector<std::vector<dou
     return mst;
 }
 
+std::list<std::pair<int, int>> buildMSTKruskalUpdate(const std::vector<std::vector<double>>& costs, 
+                                                const std::vector<int>& indices, int N_nodes) {
+
+    std::vector<std::tuple<double, int, int>> edges; // (weight, u, v)
+    std::vector<int> parent(N_nodes), rank(N_nodes, 0); // For Union-Find
+
+    for (int i = 0; i < N_nodes; ++i) {
+        parent[i] = i;
+    }
+
+    //all edges
+    for (int i = 0; i < N_nodes; ++i) {
+        for (int j = i + 1; j < N_nodes; ++j) {
+            edges.emplace_back(costs[indices[i]][indices[j]], i, j);
+        }
+    }
+
+    std::sort(edges.begin(), edges.end());
+
+    std::function<int(int)> find = [&](int x) -> int {
+        if (parent[x] != x) {
+            parent[x] = find(parent[x]); 
+        }
+        return parent[x];
+    };
+
+    auto unite = [&](int x, int y) {
+        int px = find(x), py = find(y);
+        if (px == py) return false;
+        if (rank[px] < rank[py]) {
+            parent[px] = py;
+        } else if (rank[px] > rank[py]) {
+            parent[py] = px;
+        } else {
+            parent[py] = px;
+            rank[px]++;
+        }
+        return true;
+    };
+
+    //build MST
+    std::list<std::pair<int, int>> mst;
+    for (const auto& [weight, u, v] : edges) {
+        if (unite(u, v)) {
+            mst.emplace_back(indices[u], indices[v]);
+        }
+    }
+
+    return mst;
+}
+
 double mstCosts(const std::vector<std::vector<double>>& costs, 
                 const std::list<std::pair<int, int>>& mst) {
     double totalCost = 0.0;
@@ -409,6 +478,106 @@ std::vector<int> christofidesTSP(int numNodes,
     return shortcutTour(eulerTour, startNode);
 }
 
+void binarySearchBestPathNaive(const std::vector<std::vector<double>>& costs, 
+                               const std::vector<double>& prizes,
+                               const std::vector<int>& indices,
+                               std::vector<int>& best_mst_path,
+                               int N_min, int N_max, double budget) {
+    double best_prize = 0.0;
+
+    while (N_max - N_min > 1) {
+        int N = (N_max + N_min) / 2;
+        std::list<std::pair<int, int>> mst = buildMSTKruskalUpdate(costs, indices, N);
+        double mst_cost = mstCosts(costs, mst);
+
+        if (mst_cost > budget) {
+            N_max = N;
+            continue;
+        }
+
+        std::vector<int> mst_path = christofidesTSP(N, mst, costs, indices[0]);
+        std::vector<int> mst_path_convert = mst_path;
+        // for (int node : mst_path) {
+        //     mst_path_convert.push_back(indices[node]);
+        // }
+
+        fix_cross(mst_path_convert, costs);
+
+        int start_pos = mst_path_convert[0];
+        int second_pos = mst_path_convert[1];
+        int last_pos   = mst_path_convert.back();
+
+        double dist_second = costs[start_pos][second_pos];
+        double dist_last   = costs[start_pos][last_pos];
+        if (dist_second > dist_last) {
+            std::reverse(mst_path_convert.begin() + 1, mst_path_convert.end());
+        }
+
+        double pathCost = 0.0;
+        for (size_t i = 1; i < mst_path_convert.size(); ++i) {
+            pathCost += costs[mst_path_convert[i-1]][mst_path_convert[i]];
+        }
+
+        if (pathCost > budget) {
+            N_max = N;
+        } else {
+            double new_prize = 0.0;
+            for (int node : mst_path_convert) {
+                new_prize += prizes[node];
+            }
+
+            if (new_prize > best_prize) {
+                best_prize = new_prize;
+                best_mst_path = mst_path_convert;
+            }
+
+            N_min = N;
+        }
+    }
+}
+
+std::vector<int> mstNaiveUpdate(const std::vector<std::vector<double>>& costs, 
+                           std::vector<double>& prizes, 
+                           double budget, 
+                           int init_pos) 
+{
+    if (init_pos < 0 || init_pos >= (int)prizes.size() || budget <= 0) {
+        return {init_pos};
+    }
+
+    std::vector<int> indices(prizes.size());
+    std::iota(indices.begin(), indices.end(), 0);
+    std::swap(indices[0], indices[init_pos]);
+
+    int N = 2;
+    while (true) {
+        sortNodesInRange(prizes, indices, {N/2, N});
+        std::list<std::pair<int, int>> mst = buildMSTKruskalUpdate(costs, indices, N);
+        double total_mst_weight = mstCosts(costs, mst);
+
+        if (total_mst_weight > budget) {
+            break;
+        }
+
+        N *= 2;
+        if (N >= (int)prizes.size()) {
+            N = prizes.size();
+            break;
+        }
+    }
+
+    int N_min = N / 4, N_max = N;
+    std::vector<int> best_mst_path;
+    binarySearchBestPathNaive(costs, prizes, indices, best_mst_path, N_min, N_max, budget);
+
+    while (best_mst_path.empty() && N_min >= 2) {
+        N_max = N_min;
+        N_min /= 2;
+        binarySearchBestPathNaive(costs, prizes, indices, best_mst_path, N_min, N_max, budget);
+    }
+
+    return best_mst_path;
+}
 
 std::vector<int> mstNaive(const std::vector<std::vector<double>>& costs, 
                           std::vector<double>& prizes, 
@@ -478,10 +647,10 @@ std::vector<int> mstNaive(const std::vector<std::vector<double>>& costs,
                 best_mst_path = mst_path;
             }
 
-            //if budget is nearly fully utilized
-            if (budget - pathCost < epsilon) {
-                break;
-            }
+            // //if budget is nearly fully utilized
+            // if (budget - pathCost < epsilon) {
+            //     break;
+            // }
 
             N_min = N;
         }
@@ -496,7 +665,6 @@ std::vector<int> mstNaive(const std::vector<std::vector<double>>& costs,
     return best_path;
 }
 
-
 typedef lemon::ListGraph Graph;
 typedef Graph::Node Node;
 typedef Graph::Edge Edge;
@@ -510,6 +678,20 @@ void buildGraph(const std::vector<std::vector<double>>& costs, Graph& g, Graph::
         for (int j = i + 1; j < n; ++j) {
             Edge e = g.addEdge(nodes[i], nodes[j]);
             weight[e] = costs[i][j];
+        }
+    }
+}
+
+void buildGraphUpdate(const std::vector<std::vector<double>>& costs, 
+            const std::vector<int>& indices, int N_nodes,
+            Graph& g, Graph::EdgeMap<double>& weight) {
+    std::vector<Node> nodes(N_nodes);
+    for (int i = 0; i < N_nodes; ++i)
+        nodes[i] = g.addNode();
+    for (int i = 0; i < N_nodes; ++i) {
+        for (int j = i + 1; j < N_nodes; ++j) {
+            Edge e = g.addEdge(nodes[i], nodes[j]);
+            weight[e] = costs[indices[i]][indices[j]];
         }
     }
 }
@@ -616,7 +798,92 @@ std::vector<int> christofidesPath(const Graph& g, const std::vector<std::vector<
     return path;
 }
 
+std::vector<int> christofidesPathUpdate(const Graph& g, const std::vector<std::vector<double>>& costs,
+                                const std::vector<int>& indices, int N_nodes,
+                                std::vector<Edge>& mst_edges) {
 
+    //odd degree vertices
+    std::vector<int> degree(N_nodes, 0);
+    for (Edge e : mst_edges) {
+        degree[g.id(g.u(e))]++;
+        degree[g.id(g.v(e))]++;
+    }
+
+    std::vector<int> odd_vertices;
+    for (int i = 0; i < N_nodes; ++i) {
+        if (degree[i] % 2 != 0)
+            odd_vertices.push_back(i);
+    }
+
+    //Minimum Weight Perfect Matching
+    Graph odd_g;
+    std::vector<Node> odd_nodes(odd_vertices.size());
+    for (int i = 0; i < odd_vertices.size(); ++i)
+        odd_nodes[i] = odd_g.addNode();
+
+    Graph::EdgeMap<double> odd_weight(odd_g);
+    for (int i = 0; i < odd_vertices.size(); ++i) {
+        for (int j = i + 1; j < odd_vertices.size(); ++j) {
+            Edge e = odd_g.addEdge(odd_nodes[i], odd_nodes[j]);
+            odd_weight[e] = -costs[indices[odd_vertices[i]]][indices[odd_vertices[j]]]; //negate for min matching
+        }
+    }
+
+    lemon::MaxWeightedPerfectMatching<Graph, Graph::EdgeMap<double>> matching(odd_g, odd_weight);
+    matching.run();
+
+    // Merge MST + Matching
+    std::vector<std::vector<int>> multigraph(N_nodes);
+    for (Edge e : mst_edges) {
+        int u = g.id(g.u(e));
+        int v = g.id(g.v(e));
+        multigraph[u].push_back(v);
+        multigraph[v].push_back(u);
+    }
+
+    for (Graph::EdgeIt e(odd_g); e != lemon::INVALID; ++e) {
+        if (matching.matching(e)) {
+            int u = odd_vertices[odd_g.id(odd_g.u(e))];
+            int v = odd_vertices[odd_g.id(odd_g.v(e))];
+            multigraph[u].push_back(v);
+            multigraph[v].push_back(u);
+        }
+    }
+
+    // Find Eulerian tour
+    std::vector<int> circuit;
+    std::vector<std::vector<int>> temp_graph = multigraph;
+    std::vector<int> stack;
+    stack.push_back(0); // starting at node 0
+
+    while (!stack.empty()) {
+        int v = stack.back();
+        if (!temp_graph[v].empty()) {
+            int u = temp_graph[v].back();
+            temp_graph[v].pop_back();
+            auto it = std::find(temp_graph[u].begin(), temp_graph[u].end(), v);
+            if (it != temp_graph[u].end())
+                temp_graph[u].erase(it);
+            stack.push_back(u);
+        } else {
+            circuit.push_back(v);
+            stack.pop_back();
+        }
+    }
+    std::reverse(circuit.begin(), circuit.end());
+
+    //shortcut
+    std::vector<bool> visited(N_nodes, false);
+    std::vector<int> path;
+    for (int v : circuit) {
+        if (!visited[v]) {
+            path.push_back(v);
+            visited[v] = true;
+        }
+    }
+    // path.push_back(path[0]); 
+    return path;
+}
 
 std::vector<int> mstLemon(const std::vector<std::vector<double>>& costs, 
                           std::vector<double>& prizes, 
@@ -629,6 +896,10 @@ std::vector<int> mstLemon(const std::vector<std::vector<double>>& costs,
     std::vector<double> prizes_sorted; 
     std::vector<int> indices;
     sortNodes(prizes, prizes_sorted, indices, init_pos); 
+    // for(int i = 0; i < 50; ++i) {
+    //     std::cout << prizes[indices[i]] << " ";
+    // }
+    // std::cout << std::endl;
 
     int N_min = 1, N_max = prizes_sorted.size();
     std::vector<int> best_mst_path;
@@ -686,10 +957,10 @@ std::vector<int> mstLemon(const std::vector<std::vector<double>>& costs,
                 best_mst_path = mst_path;
             }
 
-            //stop if budget is nearly fully utilized
-            if (budget - pathCost < epsilon) {
-                break;
-            }
+            // //stop if budget is nearly fully utilized
+            // if (budget - pathCost < epsilon) {
+            //     break;
+            // }
 
             N_min = N;
         }
@@ -703,6 +974,119 @@ std::vector<int> mstLemon(const std::vector<std::vector<double>>& costs,
     return best_path;
 }
 
+void binarySearchBestPath(const std::vector<std::vector<double>>& costs, 
+                    const std::vector<double>& prizes,
+                    const std::vector<int>& indices,
+                    std::vector<int>& best_mst_path,
+                    int N_min, int N_max, double budget) {
+    
+    double best_prize = 0.0;
+    while (N_max - N_min > 1) {
+        int N = (N_max + N_min) / 2;
+        Graph g;
+        Graph::EdgeMap<double> weight(g);
+        buildGraphUpdate(costs, indices, N, g, weight);
+
+        std::vector<Edge> mst_edges;
+        buildMST(g, weight, mst_edges);
+        double total_mst_weight = computeMSTWeight(g, weight, mst_edges);
+        // std::cout << "MST weight = " << total_mst_weight << std::endl;
+        if(total_mst_weight > budget) {
+            N_max = N;
+            continue;
+        }
+        std::vector<int> mst_path = std::move(christofidesPathUpdate(g, costs, indices, N, mst_edges));
+        mst_path.pop_back();
+        // std::cout << "mst path len = " << mst_path.size() << std::endl;
+        std::vector<int> mst_path_convert;
+        for (int node : mst_path) {
+            mst_path_convert.push_back(indices[node]);
+        }        
+        fix_cross(mst_path_convert, costs);
+
+        int start_pos = mst_path_convert[0];
+        int second_pos = mst_path_convert[1];
+        int last_pos   = mst_path_convert.back();
+
+        double dist_second = costs[start_pos][second_pos];
+        double dist_last = costs[start_pos][last_pos];
+        if (dist_second > dist_last)
+            std::reverse(mst_path_convert.begin() + 1, mst_path_convert.end());
+            
+
+        double pathCost = 0.0;
+        for (size_t i = 1; i < mst_path_convert.size(); ++i) {
+            pathCost += costs[mst_path_convert[i-1]][mst_path_convert[i]];
+        }
+
+        if (pathCost > budget) {
+            N_max = N;
+        } else {
+            double new_prize = 0.0;
+            for (int node : mst_path_convert) {
+                new_prize += prizes[node];
+            }
+            // std::cout << "new_prize: " << new_prize << std::endl;
+            //update best path
+            if (new_prize > best_prize) {
+                best_prize = new_prize;
+                best_mst_path = mst_path_convert;
+                // std::cout << "best_prize = " << best_prize << std::endl;
+            }
+
+            N_min = N;
+        }
+    }
+}
+
+std::vector<int> mstLemonUpdate(const std::vector<std::vector<double>>& costs, 
+                          std::vector<double>& prizes, 
+                          double budget, 
+                          int init_pos) {
+    if (init_pos < 0 || init_pos >= (int)prizes.size() || budget <= 0) {
+        return {init_pos};
+    }
+
+    std::vector<int> indices(prizes.size());
+    std::iota(indices.begin(), indices.end(), 0);
+    std::swap(indices[0], indices[init_pos]);
+
+    int N = 2;
+    while(true) {
+        sortNodesInRange(prizes, indices, {N/2, N});
+        // for(int i = 0; i < N; ++i) {
+        //     std::cout << prizes[indices[i]] << " ";
+        // }
+        // std::cout << std::endl;
+        Graph g;
+        Graph::EdgeMap<double> weight(g);
+        buildGraphUpdate(costs, indices, N, g, weight);
+
+        std::vector<Edge> mst_edges;
+        buildMST(g, weight, mst_edges);
+
+        double total_mst_weight = computeMSTWeight(g, weight, mst_edges);
+        if(total_mst_weight > budget) {
+            break;
+        }
+
+        N *= 2;
+        if (N >= (int)prizes.size()) { 
+            N = prizes.size();
+            break;
+        }
+    }
+    
+    int N_min = N/4, N_max = N;
+    std::vector<int> best_mst_path;
+    binarySearchBestPath(costs, prizes,indices,best_mst_path, N_min, N_max, budget);
+
+    while(best_mst_path.empty()) {
+        N_max = N_min, N_min /= 2;
+        binarySearchBestPath(costs, prizes,indices,best_mst_path, N_min, N_max, budget);
+    }
+    return best_mst_path;
+}
 
 
 std::vector<int> mstLemon2(const std::vector<std::vector<double>>& costs, 

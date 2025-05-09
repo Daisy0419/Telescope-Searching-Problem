@@ -152,16 +152,16 @@ void test_multi_deadline (std::string file, std::string out_file, double budget,
     std::chrono::high_resolution_clock::time_point end;
     std::chrono::duration<double> elapsed_seconds;
     
-    //greedy
-    std::cout << "*********running greedy*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<int> greedy_path = prize_ratio_greedy_path(costs, probability, start_idx, budget);
+    // //greedy
+    // std::cout << "*********running greedy*********" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // std::vector<int> greedy_path = prize_ratio_greedy_path(costs, probability, start_idx, budget);
 
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, ranks, greedy_path, dwell_time);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    write_result(out_file, "Greedy", file, budget, slew_rate, dwell_time, costs, probability, ranks, greedy_path, elapsed_seconds.count(), init_pos_idx);
+    // end = std::chrono::high_resolution_clock::now();
+    // print_path(costs, probability, ranks, greedy_path, dwell_time);
+    // elapsed_seconds = end - start;
+    // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    // write_result(out_file, "Greedy", file, budget, slew_rate, dwell_time, costs, probability, ranks, greedy_path, elapsed_seconds.count(), init_pos_idx);
 
     // // genetic
     // std::cout << "*********running genetic*********" << std::endl;
@@ -174,46 +174,56 @@ void test_multi_deadline (std::string file, std::string out_file, double budget,
     // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
     // write_result(out_file, "Genetic", file, budget, slew_rate, dwell_time, costs, probability, ranks, genetic_path, elapsed_seconds.count(), init_pos_idx);
 
+    // // mst naive
+    // std::cout << "*********running mst*********" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // std::vector<int> mst_path1 = mstNaive(costs, probability, budget, start_idx);
+    // end = std::chrono::high_resolution_clock::now();
+    // print_path(costs, probability, ranks, mst_path1, dwell_time);
+    // elapsed_seconds = end - start;
+    // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    // write_result(out_file, "mstNaive", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path1, elapsed_seconds.count(), init_pos_idx);
+
     // mst naive
     std::cout << "*********running mst*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
-    std::vector<int> mst_path0 = mstNaive(costs, probability, budget, start_idx);
+    std::vector<int> mst_path0 = mstNaiveUpdate(costs, probability, budget, start_idx);
     end = std::chrono::high_resolution_clock::now();
     print_path(costs, probability, ranks, mst_path0, dwell_time);
     elapsed_seconds = end - start;
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    write_result(out_file, "mstNaive", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path0, elapsed_seconds.count(), init_pos_idx);
+    write_result(out_file, "mstNaive_updated", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path0, elapsed_seconds.count(), init_pos_idx);
 
 
-   // mst lemon
-    std::cout << "*********running mst*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<int> mst_path = mstLemon(costs, probability, budget, start_idx);
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, ranks, mst_path, dwell_time);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    write_result(out_file, "mstLemon", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path, elapsed_seconds.count(), init_pos_idx);
+//    // mst lemon
+//     std::cout << "*********running mst*********" << std::endl;
+//     start = std::chrono::high_resolution_clock::now();
+//     std::vector<int> mst_path = mstLemon(costs, probability, budget, start_idx);
+//     end = std::chrono::high_resolution_clock::now();
+//     print_path(costs, probability, ranks, mst_path, dwell_time);
+//     elapsed_seconds = end - start;
+//     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+//     write_result(out_file, "mstLemon", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path, elapsed_seconds.count(), init_pos_idx);
 
 
-    std::cout << "*********running mst*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<int> mst_path3 = mstLemon2(costs, probability, budget, start_idx);
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, ranks, mst_path3, dwell_time);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    write_result(out_file, "mstLemon2", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path3, elapsed_seconds.count(), init_pos_idx);
+    // std::cout << "*********running mst*********" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // std::vector<int> mst_path4 = mstLemonUpdate(costs, probability, budget, start_idx);
+    // end = std::chrono::high_resolution_clock::now();
+    // print_path(costs, probability, ranks, mst_path4, dwell_time);
+    // elapsed_seconds = end - start;
+    // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    // write_result(out_file, "mstLemon_updated", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path4, elapsed_seconds.count(), init_pos_idx);
 
 
-    std::cout << "*********running mst*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    std::vector<int> mst_path4 = mstLemon3(costs, probability, budget, start_idx);
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, ranks, mst_path4, dwell_time);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    write_result(out_file, "mstLemon3", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path4, elapsed_seconds.count(), init_pos_idx);
+    // std::cout << "*********running mst*********" << std::endl;
+    // start = std::chrono::high_resolution_clock::now();
+    // std::vector<int> mst_path4 = mstLemon3(costs, probability, budget, start_idx);
+    // end = std::chrono::high_resolution_clock::now();
+    // print_path(costs, probability, ranks, mst_path4, dwell_time);
+    // elapsed_seconds = end - start;
+    // std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    // write_result(out_file, "mstLemon3", file, budget, slew_rate, dwell_time, costs, probability, ranks, mst_path4, elapsed_seconds.count(), init_pos_idx);
 
 //   // gurobi with time limit
 //     std::cout << "*********gurobi solution with time limit*********" << std::endl;
@@ -332,12 +342,13 @@ int main (int argc, char** argv) {
     std::string out_file = "../results/out.csv";
     // std::string file = "../data_RTSS/filtered_GW191219_163120.fits_slow_deep.csv";
     // std::string file = "../data_RTSS/filtered_GW191219_163120.fits_7dt.csv";
-    std::string file = "../data_RTSS/filtered_GW200112_155838.fits_7dt.csv";
-    // std::string file = "../data_RTSS/filtered_GW200112_155838.fits_slow_deep.csv";
+    // std::string file = "../data_RTSS/filtered_GW200112_155838.fits_7dt.csv";
+    // std::string file = "../data_comp/combined_map_nonzero.csv";
+    std::string file = "../data_RTSS/filtered_GW200112_155838.fits_slow_deep.csv";
     double budget = 50;
-    double slew_rate = 50;
+    double slew_rate = 1;
     double dwell_time = 1;
-    bool is_deepslow = false;
+    bool is_deepslow = true;
     
     if (argc > 1) {
         file = std::string(argv[1]);
@@ -355,10 +366,10 @@ int main (int argc, char** argv) {
     std::cout << "  slew_rate  = " << slew_rate  << "\n";
     std::cout << "  dwell_time = " << dwell_time << "\n\n";
 
-    // for(int b=50; b<=5000; b+=50)
+    // for(int b=10; b<=500; b+=10)
     //     test_multi_deadline (file, out_file, double(b), slew_rate, dwell_time, is_deepslow);
 
-    test_multi_deadline (file, out_file, budget, slew_rate, dwell_time, is_deepslow);
+    test_multi_deadline (file, out_file, 5000, slew_rate, dwell_time, is_deepslow);
 
     // std::vector<double> budgets = {500, 1500, 3000};
     // test_multi_deadlines(file, out_file, budgets, slew_rate, dwell_time, is_deepslow);
