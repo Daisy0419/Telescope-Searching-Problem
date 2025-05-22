@@ -18,10 +18,6 @@
 #include <fstream>
 #include <sstream>
 
-#include <lemon/list_graph.h>
-#include <lemon/kruskal.h>
-#include <lemon/matching.h>
-
 //sort by prize
 void sortNodes(const std::vector<double>& prizes, std::vector<double>& prizes_sorted, 
                std::vector<int>& indices, int init_pos) {
@@ -664,10 +660,6 @@ std::vector<int> mstNaive(const std::vector<std::vector<double>>& costs,
 
     return best_path;
 }
-
-typedef lemon::ListGraph Graph;
-typedef Graph::Node Node;
-typedef Graph::Edge Edge;
 
 void buildGraph(const std::vector<std::vector<double>>& costs, Graph& g, Graph::EdgeMap<double>& weight) {
     int n = costs.size();

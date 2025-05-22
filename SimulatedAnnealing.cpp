@@ -311,7 +311,6 @@ std::vector<int> simulated_annealing(const std::vector<std::vector<double>>& cos
     auto best_path = current_path;
     double best_prize = path_prize(prizes, best_path);
 
-    // Initialize visited based on current_path
     std::vector<bool> visited(costs.size(), false);
     for (int city : current_path) {
         visited[city] = true;
@@ -359,13 +358,11 @@ std::vector<int> simulated_annealing_parallel(const std::vector<std::vector<doub
     std::vector<std::vector<int>> paths(num_threads);
     std::vector<double> prizes_found(num_threads, 0.0);
 
-    // Get a single seed from random_device outside the parallel region
     std::random_device rd;
     unsigned int base_seed = rd();
 
     #pragma omp parallel for num_threads(num_threads)
     for (int thread = 0; thread < num_threads; thread++) {
-        // Use base_seed with thread-specific offset to ensure unique RNG per thread
         std::mt19937 thread_rng(base_seed + thread);
         double thread_temp = initial_temp * (0.9 + 0.2 * (thread / double(num_threads)));
 

@@ -217,3 +217,156 @@ std::vector<int> gurobiSolve(const std::vector<std::vector<double>>& Cost,
     std::vector<int> path = solveWithGurobi(data, mipGap, timeLimit, initialRoute);
     return path;
 }
+
+std::vector<int> solveWithGurobiST(const ProblemDataST& data, double mipGap, double timeLimit,
+                                 const std::vector<int>& initialRoute) {
+    std::vector<int> route;
+    try {
+        GRBEnv env(true);
+        env.set("LogFile", "gurobi_tsp.log");
+        env.start();
+
+        GRBModel model(env);
+        model.set(GRB_StringAttr_ModelName, "TSP_ST_Path");
+
+        if (mipGap != -1)
+            model.set(GRB_DoubleParam_MIPGap, mipGap);
+        if (timeLimit != -1)
+            model.set(GRB_DoubleParam_TimeLimit, timeLimit);
+
+        int N = data.N;
+        int start = data.startIndex;
+        int end = data.endIndex;
+        double Budget = data.Budget;
+        const auto& Cost = data.Cost;
+        const auto& Prize = data.Prize;
+
+        std::vector<std::vector<GRBVar>> x(N, std::vector<GRBVar>(N));
+        std::vector<GRBVar> u(N);
+
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                double objCoeff = (i == j) ? 0.0 : Prize[j];
+                x[i][j] = model.addVar(0.0, 1.0, objCoeff, GRB_BINARY,
+                                       "x_" + std::to_string(i) + "_" + std::to_string(j));
+            }
+        }
+
+        for (int i = 0; i < N; i++) {
+            if (i == start) continue;
+            u[i] = model.addVar(2.0, (double)N, 0.0, GRB_INTEGER,
+                                "u_" + std::to_string(i));
+        }
+
+        model.set(GRB_IntAttr_ModelSense, GRB_MAXIMIZE);
+
+        // Constraints
+        for (int i = 0; i < N; i++) {
+            GRBLinExpr lhs_in = 0.0;
+            GRBLinExpr lhs_out = 0.0;
+            for (int j = 0; j < N; j++) {
+                if (j != i) {
+                    lhs_in += x[j][i];
+                    lhs_out += x[i][j];
+                }
+            }
+            model.addConstr(lhs_in <= 1.0, "AtMostOneIn_" + std::to_string(i));
+            model.addConstr(lhs_out <= 1.0, "AtMostOneOut_" + std::to_string(i));
+        }
+
+        // Fixed start node
+        GRBLinExpr startOut = 0.0;
+        for (int j = 0; j < N; j++) {
+            if (j != start) startOut += x[start][j];
+        }
+        model.addConstr(startOut == 1.0, "StartOut");
+
+        for (int i = 0; i < N; i++) {
+            if (i != start) model.addConstr(x[i][start] == 0.0);
+        }
+
+        // Fixed end node
+        GRBLinExpr endIn = 0.0;
+        for (int i = 0; i < N; i++) {
+            if (i != end) endIn += x[i][end];
+        }
+        model.addConstr(endIn == 1.0, "EndIn");
+
+        for (int j = 0; j < N; j++) {
+            if (j != end) model.addConstr(x[end][j] == 0.0);
+        }
+
+        // Flow balance
+        for (int i = 0; i < N; i++) {
+            if (i == start || i == end) continue;
+            GRBLinExpr flow = 0.0;
+            for (int j = 0; j < N; j++) {
+                if (j != i) flow += x[j][i] - x[i][j];
+            }
+            model.addConstr(flow == 0.0, "FlowBalance_" + std::to_string(i));
+        }
+
+        // Budget constraint
+        GRBLinExpr totalCost = 0.0;
+        for (int i = 0; i < N; i++) {
+            for (int j = 0; j < N; j++) {
+                if (i != j) totalCost += Cost[i][j] * x[i][j];
+            }
+        }
+        model.addConstr(totalCost <= Budget, "Budget");
+
+        // MTZ subtour elimination
+        for (int i = 0; i < N; i++) {
+            if (i == start) continue;
+            for (int j = 0; j < N; j++) {
+                if (j == start || i == j) continue;
+                model.addConstr(u[i] - u[j] + N * x[i][j] <= N - 1,
+                                "MTZ_" + std::to_string(i) + "_" + std::to_string(j));
+            }
+        }
+
+        model.optimize();
+
+        int status = model.get(GRB_IntAttr_Status);
+        if (status == GRB_OPTIMAL || status == GRB_TIME_LIMIT) {
+            double objVal = model.get(GRB_DoubleAttr_ObjVal);
+            std::cout << "Objective value: " << objVal << "\n";
+
+            // Reconstruct path
+            route.push_back(start);
+            int current = start;
+            while (current != end) {
+                bool foundNext = false;
+                for (int j = 0; j < N; j++) {
+                    if (j == current) continue;
+                    if (x[current][j].get(GRB_DoubleAttr_X) > 0.5) {
+                        route.push_back(j);
+                        current = j;
+                        foundNext = true;
+                        break;
+                    }
+                }
+                if (!foundNext) break;
+            }
+        } else {
+            std::cerr << "Solver failed. Status: " << status << "\n";
+        }
+
+    } catch (GRBException &e) {
+        std::cerr << "Gurobi error: " << e.getMessage() << "\n";
+    } catch (...) {
+        std::cerr << "Unknown error occurred.\n";
+    }
+
+    return route;
+}
+
+std::vector<int> gurobiSolveST(const std::vector<std::vector<double>>& Cost,
+                               const std::vector<double>& Prize,
+                               int start, int end, double Budget,
+                               double mipGap, double timeLimit,
+                               const std::vector<int>& initialRoute) {
+    int N = Prize.size();
+    ProblemDataST data(N, start, end, Budget, Cost, Prize);
+    return solveWithGurobiST(data, mipGap, timeLimit, initialRoute);
+}

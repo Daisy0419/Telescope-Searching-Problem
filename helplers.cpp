@@ -62,6 +62,40 @@ void fix_cross(std::vector<int>& path, const std::vector<std::vector<double>>& c
     }
 }
 
+void fix_cross_st_path(std::vector<int>& path, const std::vector<std::vector<double>>& costs) {
+    if (costs.empty() || costs.size() != costs[0].size()) {
+        throw std::invalid_argument("Cost matrix must be non-empty and square.");
+    }
+    if (path.size() > costs.size()) {
+        throw std::invalid_argument("Path contains nodes outside cost matrix bounds.");
+    }
+    if (path.size() < 4) {
+        return;  // nothing to optimize
+    }
+
+    // Avoid modifying edges adjacent to start (s) or end (t)
+    for (size_t i = 1; i < path.size() - 2; ++i) {
+        for (size_t j = i + 1; j < path.size() - 1; ++j) {
+            int a = path[i - 1];
+            int b = path[i];
+            int c = path[j];
+            int d = path[j + 1];
+
+            if (i == 1 && j + 1 == path.size() - 1) continue; // affect both s and t
+            if (i == 1 && a == path[0]) continue;             // affects s
+            if (j + 1 == path.size() - 1 && d == path.back()) continue; // affects t
+
+            double original_cost = costs[a][b] + costs[c][d];
+            double uncrossed_cost = costs[a][c] + costs[b][d];
+
+            if (uncrossed_cost < original_cost - 1e-9) {
+                std::reverse(path.begin() + i, path.begin() + j + 1);
+            }
+        }
+    }
+}
+
+
 // void fix_cross(std::vector<int>& path, const std::vector<std::vector<double>>& costs) {
 //     if (costs.empty() || costs.size() != costs[0].size()) {
 //         throw std::invalid_argument("Cost matrix must be non-empty and square.");

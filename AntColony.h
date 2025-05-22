@@ -24,18 +24,22 @@ private:
     void initialize_heuristic();
     void initialize_pheromones();
 
-
+    // for s-any path
     std::pair<int, double> choose_next_city(int current_city, const std::vector<bool>& visited_set, double budget);
-    // std::pair<int, double> choose_next_city(int current_city, const std::vector<int>& visited, double budget);
-    
     std::vector<int> ant_tour(double budget, int start_city);
-    // double simulate_ants(std::vector<int>& best_tour, double initial_budget, const std::vector<double>& prizes);
     double simulate_ants(std::vector<int> &best_tour, double &best_prize, 
                         double initial_budget, int start_city);
+
+    // for s-t path
+    std::pair<int, double> choose_next_city(int current_city, int end_city, const std::vector<bool>& visited_set, double budget);
+    std::vector<int> ant_tour(double budget, int start_city, int end_city);
+    double simulate_ants(std::vector<int> &best_tour, double &best_prize, 
+                        double initial_budget, int start_city, int end_city);
 
 public:
     AntColony(std::vector<std::vector<double>> cost, std::vector<double> prizes);
     // AntColony(std::vector<std::vector<double>> &cost, std::vector<double> &prizes, std::vector<int> &init_path);
 
     std::vector<int> ant_colony_optimization(double budget, int start_city);
+    std::vector<int> ant_colony_optimization(double budget, int start_city, int end_city);
 };

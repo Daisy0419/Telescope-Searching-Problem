@@ -9,3 +9,4 @@ std::vector<int> unique_random_ints(int min, int max, int n);
 
 //2-opt
 void fix_cross(std::vector<int>& path, const std::vector<std::vector<double>>& costs);
+void fix_cross_st_path(std::vector<int>& path, const std::vector<std::vector<double>>& costs);

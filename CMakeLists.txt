@@ -11,7 +11,7 @@ endif()
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
 # # Enable profiling with gprof
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg -fno-inline")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg") #-fno-inline
 # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 
 find_package(OpenMP REQUIRED)
@@ -46,7 +46,10 @@ set(SOURCES
     ILP_gurobi.cpp
     SimulatedAnnealing.cpp
     mst.cpp
+    mstHoogeveen.cpp
+    mstHoogeveenParallel.cpp
     Genetic.cpp
+    Genetic_st.cpp
 )
 
 # executable

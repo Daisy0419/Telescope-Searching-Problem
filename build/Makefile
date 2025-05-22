@@ -190,6 +190,30 @@ Genetic.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Genetic.cpp.s
 .PHONY : Genetic.cpp.s
 
+Genetic_st.o: Genetic_st.cpp.o
+.PHONY : Genetic_st.o
+
+# target to build an object file
+Genetic_st.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Genetic_st.cpp.o
+.PHONY : Genetic_st.cpp.o
+
+Genetic_st.i: Genetic_st.cpp.i
+.PHONY : Genetic_st.i
+
+# target to preprocess a source file
+Genetic_st.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Genetic_st.cpp.i
+.PHONY : Genetic_st.cpp.i
+
+Genetic_st.s: Genetic_st.cpp.s
+.PHONY : Genetic_st.s
+
+# target to generate assembly for a file
+Genetic_st.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/Genetic_st.cpp.s
+.PHONY : Genetic_st.cpp.s
+
 Greedy.o: Greedy.cpp.o
 .PHONY : Greedy.o
 
@@ -358,6 +382,54 @@ mst.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mst.cpp.s
 .PHONY : mst.cpp.s
 
+mstHoogeveen.o: mstHoogeveen.cpp.o
+.PHONY : mstHoogeveen.o
+
+# target to build an object file
+mstHoogeveen.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveen.cpp.o
+.PHONY : mstHoogeveen.cpp.o
+
+mstHoogeveen.i: mstHoogeveen.cpp.i
+.PHONY : mstHoogeveen.i
+
+# target to preprocess a source file
+mstHoogeveen.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveen.cpp.i
+.PHONY : mstHoogeveen.cpp.i
+
+mstHoogeveen.s: mstHoogeveen.cpp.s
+.PHONY : mstHoogeveen.s
+
+# target to generate assembly for a file
+mstHoogeveen.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveen.cpp.s
+.PHONY : mstHoogeveen.cpp.s
+
+mstHoogeveenParallel.o: mstHoogeveenParallel.cpp.o
+.PHONY : mstHoogeveenParallel.o
+
+# target to build an object file
+mstHoogeveenParallel.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveenParallel.cpp.o
+.PHONY : mstHoogeveenParallel.cpp.o
+
+mstHoogeveenParallel.i: mstHoogeveenParallel.cpp.i
+.PHONY : mstHoogeveenParallel.i
+
+# target to preprocess a source file
+mstHoogeveenParallel.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveenParallel.cpp.i
+.PHONY : mstHoogeveenParallel.cpp.i
+
+mstHoogeveenParallel.s: mstHoogeveenParallel.cpp.s
+.PHONY : mstHoogeveenParallel.s
+
+# target to generate assembly for a file
+mstHoogeveenParallel.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ts.dir/build.make CMakeFiles/ts.dir/mstHoogeveenParallel.cpp.s
+.PHONY : mstHoogeveenParallel.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -374,6 +446,9 @@ help:
 	@echo "... Genetic.o"
 	@echo "... Genetic.i"
 	@echo "... Genetic.s"
+	@echo "... Genetic_st.o"
+	@echo "... Genetic_st.i"
+	@echo "... Genetic_st.s"
 	@echo "... Greedy.o"
 	@echo "... Greedy.i"
 	@echo "... Greedy.s"
@@ -395,6 +470,12 @@ help:
 	@echo "... mst.o"
 	@echo "... mst.i"
 	@echo "... mst.s"
+	@echo "... mstHoogeveen.o"
+	@echo "... mstHoogeveen.i"
+	@echo "... mstHoogeveen.s"
+	@echo "... mstHoogeveenParallel.o"
+	@echo "... mstHoogeveenParallel.i"
+	@echo "... mstHoogeveenParallel.s"
 .PHONY : help
 
 

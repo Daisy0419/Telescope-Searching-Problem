@@ -229,9 +229,6 @@ OpenMP_gomp_LIBRARY:FILEPATH=/usr/lib/gcc/x86_64-redhat-linux/8/libgomp.so
 //Path to the pthread library for OpenMP
 OpenMP_pthread_LIBRARY:FILEPATH=/usr/lib64/libpthread.so
 
-//No help, variable specified on the command line.
-VERBOSE:UNINITIALIZED=1
-
 //Value Computed by CMake
 ts_BINARY_DIR:STATIC=/home/research/w.yanwang/Telescope-Searching-Problem/build
 
