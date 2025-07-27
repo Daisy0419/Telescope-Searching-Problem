@@ -1,0 +1,177 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+import os
+import numpy as np
+from scipy.stats import sem
+import warnings
+import matplotlib as mpl
+
+warnings.filterwarnings("ignore")
+
+# === Config ===
+method_display_names = {
+    'Hoogeveen': 'GCP',
+    'Greedy': 'Greedy',
+    'Gurobi': 'ILP',
+    'Genetic': 'Genetic',
+    'AntColony': 'ACO',
+}
+selected_methods = list(method_display_names.keys())
+
+# Define custom markers for each method
+method_markers = {
+    'GCP': 'o',
+    # 'GCP_Par': 's',
+    'Greedy': 'D',
+    'ACO': '^',
+    'ILP': 'v',
+    'Genetic': 'X',
+    # 'GCP+Gen': 'P'
+}
+
+# Set global font sizes
+mpl.rcParams.update({
+    'font.size': 13,              # base font size
+    'axes.titlesize': 13,         # title font size
+    'axes.labelsize': 13,         # x/y label font size
+    'xtick.labelsize': 12,         # x tick label size
+    'ytick.labelsize': 12,         # y tick label size
+    'legend.fontsize': 12,         # legend font size
+    'figure.titlesize': 13        # suptitle font size
+})
+
+
+def get_csv_files(folder_path):
+    return [os.path.join(folder_path, f) for f in os.listdir(folder_path) if f.endswith('.csv')]
+
+# read results (which is without gurobi)
+def read_and_aggregate(folder_path):
+    all_dfs = []
+    for filepath in get_csv_files(folder_path):
+        try:
+            df = pd.read_csv(filepath)
+            df["DatasetName"] = os.path.basename(df["Dataset"].iloc[0])
+            all_dfs.append(df)
+        except Exception as e:
+            print(f"Error reading {filepath}: {e}")
+    return pd.concat(all_dfs, ignore_index=True)
+
+# read results from gurobi
+def read_and_aggregate2(folder_path1, folder_path2):
+    files1 = get_csv_files(folder_path1)
+    files2 = get_csv_files(folder_path2)
+    all_dfs = []
+    for filepath1, filepath2 in zip(files1, files2):
+        try:
+            df1 = pd.read_csv(filepath1)
+            df1 = df1[df1["Method"] == "Gurobi"]
+            df2 = pd.read_csv(filepath2)
+            df2 = df2[df2["Method"] != "Gurobi"]
+            df = pd.concat([df1, df2], ignore_index=True)
+            df["DatasetName"] = os.path.basename(df["Dataset"].iloc[0])
+            all_dfs.append(df)
+        except Exception as e:
+            print(f"Error reading {filepath1} or {filepath2}: {e}")
+    return pd.concat(all_dfs, ignore_index=True)
+
+
+# Data Loading and Filtering
+df_all = read_and_aggregate2("small_gurobi", "small_100_80")
+df_filtered = df_all[df_all['Method'].isin(selected_methods)].copy()
+df_filtered["DisplayMethod"] = df_filtered["Method"].map(method_display_names)
+
+# 1) Average SumProb (FOM) vs Deadline
+agg = df_filtered.groupby(['DisplayMethod', 'Budget'])['SumProb'].agg(['mean', sem]).reset_index()
+
+plt.figure(figsize=(6, 3))
+for method in agg['DisplayMethod'].unique():
+    sub = agg[agg['DisplayMethod'] == method]
+    marker = method_markers.get(method, 'o')
+    plt.plot(sub['Budget'], sub['mean'], label=method, marker=marker)
+    plt.fill_between(sub['Budget'], sub['mean'] - sub['sem'], sub['mean'] + sub['sem'], alpha=0.2)
+plt.xlabel("Deadline (Seconds)")
+plt.ylabel("Expectation")
+# plt.yscale("log")
+plt.title("Average FOM vs Deadline")
+plt.legend(title="Method")
+plt.grid(True)
+# plt.xlim(left = sorted(agg['Budget'].unique())[0]-20)
+x_ticks = sorted(agg['Budget'].unique())
+# plt.xticks(ticks=x_ticks[::2])
+plt.tight_layout()
+# plt.savefig("plots/Mean_Expectation_vs_Deadline.pdf", dpi=300)
+plt.show()
+
+# 2) Computation Time
+agg_time = df_filtered.groupby(['DisplayMethod', 'Budget'])['TimeSec'].agg(['mean', 'min', 'max']).reset_index()
+plt.figure(figsize=(6, 3))
+for method in agg_time['DisplayMethod'].unique():
+    sub = agg_time[agg_time['DisplayMethod'] == method]
+    plt.plot(sub['Budget'], sub['mean'], label=method)
+    plt.fill_between(sub['Budget'], sub['min'], sub['max'], alpha=0.2)
+plt.xlabel("Deadline (Seconds)")
+plt.ylabel("Computation Time")
+plt.title("Computation Time vs Deadline (Mean ± Range)")
+plt.yscale("log")
+plt.legend(title="Method")
+plt.grid(True)
+plt.xticks(sorted(agg_time['Budget'].unique()))
+# plt.xlim(left = sorted(agg['Budget'].unique())[0]-20)
+x_ticks = sorted(agg['Budget'].unique())
+# plt.xticks(ticks=x_ticks[::2])
+plt.tight_layout()
+# plt.savefig("plots/Runtime_vs_Deadline.png", dpi=300)
+plt.show()
+
+# print max runtime
+max_runtime_table = agg_time.pivot(index='Budget', columns='DisplayMethod', values='max')
+# Save to CSV
+# max_runtime_table.to_csv("worst_case_runtime/mean_runtime_table.csv")
+print("=======Maximum Runtime of each method======")
+print(max_runtime_table)
+
+# This plot is used in the RTSS paper (Figure 7)
+# # 3) Absolute & Percentage Deviation from ILP (baseline)
+baseline = df_filtered[df_filtered['DisplayMethod'] == 'ILP'][['DatasetName', 'Budget', 'SumProb']]
+baseline = baseline.rename(columns={'SumProb': 'BaselineFOM'})
+
+df_dev = pd.merge(df_filtered, baseline, on=['DatasetName', 'Budget'])
+df_dev['FOMDeviation'] = df_dev['SumProb'] - df_dev['BaselineFOM']
+
+df_dev['FOMPctDeviation'] = 100 * (df_dev['SumProb'] - df_dev['BaselineFOM']) / df_dev['BaselineFOM']
+agg_pct_dev = df_dev.groupby(['DisplayMethod', 'Budget'])['FOMPctDeviation'].agg(['mean', sem]).reset_index()
+agg_gcp = df_dev[df_dev['DisplayMethod'] == 'ILP'].groupby('Budget')['BaselineFOM'].mean().reset_index()
+
+fig, ax1 = plt.subplots(figsize=(6, 3))
+# main axes showing % deviation with error bars
+for method in agg_pct_dev['DisplayMethod'].unique():
+    # if method == 'GCP': 
+    #     continue
+    sub = agg_pct_dev[agg_pct_dev['DisplayMethod'] == method]
+    ax1.plot(sub['Budget'], sub['mean'], label=method)
+    ax1.fill_between(sub['Budget'], sub['mean'] - sub['sem'], sub['mean'] + sub['sem'], alpha=0.2)
+
+ax1.axhline(0, linestyle='--', color='black', linewidth=1)
+ax1.set_xlabel("Deadline (Seconds)")
+ax1.set_ylabel("FOM % Deviation from ILP")
+ax1.set_xticks(sorted(df_dev['Budget'].unique()))
+ax1.grid(True)
+# ax1.legend(title="Method")
+ax1.legend(title="Method", ncol=2, loc='lower left', bbox_to_anchor=(0.02, 0.3))
+# ax1.set_xlim(left=sorted(df_dev['Budget'].unique())[0] - 20)
+
+# top x-axis showing GCP average FoM
+ax2 = ax1.twiny()
+ax2.set_xlim(ax1.get_xlim())  # Align limits
+
+# Set tick positions and labels on top
+budgets = agg_gcp['Budget']
+avg_foms = agg_gcp['BaselineFOM'].round(3)
+ax2.set_xticks(budgets[::1])
+ax2.set_xticklabels(avg_foms[::1])
+ax2.set_xlabel("Mean FOM of ILP", labelpad=6)
+
+plt.tight_layout()
+plt.savefig("plots/Percentage_Deviation_from_ILP.png", dpi=300)
+plt.show()

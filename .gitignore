@@ -1,7 +1,6 @@
 .vscode
 build/
 ILP/
-results/
 .DS_Store
 *.log
 data*/

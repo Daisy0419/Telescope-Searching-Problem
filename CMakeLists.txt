@@ -10,10 +10,11 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
-# # Enable profiling with gprof
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg") #-fno-inline
+# Profiling 
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
 # set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
 
+# OpenMP
 find_package(OpenMP REQUIRED)
 
 # Gurobi config
@@ -29,45 +30,45 @@ message(STATUS "Gurobi Library: ${GUROBI_LIB}")
 message(STATUS "Gurobi C++ Library: ${GUROBI_CXX_LIB}")
 set(CMAKE_INSTALL_RPATH ${GUROBI_LIBRARY_DIR})
 
+# CPLEX config
+set(CPLEX_ROOT "/project/engineering/cplex22/cplex")
+set(CPLEX_LIB_DIR "${CPLEX_ROOT}/lib/x86-64_linux/static_pic")
+set(CONCERT_LIB_DIR "/project/engineering/cplex22/concert/lib/x86-64_linux/static_pic")
+set(CPLEX_INCLUDE_DIR "${CPLEX_ROOT}/include")
+set(CPLEX_CONCERT_INCLUDE_DIR "/project/engineering/cplex22/concert/include")
+set(ILOCLEX_LIB "${CPLEX_LIB_DIR}/libilocplex.a")
+set(CPLEX_LIB "${CPLEX_LIB_DIR}/libcplex.a")
+set(CONCERT_LIB "${CONCERT_LIB_DIR}/libconcert.a")
+
 # LEMON config
 set(LEMON_SOURCE_DIR "/home/research/w.yanwang/lemon-1.3.1")
 set(LEMON_BUILD_DIR "/home/research/w.yanwang/lemon-1.3.1/build")
 
-# Add subdirectory
-add_subdirectory(Prize-Collecting-TSP-with-Budget)
+# Collect all source files
+file(GLOB_RECURSE SOURCES "src/*.cpp")
 
-# Main sources
-set(SOURCES
-    main.cpp
-    helplers.cpp
-    AntColony.cpp
-    Greedy.cpp
-    ReadData.cpp
-    ILP_gurobi.cpp
-    SimulatedAnnealing.cpp
-    mst.cpp
-    mstHoogeveen.cpp
-    mstHoogeveenParallel.cpp
-    Genetic.cpp
-    Genetic_st.cpp
-)
-
-# executable
+# Add executable
 add_executable(ts ${SOURCES})
 
-# set include directories
+# Include directories
 target_include_directories(ts PRIVATE
+    include
     ${GUROBI_INCLUDE_DIR}
+    ${CPLEX_INCLUDE_DIR}
+    ${CPLEX_CONCERT_INCLUDE_DIR}
     ${LEMON_SOURCE_DIR}
     ${LEMON_BUILD_DIR}
 )
 
-# link libraries
+# Link libraries
 target_link_libraries(ts
     PRIVATE
         OpenMP::OpenMP_CXX
         ${GUROBI_LIB}
         ${GUROBI_CXX_LIB}
-        pctsp_lib
+        ${ILOCLEX_LIB}
+        ${CONCERT_LIB}
+        ${CPLEX_LIB}
+        pthread m dl
         stdc++fs
 )

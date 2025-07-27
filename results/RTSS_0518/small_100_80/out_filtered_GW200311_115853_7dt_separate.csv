@@ -1,0 +1,46 @@
+Method,Dataset,Budget,SlewRate,DwellTime,NumTiles,SumProb,TotalCost,TimeSec,Path
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,10,50,1,11,0.941334,9.89115,2.369e-06,0 1 2 3 4 5 6 7 8 9 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,10,50,1,11,0.941334,9.93302,4.43174,0 7 6 2 9 1 5 4 3 8 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,10,50,1,11,0.941334,9.59126,0.247985,0 1 6 8 9 2 5 4 7 3 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,10,50,1,11,0.941334,9.65239,0.000403397,0 1 7 3 4 5 6 2 8 9 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,10,50,1,11,0.941334,9.62923,0.0560522,0 5 4 7 3 1 6 8 9 2 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,20,50,1,18,0.996289,18.632,2.493e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,20,50,1,18,0.996289,17.3014,3.81578,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,20,50,1,18,0.996289,17.2268,0.22063,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,20,50,1,18,0.996289,17.2342,0.000735422,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,20,50,1,18,0.996289,18.5303,0.0518843,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,30,50,1,18,0.996289,18.632,5.306e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,30,50,1,18,0.996289,17.3014,4.07527,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,30,50,1,18,0.996289,17.273,0.318557,0 1 13 10 16 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,30,50,1,18,0.996289,17.2342,0.0006528,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,30,50,1,18,0.996289,18.5303,0.0536366,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,40,50,1,18,0.996289,18.632,2.806e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,40,50,1,18,0.996289,17.3014,3.89219,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,40,50,1,18,0.996289,17.2268,0.256099,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,40,50,1,18,0.996289,17.2342,0.00065085,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,40,50,1,18,0.996289,18.5303,0.0553025,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,50,50,1,18,0.996289,18.632,2.208e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,50,50,1,18,0.996289,17.3032,4.75256,0 6 12 8 15 9 2 11 5 13 16 7 14 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,50,50,1,18,0.996289,17.2268,3.08706,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,50,50,1,18,0.996289,17.2342,0.000661154,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,50,50,1,18,0.996289,18.5303,0.0552001,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,60,50,1,18,0.996289,18.632,2.565e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,60,50,1,18,0.996289,17.3014,3.9403,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,60,50,1,18,0.996289,17.2268,0.278843,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,60,50,1,18,0.996289,17.2342,0.000664929,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,60,50,1,18,0.996289,18.5303,0.0411007,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,70,50,1,18,0.996289,18.632,5.426e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,70,50,1,18,0.996289,17.3014,4.15743,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,70,50,1,18,0.996289,17.2268,0.230814,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,70,50,1,18,0.996289,17.2342,0.000658134,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,70,50,1,18,0.996289,18.5303,0.0424251,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,80,50,1,18,0.996289,18.632,2.322e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,80,50,1,18,0.996289,17.3014,5.41209,0 5 11 2 9 15 8 12 6 14 16 13 7 1 4 10 3 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,80,50,1,18,0.996289,17.2268,0.253291,0 1 16 13 10 7 14 6 12 8 15 9 2 3 4 5 11 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,80,50,1,18,0.996289,17.2342,0.000717373,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,80,50,1,18,0.996289,18.5303,0.0391683,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
+Greedy,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,90,50,1,18,0.996289,18.632,2.012e-06,0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 16
+Genetic,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,90,50,1,18,0.996289,17.3804,3.92216,0 6 12 8 15 9 2 11 13 7 14 1 5 3 4 10 16 16
+AntColony,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,90,50,1,18,0.996289,17.3112,0.348407,0 1 13 16 7 14 6 12 2 3 10 4 5 11 9 8 15 16
+Hoogeveen,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,90,50,1,18,0.996289,17.2342,0.00164635,0 1 15 9 8 2 11 12 6 14 3 5 4 7 10 13 16 16
+Gurobi,/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/small/filtered_GW200311_115853_7dt_separate.csv,90,50,1,18,0.996289,18.5303,0.0389067,0 14 11 16 12 2 13 9 6 15 8 1 10 5 3 4 7 16
