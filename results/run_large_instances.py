@@ -1,17 +1,18 @@
 import subprocess
 import os
 
-def run(dataset, run_case=2):
-    print(f"\nRunning ./ts with dataset={dataset}, run_case={run_case}")
-    cmd = [EXECUTABLE, dataset, str(run_case)]
-    try:
-        result = subprocess.run(cmd, capture_output=True, text=True, check=True)
-        output = result.stdout
-        print(output)
+def run(dataset, budgets, run_case=2):
+    for budget in budgets:
+        print(f"\nRunning ./ts with dataset={dataset}, budget={budget}, run_case={run_case}")
+        cmd = [EXECUTABLE, dataset, str(run_case), str(budget)]
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, check=True)
+            output = result.stdout
+            print(output)
 
-    except subprocess.CalledProcessError as e:
-        print(f"Error running command: {cmd}")
-        print(f"Error message: {e.stderr}")
+        except subprocess.CalledProcessError as e:
+            print(f"Error running command: {cmd}")
+            print(f"Error message: {e.stderr}")
 
 
 def getFiles(folder_path):
@@ -25,13 +26,19 @@ def getFiles(folder_path):
 if __name__ == "__main__":
     EXECUTABLE = "../build/ts" 
     data_path = "../data/large"
-
-    default_name = "out.csv"
+    os.makedirs("recomputed_results/large", exist_ok=True)
+    default_name = "recomputed_results/large/out.csv"
+    budgets = [10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
     skymaps=getFiles(data_path)
     for skymap in skymaps:
         dataset = os.path.join(data_path, f"{skymap}.csv")
         print(f"dataset: {dataset}")
-        run(dataset)
-        new_name = f"out_{skymap}.csv"
-        os.rename(default_name, new_name)
+        run(dataset, budgets)
+        new_name = f"recomputed_results/large/out_{skymap}.csv"
+        if os.path.exists(default_name):
+            os.rename(default_name, new_name)
+        else:
+            print(f"[WARN] Expected output file not found: {default_name}")
+
     
+

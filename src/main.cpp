@@ -10,19 +10,29 @@
 
 int main(int argc, char** argv) {
     // Default parameters
-    std::string out_file  = "/home/research/w.yanwang/Telescope-Searching-Problem/results/RTSS_0518/out.csv";
-    std::string out_file2 = "/home/research/w.yanwang/Telescope-Searching-Problem/results/RTSS_0518/out2.csv";
-    std::string file      = "/home/research/w.yanwang/Telescope-Searching-Problem/data_RTSS_0518/large/filtered_GW191127_050227_7dt.csv";
+    std::string out_file  = "../results/recomputed_results/out.csv";
+    std::string out_file2 = "../results/recomputed_results/out2.csv";
+    std::string file      = "../data/small/filtered_GW191105_143521_7dt_separate.csv";
     
     double slew_rate   = 50;
-    bool is_deepslow   = false;
     int run_case       = 1;
+    bool is_deepslow   = false;
+    double budget      = 50;
 
     // Parse arguments
     if (argc > 1) file = std::string(argv[1]);
+    if (argc > 2) {
+        run_case = std::stoi(argv[2]);
+    }
     if (argc > 3) {
-        budget     = std::stod(argv[2]);
-        run_case = std::stoi(argv[3]);
+        budget = std::stod(argv[3]);
+    }
+
+    double budget_greedy=1, budget_genetic=1, budget_gcp=1;
+    if (argc > 6) {
+        budget_greedy = std::stod(argv[4]);
+        budget_genetic = std::stod(argv[5]);
+        budget_gcp = std::stod(argv[6]);
     }
 
     std::cout << "Input Parameters:\n";
@@ -31,18 +41,18 @@ int main(int argc, char** argv) {
 
     switch (run_case) {
         case 1:
-            std::vector<double> budgets = {10, 20, 30, 40, 50, 60, 70, 80, 90};
-            for(double budget in budgets)
-                test_algorithms_small_instances(file, out_file, budget, slew_rate, is_deepslow);
+            test_algorithms_small_instances(file, out_file, budget, slew_rate, is_deepslow);
             break;
         case 2:
-            std::vector<double> budgets = {50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200};
-            for(double budget in budgets)
-                test_algorithms_large_instances(file, out_file, budget, slew_rate, is_deepslow);
+            test_algorithms_large_instances(file, out_file, budget, slew_rate, is_deepslow);
             break;
-        case 3: {
+        case 3:
+            test_algorithms_small_wcet(file, out_file, budget, budget_greedy, budget_genetic, 
+                                        budget_gcp, slew_rate, is_deepslow);
+            break;
+        case 4: {
             std::vector<double> budgets = {50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200};
-            run_multi_deadlines(file, out_file, out_file2, budgets, slew_rate, dwell_time, is_deepslow);
+            run_multi_deadlines(file, out_file, out_file2, budgets, slew_rate, is_deepslow);
             break;
         }
         default:

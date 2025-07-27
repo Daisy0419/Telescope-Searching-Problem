@@ -340,6 +340,61 @@ void test_algorithms_large_instances (std::string file, std::string out_file,
 
 }
 
+void test_algorithms_small_wcet(std::string file, std::string out_file, double budget, 
+                            double budget_greedy, double budget_genetic, double budget_gcp,
+                            double slew_rate, bool is_deepslow) {
+
+    std::vector<std::vector<double>> costs;
+    std::vector<double> probability;
+    std::vector<int> ranks;
+    std::vector<double> dwell_times;
+   
+    double time_limit = -1;
+    double accu_thr = 0.001;
+    int init_pos_idx = 0;
+
+    auto [start_idx, end_idx, padding] = buildGraphOrienteering(file, costs, probability, ranks, dwell_times,
+                                                                slew_rate, is_deepslow, init_pos_idx);
+         
+    std::cout << "padding: " << padding << "\n";
+    std::chrono::high_resolution_clock::time_point start;
+    std::chrono::high_resolution_clock::time_point end;
+    std::chrono::duration<double> elapsed_seconds;
+    
+    //greedy
+    std::cout << "*********running greedy*********" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
+    std::vector<int> greedy_path = prizeGreedyPathTwoFixed(costs, probability, budget_greedy+padding, start_idx, end_idx);
+    end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, ranks, greedy_path, padding);
+    elapsed_seconds = end - start;
+    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    save_result(out_file, "Greedy", file, budget, slew_rate, costs, probability, ranks, greedy_path, elapsed_seconds.count(), padding);
+    
+    // genetic
+    std::cout << "*********running genetic*********" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
+    // genetic_optimization(costs, budget, 0);
+    std::vector<int>  genetic_path = genetic_optimization_st(costs, probability, budget_genetic+padding, start_idx, end_idx);
+    end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, ranks, genetic_path, padding);
+    elapsed_seconds = end - start;
+    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    save_result(out_file, "Genetic", file, budget, slew_rate, costs, probability, ranks, genetic_path, elapsed_seconds.count(), padding);
+
+    // mst Hoogeveen
+    std::cout << "*********running GCP*********" << std::endl;
+    start = std::chrono::high_resolution_clock::now();
+    std::vector<int> mst_pathH = GCP(costs, probability, budget_gcp+padding, start_idx, end_idx);
+    end = std::chrono::high_resolution_clock::now();
+    print_path(costs, probability, ranks, mst_pathH, padding);
+    elapsed_seconds = end - start;
+    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
+    save_result(out_file, "Hoogeveen", file, budget, slew_rate, costs, probability, ranks, mst_pathH, elapsed_seconds.count(), padding);
+
+}
+
+
 void run_multi_deadlines(std::string file, std::string out_file, std::string out_file2, 
                                 std::vector<double> budgets, 
                                 double slew_rate, bool is_deepslow) {
@@ -348,7 +403,7 @@ void run_multi_deadlines(std::string file, std::string out_file, std::string out
     std::vector<int> ranks;
     std::vector<double> dwell_times;
    
-    double time_limit = 900;
+    double time_limit = 600;
     double accu_thr = -1;
     int init_pos_idx = 0;
 

@@ -26,14 +26,16 @@ void save_result2(const std::string& filename,
                   std::vector<int> best_path, 
                   double elapsed_time);
                   
-// void test_algorithms (std::string file, std::string out_file, double budget, 
-//                                 double slew_rate, bool is_deepslow=false);
-
 
 void test_algorithms_small_instances (std::string file, std::string out_file, 
                     double budget, double slew_rate, bool is_deepslow=false);
+
 void test_algorithms_large_instances (std::string file, std::string out_file, 
                     double budget, double slew_rate, bool is_deepslow=false);
+
+void test_algorithms_small_wcet(std::string file, std::string out_file, double budget, 
+                            double budget_greedy, double budget_genetic, double budget_gcp,
+                            double slew_rate, bool is_deepslow=false);
+
 void run_multi_deadlines(std::string file, std::string out_file, std::string out_file2, 
-                                std::vector<double> budgets, 
-                                double slew_rate, bool is_deepslow=false);
+                        std::vector<double> budgets, double slew_rate, bool is_deepslow=false);
