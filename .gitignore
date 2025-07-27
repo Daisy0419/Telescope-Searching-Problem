@@ -3,4 +3,3 @@ build/
 ILP/
 .DS_Store
 *.log
-data*/
