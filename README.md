@@ -74,7 +74,7 @@ To reproduce all figures for experiment results:
 
 ```bash
 cd results/recompute_results
-jupyter notebook rtss_result_analysis_final.ipynb
+jupyter notebook analysis_precomputed_results.ipynb
 ```
 The notebook includes:
 - Average percentage deviation from ILP baseline across deadlines for small instances(Fig.7)
@@ -175,7 +175,7 @@ Results will be saved to `results/recompute_results/multi_deadlines`.
 
 ```bash
 cd results/recompute_results
-jupyter notebook rtss_result_analysis_final.ipynb
+jupyter notebook analysis_recomputed_results.ipynb
 ```
 All required `.csv` results are stored in `results/recomputed_results`.
 
