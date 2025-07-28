@@ -17,7 +17,7 @@ def run(dataset, budgets, run_case=3):
             print(f"Error message: {e.stderr}")
 
 if __name__ == "__main__":
-    EXECUTABLE = "..build/ts"
+    EXECUTABLE = "../build/ts"
     data_path = "../data"
 
     skymaps = [
@@ -28,7 +28,7 @@ if __name__ == "__main__":
         "GW200306_093714_7dt"
     ]
 
-    output_dir = os.path.join("..", "results", "recomputed_results", "small_wcet")
+    output_dir = os.path.join("..", "results", "recomputed_results", "instances_with_wcet")
     os.makedirs(output_dir, exist_ok=True)
     default_name = os.path.join(output_dir, "out.csv")
 
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     for skymap in skymaps:
         print(f"\nProcessing skymap: {skymap}")
         updated_budgets = []
-        df = pd.read_csv(f"{data_path}/wcrt2/{skymap}.csv")
+        df = pd.read_csv(f"{data_path}/wcet/{skymap}.csv")
 
         for budget in budgets:
             updated_budget = [budget]
@@ -49,7 +49,7 @@ if __name__ == "__main__":
                 updated_budget.append(adjusted)
             updated_budgets.append(updated_budget)
 
-        dataset = os.path.join(data_path, f"large_wcrt1/filtered_{skymap}.csv")
+        dataset = os.path.join(data_path, f"large_wcet/filtered_{skymap}.csv")
         print(f"Using dataset: {dataset}")
 
         run(dataset, updated_budgets)

@@ -4,7 +4,7 @@
 #include "ReadData.h"
 #include "ILP_gurobi.h"
 #include "GCP.h"
-#include "ILP_cplex.h"
+// #include "ILP_cplex.h"
 #include "TestFunctions.h"
 
 
@@ -40,17 +40,22 @@ int main(int argc, char** argv) {
     std::cout << "  run_case   = " << run_case   << "\n\n";
 
     switch (run_case) {
-        case 1:
+        case 1: 
+            out_file  = "../results/recomputed_results/small/out.csv";
             test_algorithms_small_instances(file, out_file, budget, slew_rate, is_deepslow);
             break;
         case 2:
+            out_file  = "../results/recomputed_results/large/out.csv";
             test_algorithms_large_instances(file, out_file, budget, slew_rate, is_deepslow);
             break;
         case 3:
-            test_algorithms_small_wcet(file, out_file, budget, budget_greedy, budget_genetic, 
+            out_file  = "../results/recomputed_results/instances_with_wcet/out.csv";
+            test_algorithms_with_wcet(file, out_file, budget, budget_greedy, budget_genetic, 
                                         budget_gcp, slew_rate, is_deepslow);
             break;
         case 4: {
+            out_file  = "../results/recomputed_results/multi_deadlines/out.csv";
+            out_file2 = "../results/recomputed_results/multi_deadlines/out2.csv";
             std::vector<double> budgets = {50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200};
             run_multi_deadlines(file, out_file, out_file2, budgets, slew_rate, is_deepslow);
             break;

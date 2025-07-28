@@ -6,7 +6,7 @@ This repository contains the source code, datasets, and analysis tools supportin
 This artifact addresses the problem of scheduling astronomical events follow-up observations under real-time constraints. The task is to select and order sky tiles for telescope observations to maximize the probability of detecting an afterglow, subject to a hard deadline and slew-time constraints.
 
 ### Included Components
-- C++ implementations of all algorithms: GCP, ILP, Genetic, ACO, Greedy
+- C++ implementations of all algorithms: GCP, ILP, Genetic, Greedy
 - Precomputed results in CSV format for:
   - Small and large instances under a single deadline
   - Small instances incorporating worst-case execution time (WCET)
@@ -19,32 +19,41 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 
 ```
 .
-├── include/                          # C++ header files
-├── src/                              # C++ source implementations
-├── CMakeLists.txt                    # Build configuration
-├── results/
-│   ├── precompute_results/           # Precomputed CSV outputs
-│   │   ├── small/
-│   │   ├── small_gurobi/
-│   │   ├── large/
-│   │   ├── multi_deadline/
-│   │   ├── small_with_wcrt/
-│   │   └── rtss_result_analysis.ipynb   # Notebook for reproducing the plots in the paper
-│   ├── recompute_results/           # Outputs from re-running long evaluation scripts
-│   │   ├── small/
-│   │   ├── small_with_wcrt/
-│   │   ├── large/
-│   │   ├── multi_deadline/
-│   │   └── result_analysis.ipynb   # Notebook for visualizing recomputed results
-│   ├── run_small_instances.py
-│   ├── run_large_instances.py
-│   ├── run_small_instances_wcet.py
-│   ├── run_multi_deadline.py
-├── requirements.txt                 # Python requirements for analysis
+├── include/                         # C++ header files
+├── src/                             # C++ source implementations
+├── CMakeLists.txt                   # CMake build configuration
+
 ├── Data/
-│   ├── small/
-│   └── large/
+│   ├── small/          # Tiling CSV files for small-scale sky maps 
+│   ├── large/          # Tiling CSV files for large-scale sky maps 
+│   ├── large_wcet/     # Subset of tiling CSV files for large-scale maps used in WCET-aware experiments
+│   └── wcet/           # Worst-case execution time measurements
+
+├── results/
+│   ├── precomputed_results/        # Precomputed outputs used in the paper
+│   │   ├── small/                  # FoM results (non-ILP) for small instances
+│   │   ├── small_gurobi/          # ILP-based FoM results for small instances
+│   │   ├── large/                 # FoM results for large instances
+│   │   ├── small_with_wcet/       # WCET-aware FoM for small instances
+│   │   ├── multi_deadline/        # Multi-deadline scenario results
+│   │   └── analysis_precomputed_results.ipynb  # Notebook for Figures 7–10 in paper
+│
+│   ├── recomputed_results/        # Outputs from re-running experiments
+│   │   ├── small/                 
+│   │   ├── small_with_wcrt/       
+│   │   ├── large/                 
+│   │   ├── multi_deadline/        
+│   │   └── analysis_recomputed_results.ipynb  # Visualization of recomputed results
+│
+│   ├── run_small_instances.py         # Batch run script for small instances
+│   ├── run_large_instances.py         # Batch run script for large instances
+│   ├── run_instances_wcet.py          # Batch run script (WCET-aware)
+│   └── run_multi_deadline.py          # Batch run script for multi-deadline setup
+
+├── requirements.txt                # Python dependencies
 └── README.md
+
+
 ```
 
 ## Reproducing Paper Figures
@@ -56,14 +65,6 @@ We recommend setting up a virtual environment for Python, This will install all 
 python3 -m venv rtss
 source rtss/bin/activate
 pip install -r requirements.txt
-```
-
-
-If you prefer using Conda:
-
-```bash
-conda env create -f environment.yaml
-conda activate grb_eval
 ```
 ---
 
@@ -79,8 +80,7 @@ The notebook includes:
 - Average percentage deviation from ILP baseline across deadlines for small instances(Fig.7)
 - Percentage deviation in FoM from the GCP baseline and Computation time vs Deadline presented in log-scaled plot for large instances (Fig. 8)
 - FoM percentage deviation from GCP after accounting for WCET. for five small instances (Fig 9)
-- Expected FoM progression over the milti deadlines (Fig. 10)
-
+- Expected FoM progression over the multi deadlines (Fig. 10)
 
 All required `.csv` results are precomputed and stored in `results/precomputed_results`.
 
@@ -89,7 +89,7 @@ All required `.csv` results are precomputed and stored in `results/precomputed_r
 
 ## Running Full Experiments
 
-If you'd like to re-run the full evaluation (10+ hours), use the provided batch scripts:
+If you'd like to re-run the full evaluation (5+ hours), use the provided batch scripts:
 
 ---
 
@@ -148,7 +148,7 @@ python3 run_small_instances.py
 ```
 Results will be saved to `results/recompute_results/small`.
 
-#### 3.2 Large Instances (~ 5 hours)
+#### 3.2 Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_large_instances.py
@@ -160,23 +160,22 @@ Results will be saved to `results/recompute_results/large`.
 ```bash
 python3 run_small_instances_wcet.py
 ```
-Results will be saved to `results/recompute_results/small_wcet`.
+Results will be saved to `results/recompute_results/instances_with_wcet`.
 
-#### 3.4 Multi-Deadline Large Instances (~ 5 hours)
+#### 3.4 Multi-Deadline Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_multi_deadline.py
 ```
-Results will be saved to `results/recompute_results/multi_deadline`.
+Results will be saved to `results/recompute_results/multi_deadlines`.
 
 ---
 
-### 4. Visualizing the Results
+#### 3.5. Visualizing the Results
 
 ```bash
 cd results/recompute_results
 jupyter notebook rtss_result_analysis_final.ipynb
 ```
-
 All required `.csv` results are stored in `results/recomputed_results`.
 

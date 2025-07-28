@@ -1,7 +1,7 @@
 import subprocess
 import os
 
-def run(dataset, run_case=3):
+def run(dataset, run_case=4):
     print(f"\nRunning ./ts with dataset={dataset}, run_case={run_case}")
     cmd = [EXECUTABLE, dataset, str(run_case)]
     try:
@@ -20,7 +20,7 @@ def getFiles(folder_path):
 
 if __name__ == "__main__":
     EXECUTABLE = "../build/ts"
-    data_path = "../data/multi_deadlines"
+    data_path = "../data/large"
     output_dir = os.path.join("..", "results", "recomputed_results", "multi_deadlines")
 
     os.makedirs(output_dir, exist_ok=True)
