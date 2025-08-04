@@ -40,7 +40,7 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 │
 │   ├── recomputed_results/        # Outputs from re-running experiments
 │   │   ├── small/                 
-│   │   ├── small_with_wcrt/       
+│   │   ├── small_with_wcet/       
 │   │   ├── large/                 
 │   │   ├── multi_deadline/        
 │   │   └── analysis_recomputed_results.ipynb  # Visualization of recomputed results
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 To reproduce all figures for experiment results:
 
 ```bash
-cd results/recompute_results
+cd results/precompute_results
 jupyter notebook analysis_precomputed_results.ipynb
 ```
 The notebook includes:
@@ -179,3 +179,79 @@ jupyter notebook analysis_recomputed_results.ipynb
 ```
 All required `.csv` results are stored in `results/recomputed_results`.
 
+### 4. Extensition Test
+
+#### 4.1 Running a Single Algorithm (CLI) with Designates Data and Budget setting
+
+We provide a lightweight CLI to run **one algorithm at a time** on a given instance. This is useful for quick checks, profiling, or ablation studies.
+
+##### Usage
+
+```bash
+cd build
+./op <file> <budget> <alg> [slew_rate=50]
+```
+
+##### Arguments
+
+\<file>: path to the CSV instance (see Dataset format below).
+
+\<budget>: total time budget (slew + dwell).
+
+\<alg>: one of greedy | genetic | gcp | ilp.
+
+\[slew_rate] (optional): slew time per angular distance unit (default 50).
+
+
+##### Examples
+Greedy on a small instance, budget = 50, default slew_rate
+```bash
+./op_experiment Data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy
+```
+
+Genetic on a large instance with a larger budget and custom slew_rate
+```bash
+./op_experiment Data/large/filtered_GW191103_012549_7dt.csv 500 genetic 30
+```
+
+GCP on a large instance
+```bash
+./op_experiment Data/large/filtered_GW191109_010717_7dt.csv 200 gcp
+```
+
+ILP (Gurobi) on a large instance
+```bash
+./op_experiment Data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
+```
+
+##### Output
+
+The result will be printed to stdout:
+- Path (node sequence)
+- Number of nodes
+- Sum probability (FoM)
+- Wall-clock runtime (seconds)
+
+### 4.2 Add Your Algorithm
+All algorithms share the following interface:
+```cpp
+std::vector<int> my_algo(const std::vector<std::vector<double>>& costs,
+                         const std::vector<double>& prize,
+                         double budget, int s, int t);
+```
+
+
+Once have your algoritm added, add a dispatch branch in main_custom.cpp:
+
+```cpp
+else if (alg_lc == "myalgo") {
+    (void)run_and_report("MyAlgo", [&]{
+        return my_algo(costs, probability, eff_budget, start_idx, end_idx);
+    }, costs, probability, ranks, padding);
+}
+```
+Rebuild:
+```bash
+cd build && make -j
+./op Data/small/foo.csv 100 myalgo
+```

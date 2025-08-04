@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.11)
-project(ts)
+project(op)
 
-# C++17
+# ---------- C++17 ----------
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
@@ -10,65 +10,70 @@ if(NOT CMAKE_BUILD_TYPE)
 endif()
 message(STATUS "Build type: ${CMAKE_BUILD_TYPE}")
 
-# Profiling 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -pg")
-# set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pg")
-
-# OpenMP
+# ---------- OpenMP ----------
 find_package(OpenMP REQUIRED)
 
-# Gurobi config
+# ---------- Gurobi ----------
 set(GUROBI_HOME "$ENV{GUROBI_HOME}")
 if(NOT GUROBI_HOME)
     message(FATAL_ERROR "GUROBI_HOME is not set. Please set it in your environment.")
 endif()
 set(GUROBI_INCLUDE_DIR "${GUROBI_HOME}/include")
 set(GUROBI_LIBRARY_DIR "${GUROBI_HOME}/lib")
-set(GUROBI_LIB "${GUROBI_LIBRARY_DIR}/libgurobi120.so")
-set(GUROBI_CXX_LIB "${GUROBI_LIBRARY_DIR}/libgurobi_g++8.5.a")
+set(GUROBI_LIB        "${GUROBI_LIBRARY_DIR}/libgurobi120.so")
+set(GUROBI_CXX_LIB    "${GUROBI_LIBRARY_DIR}/libgurobi_g++8.5.a") # adjust if needed
 message(STATUS "Gurobi Library: ${GUROBI_LIB}")
 message(STATUS "Gurobi C++ Library: ${GUROBI_CXX_LIB}")
 set(CMAKE_INSTALL_RPATH ${GUROBI_LIBRARY_DIR})
 
-# # CPLEX config
-# set(CPLEX_ROOT "/project/engineering/cplex22/cplex")
-# set(CPLEX_LIB_DIR "${CPLEX_ROOT}/lib/x86-64_linux/static_pic")
-# set(CONCERT_LIB_DIR "/project/engineering/cplex22/concert/lib/x86-64_linux/static_pic")
-# set(CPLEX_INCLUDE_DIR "${CPLEX_ROOT}/include")
-# set(CPLEX_CONCERT_INCLUDE_DIR "/project/engineering/cplex22/concert/include")
-# set(ILOCLEX_LIB "${CPLEX_LIB_DIR}/libilocplex.a")
-# set(CPLEX_LIB "${CPLEX_LIB_DIR}/libcplex.a")
-# set(CONCERT_LIB "${CONCERT_LIB_DIR}/libconcert.a")
-
-# LEMON config
+# ---------- LEMON (adjust paths if needed) ----------
 set(LEMON_SOURCE_DIR "/home/research/w.yanwang/lemon-1.3.1")
-set(LEMON_BUILD_DIR "/home/research/w.yanwang/lemon-1.3.1/build")
+set(LEMON_BUILD_DIR  "/home/research/w.yanwang/lemon-1.3.1/build")
 
-# Collect all source files
-file(GLOB_RECURSE SOURCES "src/*.cpp")
+# ---------- Sources ----------
+# Grab all .cpp files
+file(GLOB_RECURSE ALL_SOURCES "src/*.cpp")
 
-# Add executable
-add_executable(ts ${SOURCES})
+# Explicitly identify the two mains
+set(MAIN          "${CMAKE_SOURCE_DIR}/src/main.cpp")
+set(MAIN_CUSTOM   "${CMAKE_SOURCE_DIR}/src/main_custom.cpp")
 
-# Include directories
-target_include_directories(ts PRIVATE
-    include
+# Guard against missing files
+if(NOT EXISTS "${MAIN}")
+    message(FATAL_ERROR "Expected main at ${MAIN} not found.")
+endif()
+if(NOT EXISTS "${MAIN_CUSTOM}")
+    message(FATAL_ERROR "Expected main at ${MAIN_CUSTOM} not found.")
+endif()
+
+# Core sources = all sources minus the two mains
+set(CORE_SOURCES ${ALL_SOURCES})
+list(REMOVE_ITEM CORE_SOURCES "${MAIN}" "${MAIN_CUSTOM}")
+
+# ---------- Common include dirs ----------
+set(PROJECT_INCLUDES
+    ${CMAKE_SOURCE_DIR}/include
     ${GUROBI_INCLUDE_DIR}
-    # ${CPLEX_INCLUDE_DIR}
-    # ${CPLEX_CONCERT_INCLUDE_DIR}
     ${LEMON_SOURCE_DIR}
     ${LEMON_BUILD_DIR}
 )
 
-# Link libraries
-target_link_libraries(ts
-    PRIVATE
-        OpenMP::OpenMP_CXX
-        ${GUROBI_LIB}
-        ${GUROBI_CXX_LIB}
-        # ${ILOCLEX_LIB}
-        # ${CONCERT_LIB}
-        # ${CPLEX_LIB}
-        pthread m dl
-        stdc++fs
+# ---------- Common libs ----------
+set(PROJECT_LIBS
+    OpenMP::OpenMP_CXX
+    ${GUROBI_LIB}
+    ${GUROBI_CXX_LIB}
+    pthread m dl
+    stdc++fs 
 )
+
+# ---------- Executable: ts (main.cpp) ----------
+add_executable(ts ${MAIN} ${CORE_SOURCES})
+target_include_directories(ts PRIVATE ${PROJECT_INCLUDES})
+target_link_libraries(ts PRIVATE ${PROJECT_LIBS})
+
+# ---------- Executable: op (main_custom.cpp) ----------
+add_executable(op ${MAIN_CUSTOM} ${CORE_SOURCES})
+target_include_directories(op PRIVATE ${PROJECT_INCLUDES})
+target_link_libraries(op PRIVATE ${PROJECT_LIBS})
+
