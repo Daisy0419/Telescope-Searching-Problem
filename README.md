@@ -206,22 +206,22 @@ cd build
 ##### Examples
 Greedy on a small instance, budget = 50, default slew_rate
 ```bash
-./op_experiment Data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy
+./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy
 ```
 
 Genetic on a large instance with a larger budget and custom slew_rate
 ```bash
-./op_experiment Data/large/filtered_GW191103_012549_7dt.csv 500 genetic 30
+./op ../data/large/filtered_GW191103_012549_7dt.csv 500 genetic 30
 ```
 
 GCP on a large instance
 ```bash
-./op_experiment Data/large/filtered_GW191109_010717_7dt.csv 200 gcp
+./op ../data/large/filtered_GW191109_010717_7dt.csv 200 gcp
 ```
 
 ILP (Gurobi) on a large instance
 ```bash
-./op_experiment Data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
+./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
 ```
 
 ##### Output

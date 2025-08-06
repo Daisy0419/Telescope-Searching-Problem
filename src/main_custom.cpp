@@ -56,8 +56,7 @@ int main(int argc, char** argv) {
             "Usage:\n"
             "  " << argv[0] << " <file> <budget> <alg> [slew_rate=50]\n"
             "Where <alg> in: greedy | genetic | gcp | ilp \n";
-        // Not fatal—will run defaults if you want. Return 1 to enforce usage:
-        // return 1;
+        return 1;
     } else {
         file   = std::string(argv[1]);
         budget = std::stod(argv[2]);
