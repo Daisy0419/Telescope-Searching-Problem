@@ -57,7 +57,7 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 ```
 
 ## Reproducing Paper Figures
-### 1. Set Up the Python Environment
+### 1. Python Environment Setup
 
 We recommend setting up a virtual environment for Python, This will install all required packages, including: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`
 
@@ -89,18 +89,25 @@ All required `.csv` results are precomputed and stored in `results/precomputed_r
 
 ## Running Full Experiments
 
-If you'd like to re-run the full evaluation (5+ hours), use the provided batch scripts:
+To re-run the full set of experiments (~5+ hours total runtime), you may either set up the environment locally or use the provided Docker container. Experiments can then be executed using the provided batch scripts.
 
 ---
 
-### 1. Install Dependencies
+### 1. C++ Environment Setup
 
-#### 1.1 Gurobi Optimizer (Required)
+### 1.1 (Option A) Local Installation
+
+#### (1) Gurobi Optimizer (Required)
 
 - **Download**: [https://www.gurobi.com/downloads/](https://www.gurobi.com/downloads/)
 - **Installation Guide**: [How to Install Gurobi](https://support.gurobi.com/hc/en-us/articles/4534161999889)
-- **License Setup**: Gurobi requires a license to run.
-  - [How to Retrieve and Set Up a Gurobi License](https://support.gurobi.com/hc/en-us/articles/12872879801105)
+- **License Setup**: Gurobi requires a license to run. 
+  - Refer to: [How to Retrieve and Set Up a Gurobi License](https://support.gurobi.com/hc/en-us/articles/12872879801105)
+
+  If you are an academic user, Gurobi provides **free academic licenses**:
+  - [Free Acdemic License](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=google&utm_medium=cpc&utm_campaign=M3_Search_US_Brand&campaignid=22845995653&adgroupid=186727525841&creative=766561555664&keyword=gurobi%20academic%20license&matchtype=p&_bn=g&gad_source=1&gad_campaignid=22845995653&gbraid=0AAAAADimQ3goGJtYNmhmJv3DYAkr9HlRJ&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3DnoXfgzFmOuuZZDk945msfI-HBPm1Ps1APl03g2doJI5xxVxCta0kaAuJnEALw_wcB)
+
+  -  Note: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).
 
 After installation, ensure the following environment variable is set in your shell:
 
@@ -109,7 +116,7 @@ export GUROBI_HOME=/path/to/gurobi
 export PATH="${GUROBI_HOME}/bin:$PATH"
 export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 ```
-#### 1.2 LEMON Graph Library (Required)
+#### (2) LEMON Graph Library (Required)
 
 - **Download**: [LEMON 1.3.1 Source](http://lemon.cs.elte.hu/pub/sources/lemon-doc-1.3.1.tar.gz)
 - **Installation Guide**: [LEMON Installation (Linux)](http://lemon.cs.elte.hu/trac/lemon/wiki/InstallLinux)
@@ -127,7 +134,7 @@ export LEMON_BUILD_DIR=/path/to/lemon-1.3.1/build
 ```
 ---
 
-### 2. Build the C++ Executables
+### (3) Build the C++ Executables
 
 Once all dependencies are installed, you can build the C++ project with:
 
@@ -137,32 +144,55 @@ cmake ..
 make -j
 ```
 
+### 1.2 (Option 2) Using the Provided Docker Container
 
-### 3. Recompute Results from Scratch
+#### (1) Pull the Docker Image
+```bash
+docker pull ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
 
+#### (2) Run the Docker Container
+If you have a Gurobi license on your local machine, mount the license into the container:
+- **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
+
+```bash
+docker run --rm -it -v "$(path_to_license)/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
+
+If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
+
+```bash
+docker run --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
+
+#### (3) Build project code
+The project executables have been precompiled inside the Docker image. You can proceed directly to running experiments in the next sections.
+
+### 2. Recompute Results from Scratch
 Each Python script corresponds to a different experiment setting. 
+If you do not have a Gurobi license, you can still run experiments 2.2, 2.3, and 2.4, which do not rely on ILP solvers.
 
-#### 3.1 Small Instances (~ 3 hours)
+#### 2.1 Small Instances (~ 3 hours)
 ```bash
 python3 run_small_instances.py
 ```
 Results will be saved to `results/recompute_results/small`.
 
-#### 3.2 Large Instances (~ 30 minutes)
+#### 2.2 Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_large_instances.py
 ```
 Results will be saved to `results/recompute_results/large`.
 
-#### 3.3 Small Instances with WCET (~ 20 minutes)
+#### 2.3 Small Instances with WCET (~ 20 minutes)
 
 ```bash
 python3 run_small_instances_wcet.py
 ```
 Results will be saved to `results/recompute_results/instances_with_wcet`.
 
-#### 3.4 Multi-Deadline Large Instances (~ 30 minutes)
+#### 2.4 Multi-Deadline Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_multi_deadline.py
@@ -171,7 +201,7 @@ Results will be saved to `results/recompute_results/multi_deadlines`.
 
 ---
 
-#### 3.5. Visualizing the Results
+### 3. Visualizing the Results
 
 ```bash
 cd results/recompute_results
@@ -179,11 +209,11 @@ jupyter notebook analysis_recomputed_results.ipynb
 ```
 All required `.csv` results are stored in `results/recomputed_results`.
 
-### 4. Extensition Test
+## Extensition Test
 
-#### 4.1 Running a Single Algorithm (CLI) with Designates Data and Budget setting
+### 1 Running a Single Algorithm (CLI) with Designates Data and Budget setting
 
-We provide a lightweight CLI to run **one algorithm at a time** on a given instance. This is useful for quick checks, profiling, or ablation studies.
+We provide a CLI to run **one algorithm at a time** on a given instance. Again, if you don't have gurobi license, you won'y be able to run ILP algorithm
 
 ##### Usage
 
@@ -232,7 +262,7 @@ The result will be printed to stdout:
 - Sum probability (FoM)
 - Wall-clock runtime (seconds)
 
-### 4.2 Add Your Algorithm
+### 2 Add Your Algorithm
 All algorithms share the following interface:
 ```cpp
 std::vector<int> my_algo(const std::vector<std::vector<double>>& costs,
