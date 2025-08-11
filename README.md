@@ -134,7 +134,7 @@ export LEMON_BUILD_DIR=/path/to/lemon-1.3.1/build
 ```
 ---
 
-### (3) Build the C++ Executables
+#### (3) Build the C++ Executables
 
 Once all dependencies are installed, you can build the C++ project with:
 
@@ -168,31 +168,78 @@ docker run --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
 #### (3) Build project code
 The project executables have been precompiled inside the Docker image. You can proceed directly to running experiments in the next sections.
 
-### 2. Recompute Results from Scratch
+### 2. Regenerate Sky Tilings
+
+The sky tiles used for the small and large problem instances evaluated are already stored in the `data/small` and `data/large` directories.
+Optionally, you may regenerate them.
+All commands in this step are run from the `sky_tiling` directory.
+
+#### 2.1 Precompute FoV Projections (~ 10 minutes)
+
+Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.
+
+```bash
+conda activate rtss25-sky-tiling
+bash precompute_tile_maps.sh
+```
+
+This step is optional. 
+Files already exist in `sky_tiling/tile_center_files` and `sky_tiling/tile_pixel_maps`.
+
+Recomputed files appear in those same directories, with file names containing `recomputed`.
+
+#### 2.2 Flatten HealPix (~ 10 seconds)
+
+Multi-order hierarchical HEALPix maps in `data/ligo_healpix`
+need to be flattened into a non-hierarchical format. 
+
+```bash
+conda activate rtss25-telescope-search
+python flatten_healpix.py
+```
+
+This step is optional.
+Files already exist in `data/ligo_healpix_flattened`;
+they will be overwritten by this script.
+
+#### 2.3 Generate Tiles (~ 15 seconds)
+
+Intersection of flattened HEALPix maps and precomputed tilings are intersected
+to produce the tiles, with probabilities, that serve as the inputs to the search problem.
+
+```bash
+conda activate rtss25-sky-tiling
+python produce_tiling.py
+```
+
+Files in `data/small` and `data/large` will be overwritten.
+
+
+### 3. Recompute Results from Scratch
 Each Python script corresponds to a different experiment setting. 
 If you do not have a Gurobi license, you can still run experiments 2.2, 2.3, and 2.4, which do not rely on ILP solvers.
 
-#### 2.1 Small Instances (~ 3 hours)
+#### 3.1 Small Instances (~ 3 hours)
 ```bash
 python3 run_small_instances.py
 ```
 Results will be saved to `results/recompute_results/small`.
 
-#### 2.2 Large Instances (~ 30 minutes)
+#### 3.2 Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_large_instances.py
 ```
 Results will be saved to `results/recompute_results/large`.
 
-#### 2.3 Small Instances with WCET (~ 20 minutes)
+#### 3.3 Small Instances with WCET (~ 20 minutes)
 
 ```bash
 python3 run_small_instances_wcet.py
 ```
 Results will be saved to `results/recompute_results/instances_with_wcet`.
 
-#### 2.4 Multi-Deadline Large Instances (~ 30 minutes)
+#### 3.4 Multi-Deadline Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_multi_deadline.py
@@ -201,7 +248,7 @@ Results will be saved to `results/recompute_results/multi_deadlines`.
 
 ---
 
-### 3. Visualizing the Results
+### 4. Visualizing the Results
 
 ```bash
 cd results/recompute_results
