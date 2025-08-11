@@ -23,10 +23,13 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 ├── src/                             # C++ source implementations
 ├── CMakeLists.txt                   # CMake build configuration
 
-├── Data/
+├── skytiling/          
+│   └── produce_tilings.py          # Creates a tiling
+
+├── data/               # Tiling CSV files for small-scale sky maps
 │   ├── small/          # Tiling CSV files for small-scale sky maps 
 │   ├── large/          # Tiling CSV files for large-scale sky maps 
-│   ├── large_wcet/     # Subset of tiling CSV files for large-scale maps used in WCET-aware experiments
+│   ├── large_wcet/     # Subset of large-scale maps used in WCET-aware experiments
 │   └── wcet/           # Worst-case execution time measurements
 
 ├── results/
@@ -50,7 +53,8 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 │   ├── run_instances_wcet.py          # Batch run script (WCET-aware)
 │   └── run_multi_deadline.py          # Batch run script for multi-deadline setup
 
-├── requirements.txt                # Python dependencies
+├── rtss25-sky-tiling.yml               # Python dependencies for tiling code
+├── rtss25-telescope-search.yml         # Python dependencies
 └── README.md
 
 
@@ -59,13 +63,39 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 ## Reproducing Paper Figures
 ### 1. Python Environment Setup
 
-We recommend setting up a virtual environment for Python, This will install all required packages, including: `pandas`, `numpy`, `matplotlib`, `seaborn`, `scipy`
+We recommend setting up a [conda](https://docs.conda.io/en/latest/) environment for Python.
+
+If you do not have conda installed locally:
 
 ```bash
-python3 -m venv rtss
-source rtss/bin/activate
-pip install -r requirements.txt
+cd path/to/Telescope-Search-Problem
 ```
+Download and install Miniconda (change /opt/conda to your preferred location)
+```bash
+export CONDA_DIR=/opt/conda
+wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
+bash miniconda.sh -b -p "${CONDA_DIR}"
+rm miniconda.sh
+```
+
+Make conda available in your shell
+```bash
+. "${CONDA_DIR}/etc/profile.d/conda.sh"
+conda config --system --set channel_priority flexible
+```
+Once conda is available, create the python environments using provided yaml file:
+```bash
+conda env create -f rtss25-sky-tiling.yml
+conda env create -f rtss25-telescope-search.yml
+```
+
+Activate **rtss25-sky-tiling** before running tiling scripts or **rtss25-telescope-search** before running all other scripts:
+```bash
+conda activate rtss25-sky-tiling
+# or
+conda activate rtss25-telescope-search
+```
+
 ---
 
 ### 2. Reproducing Result in a Jupyter notebook
@@ -260,7 +290,7 @@ All required `.csv` results are stored in `results/recomputed_results`.
 
 ### 1 Running a Single Algorithm (CLI) with Designates Data and Budget setting
 
-We provide a CLI to run **one algorithm at a time** on a given instance. Again, if you don't have gurobi license, you won'y be able to run ILP algorithm
+We provide a CLI to run **one algorithm at a time** on a given instance. Again, if you don't have gurobi license, you won't be able to run ILP algorithm
 
 ##### Usage
 

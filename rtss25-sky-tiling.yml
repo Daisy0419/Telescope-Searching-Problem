@@ -61,4 +61,3 @@ dependencies:
       - typing==3.10.0.0
       - wcwidth==0.2.13
       - zipp==1.2.0
-prefix: /home/msudvarg/.conda/envs/rtss25-sky-tiling
