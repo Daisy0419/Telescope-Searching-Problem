@@ -20,7 +20,6 @@ std::vector<int> solveWithGurobiST(const ProblemDataST& data, double mipGap, dou
         // model.set(GRB_DoubleParam_OptimalityTol, 1e-7);
         // model.set(GRB_DoubleParam_ObjScale, 0.01);
 
-
         if (mipGap != -1)
             model.set(GRB_DoubleParam_MIPGap, mipGap);
         if (timeLimit != -1)
@@ -118,14 +117,6 @@ std::vector<int> solveWithGurobiST(const ProblemDataST& data, double mipGap, dou
             }
         }
 
-        // //for callback
-        // std::ofstream logfile("/home/research/w.yanwang/Telescope-Searching-Problem/results/RTSS_0518/callback_progress.log");   // for callbacklog
-        // if (!logfile) {
-        //     throw std::runtime_error("Cannot open callback log file");
-        // }
-        // LogToFileCallback cb(logfile); 
-
-        // model.setCallback(&cb);
 
         model.update(); 
         // Set MIP start from initialRoute

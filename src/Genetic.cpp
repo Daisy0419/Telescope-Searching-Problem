@@ -59,7 +59,7 @@ std::vector<std::vector<int>> random_st_paths(const std::vector<std::vector<doub
 }
 
 
-// generate a path/segment of a path from s-t within budget using greedy-in-cost policy
+// generate a path of a path from s-t within budget using greedy-in-cost policy
 std::vector<int> greedy_st_path(const std::vector<std::vector<double>>& costs, int start_city, 
                                     int end_city, double budget) {
     std::vector<int> visited;
@@ -130,7 +130,8 @@ std::vector<std::vector<int>> partial_greedy_paths(const std::vector<std::vector
     return paths;
 }
 
-//repair a path, ensure it include a node at most once; not exceedding budget; and used the budget to maximum
+//1) repair a path, ensure it include a node at most once and not exceedding budget; 
+//2) greedily add node before t until used the budget to maximum
 void repair_st_path(const std::vector<std::vector<double>>& costs,
                  const std::vector<double>& prizes,
                  std::vector<int>& path,
@@ -166,7 +167,7 @@ void repair_st_path(const std::vector<std::vector<double>>& costs,
                     << " (costs size = " << costs.size() << "). Path: ";
             for (int node : path) std::cerr << node << " ";
             std::cerr << std::endl;
-            return;  // skip or silently drop invalid path
+            return; 
         }
         total_cost += costs[u][v];
     }
@@ -194,7 +195,7 @@ void repair_st_path(const std::vector<std::vector<double>>& costs,
     }
 
     //try inserting nodes between second last and end to improve reward
-    int current_city = path[path.size() - 2];  // node before t
+    int current_city = path[path.size() - 2];  // node before node t
     std::vector<bool> visited(costs.size(), false);
     for (int city : path) visited[city] = true;
 
@@ -222,6 +223,9 @@ void repair_st_path(const std::vector<std::vector<double>>& costs,
     }
 }
 
+
+//Keeps start s and end t fixed. select a random segment from parent1 into the offspring, 
+//then fills remaining interior positions with the order they appear in parent2, skipping duplicates.
 std::vector<int> ordered_crossover_st(const std::vector<int>& parent1, const std::vector<int>& parent2) {
     int size1 = parent1.size();
     std::vector<int> offspring;
@@ -256,6 +260,9 @@ std::vector<int> ordered_crossover_st(const std::vector<int>& parent1, const std
 }
 
 
+// Greedy selector for the next node during heuristic crossover.
+//among unvisited nodes that can be inserted while still leaving enough budget
+//to close to end_node, pick the candidate that maximizes a profit-to-cost heuristic
 int find_next_city(int current_city, int end_city,
                    const std::vector<std::vector<double>>& costs, 
                    const std::vector<double>& prizes,
@@ -281,6 +288,9 @@ int find_next_city(int current_city, int end_city,
     return next_city;
 }
 
+
+//greedily extends the path by repeatedly calling find_next_city,
+//using as candidates the union of both parents' nodes.
 std::vector<int> heuristic_crossover_st(const std::vector<int>& parent1, const std::vector<int>& parent2,
                                         const std::vector<std::vector<double>>& costs, 
                                         const std::vector<double>& prizes,
@@ -321,7 +331,7 @@ std::vector<int> heuristic_crossover_st(const std::vector<int>& parent1, const s
     return offspring;
 }
 
-
+//Batch crossover: create num_cross offspring from a pool of parent paths
 std::vector<std::vector<int>> cross_over_st(const std::vector<std::vector<int>>& paths, const std::vector<std::vector<double>>& costs, 
                                         const std::vector<double>& prizes, double budget, int num_cross) {
     // std::vector<std::vector<int>> offsprings;
@@ -354,6 +364,8 @@ std::vector<std::vector<int>> cross_over_st(const std::vector<std::vector<int>>&
 }
 
 
+// randomly swaps num_swap_pairs of nodes 
+// s and t remain fixed
 std::vector<int> swap_mutate_st(std::vector<int> path, int num_swap_pairs) {
     if (path.size() < 4 || num_swap_pairs <= 0) {
         return path;
@@ -365,6 +377,8 @@ std::vector<int> swap_mutate_st(std::vector<int> path, int num_swap_pairs) {
     return path;
 }
 
+// remove a random node and insert it at another random position.
+// repeats num_insertion times
 std::vector<int> insert_mutate_st(std::vector<int> path, int num_insertion) {
     if (path.size() < 4 || num_insertion <= 0) {
         return path;
@@ -379,6 +393,8 @@ std::vector<int> insert_mutate_st(std::vector<int> path, int num_insertion) {
     return path;
 }
 
+//selects a random interior range [i,j] and reverses it. 
+//s and t remain fixed.
 std::vector<int> reverse_mutate_st(std::vector<int> path) {
     if (path.size() < 4) {
         return path;
@@ -391,6 +407,8 @@ std::vector<int> reverse_mutate_st(std::vector<int> path) {
     return path;
 }
 
+
+// Batch mutation, generate num_mutation variants from a pool of paths.
 std::vector<std::vector<int>> mutate_st(const std::vector<std::vector<int>>& paths, const std::vector<std::vector<double>>& costs, 
                                     const std::vector<double>& prizes, double budget, int num_mutation) {
     // std::vector<std::vector<int>> mutate_paths;
@@ -417,6 +435,7 @@ std::vector<std::vector<int>> mutate_st(const std::vector<std::vector<int>>& pat
 }
 
 
+// Evaluate a path's objective
 std::pair<double, double> fitness(const std::vector<int>& path, const std::vector<std::vector<double>>& costs, 
                                 const std::vector<double>& prizes) {
     double total_prize = 0.0;
@@ -434,6 +453,7 @@ std::pair<double, double> fitness(const std::vector<int>& path, const std::vecto
 
 }
 
+// choose the best top_n paths according to objective value
 std::vector<std::vector<int>> select_top_paths(const std::vector<std::vector<int>>& paths, 
                                                const std::vector<std::vector<double>>& costs, 
                                                const std::vector<double>& prizes, size_t top_n) {
@@ -514,20 +534,19 @@ std::vector<int> evolution_st(const std::vector<std::vector<double>>& costs, con
         all_paths.insert(all_paths.end(), mutate_paths.begin(), mutate_paths.end());
         all_paths.insert(all_paths.end(), cross_over_paths.begin(), cross_over_paths.end());
 
-        //top paths
+        //keep top_n paths and disuse the rest for next iteration
         paths = std::move(select_top_paths(all_paths, costs, prizes, top_n));
         std::vector<std::vector<int>> new_gen_paths =  std::move(random_st_paths(costs, start_city, end_city, budget, num_new_gen));
-        // std::vector<std::vector<int>> new_gen_paths = std::move(partial_greedy_paths(costs, start_city, budget, num_new_gen));
         paths.insert(paths.end(), new_gen_paths.begin(), new_gen_paths.end());
 
     }
 
     std::vector<int> best_path = get_best_path(paths, prizes);
-    // my_print_path(costs, prizes, best_path);
     return best_path;
 }
 
 
+//genetic algorithm wrapper
 std::vector<int> genetic_optimization_st(const std::vector<std::vector<double>>& costs, const std::vector<double>& prizes, 
                           double budget, int start_city, int end_city, std::vector<std::vector<int>> init_paths) {
     std::vector<int> best_tour = evolution_st(costs, prizes, start_city, end_city, 100, budget, 1000, init_paths);

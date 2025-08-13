@@ -5,7 +5,7 @@
 
 #include "helplers.h"
 
-
+// Random double in [min, max)
 double random_double(double min, double max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -13,6 +13,7 @@ double random_double(double min, double max) {
     return dis(gen);
 }
 
+// Random integer in [min, max] 
 int random_int(int min, int max) {
     static std::random_device rd;
     static std::mt19937 gen(rd());
@@ -20,6 +21,7 @@ int random_int(int min, int max) {
     return dis(gen);
 }
 
+// n unique integers sampled without replacement from [min, max]
 std::vector<int> unique_random_ints(int min, int max, int n) {
     if (n > (max - min + 1)) {
         throw std::invalid_argument("Cannot generate more unique numbers than the range size.");

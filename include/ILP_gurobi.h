@@ -6,6 +6,7 @@
 #include <iomanip>  
 #include <cmath> 
 
+//parameters passed to solver
 struct ProblemDataST {
     int N;
     int startIndex;
@@ -21,6 +22,8 @@ struct ProblemDataST {
           Cost(Cost_), Prize(Prize_) {}
 };
 
+
+//gurobi solver wrapper
 std::vector<int> gurobiSolveST(const std::vector<std::vector<double>>& Cost,
                                const std::vector<double>& Prize,
                                int start, int end, double Budget,
@@ -29,36 +32,3 @@ std::vector<int> gurobiSolveST(const std::vector<std::vector<double>>& Cost,
 
 
 
-
-class LogToFileCallback : public GRBCallback {
-    std::ostream& out_;
-    static constexpr long STEP = 5000; 
-public:
-    explicit LogToFileCallback(std::ostream& o) : out_(o) {
-        out_ << "#node,best,bound,gap\n";
-    }
-
-protected:
-    void callback() override {
-        if (where == GRB_CB_MIP) {
-            long   node  = static_cast<long>(getDoubleInfo(GRB_CB_MIP_NODCNT));
-            if (node % STEP == 0) {  
-                double best  = getDoubleInfo(GRB_CB_MIP_OBJBST);
-                double bound = getDoubleInfo(GRB_CB_MIP_OBJBND);
-                double gap   = 100.0 * (best - bound) /
-                               (std::fabs(best) + 1e-9);
-
-                out_ << node << ',' << best << ',' << bound << ','
-                     << gap << '\n';
-                out_.flush();
-            }
-        }
-        else if (where == GRB_CB_MIPSOL) {
-            double obj   = getDoubleInfo(GRB_CB_MIPSOL_OBJ);
-            double bound = getDoubleInfo(GRB_CB_MIPSOL_OBJBND);
-
-            out_ << "#new_incumbent," << obj << ',' << bound << '\n';
-            out_.flush();
-        }
-    }
-};
