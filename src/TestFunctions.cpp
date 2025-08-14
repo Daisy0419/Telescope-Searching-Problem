@@ -1,12 +1,10 @@
 #include "TestFunctions.h"
 #include "ReadData.h"
-#include "AntColony.h"
 #include "Genetic.h"
 #include "Greedy.h"
 #include "ReadData.h"
 #include "ILP_gurobi.h"
 #include "GCP.h"
-// #include "ILP_cplex.h"
 
 
 #include <chrono>
@@ -52,6 +50,7 @@ double print_path(const std::vector<std::vector<double>>& costs, const std::vect
 }
 
 
+//save result to a csv file
 void save_result(const std::string& filename, 
                   const std::string& method, 
                   const std::string& data, 
@@ -116,7 +115,7 @@ void save_result(const std::string& filename,
 
 }
 
-// multi deadline
+// save the result of multi deadline result in csv
 void save_result2(const std::string& filename, 
                   const std::string& method, 
                   const std::vector<double>& budgets,
@@ -215,6 +214,8 @@ void save_result2(const std::string& filename,
 }
 
 
+//wrapper function on small instances test
+//test algorihms: greedy, genetic, GCP, gurobi
 void test_algorithms_small_instances (std::string file, std::string out_file, 
                     double budget, double slew_rate, bool is_deepslow) {
 
@@ -255,17 +256,6 @@ void test_algorithms_small_instances (std::string file, std::string out_file,
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
     save_result(out_file, "Genetic", file, budget, slew_rate,costs, probability, ranks, genetic_path, elapsed_seconds.count(), padding);
     
-    // ant colony
-    std::cout << "*********running ant colony*********" << std::endl;
-    start = std::chrono::high_resolution_clock::now();
-    AntColony ac = AntColony(costs, probability);
-    std::vector<int> ac_path = ac.ant_colony_optimization(budget+padding, start_idx, end_idx);
-    end = std::chrono::high_resolution_clock::now();
-    print_path(costs, probability, ranks, ac_path, padding);
-    elapsed_seconds = end - start;
-    std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
-    save_result(out_file, "AntColony", file, budget, slew_rate,costs, probability, ranks, ac_path, elapsed_seconds.count(), padding);
-
     // GCP
     std::cout << "*********running GCP*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
@@ -288,6 +278,8 @@ void test_algorithms_small_instances (std::string file, std::string out_file,
     
 }
 
+// wrapper function for large instances test
+// test algorihms: greedy, genetic, GCP
 void test_algorithms_large_instances (std::string file, std::string out_file, 
                     double budget, double slew_rate, bool is_deepslow) {
 
@@ -340,6 +332,9 @@ void test_algorithms_large_instances (std::string file, std::string out_file,
 
 }
 
+
+// wrapper function for large instances accounting wcet
+// test algorihms: greedy, genetic, GCP
 void test_algorithms_with_wcet(std::string file, std::string out_file, double budget, 
                             double budget_greedy, double budget_genetic, double budget_gcp,
                             double slew_rate, bool is_deepslow) {
@@ -382,7 +377,7 @@ void test_algorithms_with_wcet(std::string file, std::string out_file, double bu
     std::cout << "running time (wallclock): " << elapsed_seconds.count() << "seconds" << std::endl;
     save_result(out_file, "Genetic", file, budget, slew_rate, costs, probability, ranks, genetic_path, elapsed_seconds.count(), padding);
 
-    // mst Hoogeveen
+    // GCP
     std::cout << "*********running GCP*********" << std::endl;
     start = std::chrono::high_resolution_clock::now();
     std::vector<int> mst_pathH = GCP(costs, probability, budget_gcp+padding, start_idx, end_idx);
@@ -394,7 +389,8 @@ void test_algorithms_with_wcet(std::string file, std::string out_file, double bu
 
 }
 
-
+// wrapper function for large instances with multi deadlines
+// test algorihms: GCP
 void run_multi_deadlines(std::string file, std::string out_file, std::string out_file2, 
                                 std::vector<double> budgets, 
                                 double slew_rate, bool is_deepslow) {

@@ -1,10 +1,8 @@
-#include "AntColony.h"
 #include "Genetic.h"
 #include "Greedy.h"
 #include "ReadData.h"
 #include "ILP_gurobi.h"
 #include "GCP.h"
-// #include "ILP_cplex.h"
 #include "TestFunctions.h"
 
 

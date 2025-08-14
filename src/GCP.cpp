@@ -545,7 +545,7 @@ void selectNodesByPrizeDistanceRatio(const std::vector<std::vector<double>>& cos
 
 }
 
-//s-t path
+// find best s-t path within budget
 std::vector<int> GCP_PrizeRatioTwoFix(const std::vector<std::vector<double>>& costs, 
                           const std::vector<double>& prizes, 
                           double budget, int s_idx, int t_idx) {
@@ -615,6 +615,7 @@ std::vector<int> GCP_PrizeRatioTwoFix(const std::vector<std::vector<double>>& co
 }
 
 
+// Computate total prize of a path
 double sumPrizes(const std::vector<double>& prizes, const std::vector<int>& path) {
     double total_prizes = 0.0;
     for (int node : path) {

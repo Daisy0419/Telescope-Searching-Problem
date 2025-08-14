@@ -1,4 +1,4 @@
-#include "AntColony.h"
+// #include "AntColony.h"
 #include "Genetic.h"
 #include "Greedy.h"
 #include "ReadData.h"
@@ -104,12 +104,6 @@ int main(int argc, char** argv) {
             return GCP(costs, probability, eff_budget, start_idx, end_idx);
         }, costs, probability, ranks, padding);
     }
-    // else if (alg_lc == "aco" || alg_lc == "ant" || alg_lc == "antcolony") {
-    //     (void)run_and_report("Ant Colony", [&]{
-    //         AntColony ac(costs, probability);
-    //         return ac.ant_colony_optimization(eff_budget, start_idx, end_idx);
-    //     }, costs, probability, ranks, padding);
-    // }
     else if (alg_lc == "ilp" || alg_lc == "gurobi") {
         // Optional warm start via GCP
         std::vector<int> warm = GCP(costs, probability, eff_budget, start_idx, end_idx);

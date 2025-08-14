@@ -326,7 +326,7 @@ GCP on a large instance
 ./op ../data/large/filtered_GW191109_010717_7dt.csv 200 gcp
 ```
 
-ILP (Gurobi) on a large instance
+ILP (Gurobi) on a small instance
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
 ```
