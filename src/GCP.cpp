@@ -40,6 +40,7 @@ void sortNodesInRange(const std::vector<double>& prizes, std::vector<int>& indic
 
 }
 
+//convert the graph using lemon graph library
 void buildGraphUpdate(const std::vector<std::vector<double>>& costs, 
             const std::vector<int>& indices, int N_nodes,
             Graph& g, Graph::EdgeMap<double>& weight) {
@@ -281,7 +282,7 @@ void greedyExtendPath(const std::vector<std::vector<double>>& costs, const std::
     }
 }
 
-
+// binary search for a best path fitted in budget
 void binarySearchBestPathTwoFixed(const std::vector<std::vector<double>>& costs, 
                     const std::vector<double>& prizes,
                     const std::vector<int>& indices,
@@ -350,7 +351,7 @@ void binarySearchBestPathTwoFixed(const std::vector<std::vector<double>>& costs,
 }
 
 
-//s-t path - Best Prize Node selection with one fixed end Christofedis
+// Best Prize Node selection with s-t Christofedis path construction
 std::vector<int> GCP_BestPrizeTwoFix(const std::vector<std::vector<double>>& costs, 
                           const std::vector<double>& prizes, 
                           double budget, int s_idx, int t_idx) {
@@ -438,7 +439,7 @@ void selectNodesByPrizeBoosting(const std::vector<std::vector<double>>& costs,
 
 }
 
-//s-t path
+// Best Prize Boost node selection with s-t Christofedis path construction
 std::vector<int> GCP_PrizeBoostTwoFix(const std::vector<std::vector<double>>& costs, 
                           const std::vector<double>& prizes, 
                           double budget, int s_idx, int t_idx) {
@@ -545,7 +546,7 @@ void selectNodesByPrizeDistanceRatio(const std::vector<std::vector<double>>& cos
 
 }
 
-// find best s-t path within budget
+// Best Prize/Cost Ratio Node selection with s-t Christofedis path construction
 std::vector<int> GCP_PrizeRatioTwoFix(const std::vector<std::vector<double>>& costs, 
                           const std::vector<double>& prizes, 
                           double budget, int s_idx, int t_idx) {
