@@ -121,7 +121,7 @@ To reproduce all figures for experiment results:
 
 ```bash
 conda activate rtss25-telescope-search
-cd results/precompute_results
+cd ~/Telescope-Searching-Problem/results/precomputed_results
 jupyter notebook analysis_precomputed_results.ipynb
 ```
 The notebook includes:
@@ -145,6 +145,27 @@ To re-run the full set of experiments (~5+ hours total runtime), you may either 
 
 ### 1. C++ Environment Setup
 
+### 1.0 (Preliminary, Optional) Obtaining a Gurobi License
+
+Our algorithms include an ILP implementation of the orienteering problem, which is solved using the commercially-available Gurobi Optimizer.
+
+Gurobi requires a license (`gurobi.lic`) to run.
+- Refer to: [How to Retrieve and Set Up a Gurobi License](https://support.gurobi.com/hc/en-us/articles/12872879801105)
+- **Note:** If you do not have a Gurobi license, you can still run experiments 3.2, 3.3, and 3.4 below, which do not invoke the ILP solver.
+
+If you are an academic user, Gurobi provides **free academic licenses**:
+  - [Free Academic License](https://www.gurobi.com/academia/academic-program-and-licenses/)
+  - **Note**: If you're using an academic license and intend to run the experiments using our provided Docker container, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
+
+
+To obtain an academic license:
+
+1. Navigate to the Gurobi portal. https://portal.gurobi.com/
+2. Login or register to create a free Gurobi account using your academic email address.
+3. Navigate to Gurobi's academic license request page. https://portal.gurobi.com/iam/licenses/request/?type=academic
+4. Under "WLS Academic," click, "Generate Now!"
+5. Download the generated `gurobi.lic` file.
+6. Move or copy the file to the `Telescope-Searching-Problem` artifact repository.
 
 
 ### 1.1 (Option A, Preferred) Using the Provided Docker Container
@@ -184,11 +205,13 @@ sudo docker pull ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 #### (3) Run the Docker Container
-If you have a Gurobi license on your local machine, mount the license into the container:
-- **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
+If you have a Gurobi license on your local machine, mount the license into the container.
+
+**License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
 
 ```bash
-sudo docker run --rm -it -v "$(path_to_license)/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+cd ~/Telescope-Searching-Problem
+sudo docker run --rm -it -v "./gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
@@ -204,23 +227,25 @@ The project executables have been precompiled inside the Docker image. You can p
 
 #### (1) Gurobi Optimizer (Required)
 
-- **Download**: [https://www.gurobi.com/downloads/](https://www.gurobi.com/downloads/)
-- **Installation Guide**: [How to Install Gurobi](https://support.gurobi.com/hc/en-us/articles/4534161999889)
-- **License Setup**: Gurobi requires a license to run. 
-  - Refer to: [How to Retrieve and Set Up a Gurobi License](https://support.gurobi.com/hc/en-us/articles/12872879801105)
 
-  If you are an academic user, Gurobi provides **free academic licenses**:
-  - [Free Acdemic License](https://www.gurobi.com/academia/academic-program-and-licenses/?utm_source=google&utm_medium=cpc&utm_campaign=M3_Search_US_Brand&campaignid=22845995653&adgroupid=186727525841&creative=766561555664&keyword=gurobi%20academic%20license&matchtype=p&_bn=g&gad_source=1&gad_campaignid=22845995653&gbraid=0AAAAADimQ3goGJtYNmhmJv3DYAkr9HlRJ&gclid=Cj0KCQjwndHEBhDVARIsAGh0g3DnoXfgzFmOuuZZDk945msfI-HBPm1Ps1APl03g2doJI5xxVxCta0kaAuJnEALw_wcB)
-
-  -  Note: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).
-
-After installation, ensure the following environment variable is set in your shell:
+1. Download and extract Gurobi to the directory of your choice.
 
 ```bash
-export GUROBI_HOME=/path/to/gurobi
+wget https://packages.gurobi.com/12.0/gurobi12.0.3_linux64.tar.gz
+tar xvfz gurobi12.0.3_linux64.tar.gz
+```
+
+2. Set the necessary environment variables in your shell (change `~/gurobi1203` to your preferred location)
+
+```bash
+export GUROBI_HOME=~/gurobi1203
 export PATH="${GUROBI_HOME}/bin:$PATH"
 export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 ```
+
+**Note**: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).
+
+
 #### (2) LEMON Graph Library (Required)
 
 - **Download**: [LEMON 1.3.1 Source](http://lemon.cs.elte.hu/pub/sources/lemon-doc-1.3.1.tar.gz)
@@ -254,6 +279,10 @@ make -j
 The sky tiles used for the small and large problem instances evaluated are already stored in the `data/small` and `data/large` directories.
 Optionally, you may regenerate them.
 All commands in this step are run from the `sky_tiling` directory.
+
+```bash
+cd ~/Telescope-Searching-Problem/sky_tiling
+```
 
 #### 2.1 Precompute FoV Projections (~ 10 minutes)
 
@@ -290,7 +319,7 @@ to produce the tiles, with probabilities, that serve as the inputs to the search
 
 ```bash
 conda activate rtss25-sky-tiling
-python produce_tiling.py
+python produce_tilings.py
 ```
 
 Files in `data/small` and `data/large` will be overwritten.
@@ -298,7 +327,11 @@ Files in `data/small` and `data/large` will be overwritten.
 
 ### 3. Recompute Results from Scratch
 Each Python script corresponds to a different experiment setting. 
-If you do not have a Gurobi license, you can still run experiments 2.2, 2.3, and 2.4, which do not rely on ILP solvers.
+If you do not have a Gurobi license, you can still run experiments 3.2, 3.3, and 3.4, which do not rely on ILP solvers.
+
+```bash
+cd ~/Telescope-Searching-Problem/results
+```
 
 #### 3.1 Small Instances (~ 3 hours)
 ```bash
