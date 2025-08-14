@@ -1,6 +1,6 @@
 .vscode
 build/
 .DS_Store
-.pyc
+*.pyc
 .ipynb_checkpoints/
 
