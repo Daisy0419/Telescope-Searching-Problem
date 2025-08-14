@@ -1,16 +1,28 @@
 # Artifact for RTSS 2025
-This repository contains the source code, datasets, and analysis tools supporting the paper *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena"*.
+This repository contains the source code, datasets, and analysis tools supporting the paper *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."*
+
+## System Requirements
+
+- Linux-based OS
+- CPU: Minimum dual-core, 8+ cores preferred
+- RAM: 
+- Required Storage: **Total: 4GB**
+  - Repo: 150MB
+  - Conda environments: 3.8GB
+- Optional Storage:
+  - Docker: 500MB
+  - Docker Container: 3.8
 
 
 ## Overview
-This artifact addresses the problem of scheduling astronomical events follow-up observations under real-time constraints. The task is to select and order sky tiles for telescope observations to maximize the probability of detecting an afterglow, subject to a hard deadline and slew-time constraints.
+This artifact addresses the problem of scheduling follow-up observations of astrophysical transients under real-time constraints. The task is to select and order sky tiles for telescope observations to maximize the expected figure of merit (FoM) associated with successful detection of an afterglow within one or more hard deadlines and given dwell-time and slew-time constraints.
 
 ### Included Components
 - C++ implementations of all algorithms: GCP, ILP, Genetic, Greedy
 - Precomputed results in CSV format for:
-  - Small and large instances under a single deadline
-  - Small instances incorporating worst-case execution time (WCET)
-  - Large instances under multi-deadline settings
+  - Small and large problem instances under a single deadline
+  - Small problem instances incorporating worst-case execution time (WCET)
+  - Large problem instances under multi-deadline settings
 - Jupyter notebooks to reproduce plots and figures from the paper
 - Long-running Python scripts to recompute results from scratch
 
@@ -24,7 +36,9 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 ├── CMakeLists.txt                   # CMake build configuration
 
 ├── skytiling/          
-│   └── produce_tilings.py          # Creates a tiling
+│   └── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
+│   └── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
+│   └── produce_tilings.py          # Creates all tilings
 
 ├── data/               # Tiling CSV files for small-scale sky maps
 │   ├── small/          # Tiling CSV files for small-scale sky maps 
@@ -33,8 +47,11 @@ This artifact addresses the problem of scheduling astronomical events follow-up 
 │   └── wcet/           # Worst-case execution time measurements
 
 ├── results/
-│   ├── precomputed_results/        # Precomputed outputs used in the paper
-│   │   ├── small/                  # FoM results (non-ILP) for small instances
+│
+│   ├── figures/                   # Figures 7–10 in paper
+|
+│   ├── precomputed_results/       # Precomputed outputs used in the paper
+│   │   ├── small/                 # FoM results (non-ILP) for small instances
 │   │   ├── small_gurobi/          # ILP-based FoM results for small instances
 │   │   ├── large/                 # FoM results for large instances
 │   │   ├── small_with_wcet/       # WCET-aware FoM for small instances
@@ -70,9 +87,9 @@ If you do not have conda installed locally:
 ```bash
 cd path/to/Telescope-Search-Problem
 ```
-Download and install Miniconda (change /opt/conda to your preferred location)
+Download and install Miniconda (change ~/conda to your preferred location)
 ```bash
-export CONDA_DIR=/opt/conda
+export CONDA_DIR=~/conda
 wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O miniconda.sh
 bash miniconda.sh -b -p "${CONDA_DIR}"
 rm miniconda.sh
@@ -83,7 +100,7 @@ Make conda available in your shell
 . "${CONDA_DIR}/etc/profile.d/conda.sh"
 conda config --system --set channel_priority flexible
 ```
-Once conda is available, create the python environments using provided yaml file:
+Once conda is available, create the python environments using provided yaml files:
 ```bash
 conda env create -f rtss25-sky-tiling.yml
 conda env create -f rtss25-telescope-search.yml
@@ -103,6 +120,7 @@ conda activate rtss25-telescope-search
 To reproduce all figures for experiment results:
 
 ```bash
+conda activate rtss25-telescope-search
 cd results/precompute_results
 jupyter notebook analysis_precomputed_results.ipynb
 ```
@@ -113,6 +131,8 @@ The notebook includes:
 - Expected FoM progression over the multi deadlines (Fig. 10)
 
 All required `.csv` results are precomputed and stored in `results/precomputed_results`.
+
+The notebook saves figures to `results/figures`.
 
 ---
 
@@ -125,7 +145,62 @@ To re-run the full set of experiments (~5+ hours total runtime), you may either 
 
 ### 1. C++ Environment Setup
 
-### 1.1 (Option A) Local Installation
+
+
+### 1.1 (Option A, Preferred) Using the Provided Docker Container
+
+#### (1) Install Docker
+
+You may install Docker according to [these instructions](https://docs.docker.com/engine/install/). Here, we include the instructions for Ubuntu distributions:
+
+1. Set up Docker's `apt` repository:
+
+```bash
+# Add Docker's official GPG key:
+sudo apt-get update
+sudo apt-get install ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+  https://download.docker.com/linux/ubuntu \
+  $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+  sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+sudo apt-get update
+```
+
+2. Install the latest Docker packages.
+
+```bash
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
+
+#### (2) Pull the Docker Image
+```bash
+sudo docker pull ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
+
+#### (3) Run the Docker Container
+If you have a Gurobi license on your local machine, mount the license into the container:
+- **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
+
+```bash
+sudo docker run --rm -it -v "$(path_to_license)/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
+
+If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
+
+```bash
+sudo docker run --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
+```
+
+#### (4) Build project code
+The project executables have been precompiled inside the Docker image. You can proceed directly to running experiments in the next sections.
+
+### 1.1 (Option B) Local Installation
 
 #### (1) Gurobi Optimizer (Required)
 
@@ -173,30 +248,6 @@ mkdir build && cd build
 cmake ..
 make -j
 ```
-
-### 1.2 (Option 2) Using the Provided Docker Container
-
-#### (1) Pull the Docker Image
-```bash
-docker pull ghcr.io/daisy0419/rtss25-op-solver:1.0
-```
-
-#### (2) Run the Docker Container
-If you have a Gurobi license on your local machine, mount the license into the container:
-- **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
-
-```bash
-docker run --rm -it -v "$(path_to_license)/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
-```
-
-If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
-
-```bash
-docker run --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
-```
-
-#### (3) Build project code
-The project executables have been precompiled inside the Docker image. You can proceed directly to running experiments in the next sections.
 
 ### 2. Regenerate Sky Tilings
 
