@@ -295,6 +295,8 @@ If you have a Gurobi license on your local machine, mount the license into the c
 
 **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
 
+<span style="color:red">Cannot mount ~/gurobi.lic! Modify command</span>
+
 ```bash
 sudo docker run --rm -it -v "~/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
@@ -365,6 +367,9 @@ Files in `data/small` and `data/large` will be overwritten.
 Each Python script corresponds to a different experiment setting. 
 If you do not have a Gurobi license, you can still run experiments 3.3.2, 3.3.3, and 3.3.4, which do not rely on ILP solvers.
 
+
+<span style="color:red">Specify to run from results directory</span>
+
 #### 3.3.1 Small Instances (~ 3 hours)
 ```bash
 python3 run_small_instances.py
@@ -415,7 +420,7 @@ results/recomputed_results/instances_with_moet/result_with_moet/out_<skymap>.csv
 #### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
 
 ```bash
-python3 run_multi_deadline.py
+python3 run_multi_deadlines.py
 ```
 Results will be saved to `results/recompute_results/multi_deadlines`.
 
