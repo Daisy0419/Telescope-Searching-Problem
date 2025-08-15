@@ -42,6 +42,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 ├── skytiling/          
 │   ├── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
 │   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
+│   ├── produce_single_tiling.py   # Generates tiling from one HEALPix map for one telescope
 │   └── produce_tilings.py          # Creates all tilings
 
 ├── data/               # Tiling CSV files for small-scale sky maps
@@ -70,7 +71,8 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 │   ├── run_small_instances.py         # Batch run script for small instances
 │   ├── run_large_instances.py         # Batch run script for large instances
 │   ├── run_small_instances_moet.py    # Batch run script (MOET-aware)
-│   └── run_multi_deadline.py          # Batch run script for multi-deadline setup
+│   ├── run_multi_deadline.py          # Batch run script for multi-deadline setup
+│   └── run_all.sh                     # Runs all four scripts sequentially
 
 ├── rtss25-sky-tiling.yml               # Python dependencies for tiling code
 ├── rtss25-telescope-search.yml         # Python dependencies
@@ -642,7 +644,30 @@ cd build && make -j
 
 
 
-### 4.3 Create  Tilings for Different Telescopes
+### 4.3 Create Tilings for Different Telescope FoVs
+
+The above instructions detail how to test our algorithms with different configurations for telescope dwell times and slew speeds. You may also generate new tilings for telescopes with different (square) fields of view. 
+
+#### 4.3.1 Enter directory and activate conda environment
+
+```bash
+cd ~/Telescope-Searching-Problem/sky_tiling
+conda activate rtss25-sky-tiling
+```
+
+#### 4.3.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere
+
+Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.
 
 
-<span style="color:red">Marion to add this </span>
+Pick a name of your choice to replace `YourTelescopeName` and specify the fov in degrees (e.g., 30):
+
+```bash
+python setup.py --telescope "YourTelescopeName" --fov 30
+```
+
+New files will be produced in `sky_tiling/tile_center_files` and `sky_tiling/tile_pixel_maps`.
+
+
+#### 4.3.3 Generate tiles from HealPIX maps
+

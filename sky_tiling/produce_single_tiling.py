@@ -1,3 +1,7 @@
+name = "GW200216_220804"
+telescope = "7dt"
+confidence_interval = 0.99
+max_rows = None
 
 import numpy as np
 import bin.rankedTilesGenerator as rankedTilesGenerator
@@ -11,51 +15,6 @@ def create_tiling(skymap_file, config_file, output_csv_file, confidence_interval
     [ranked_tile_indices, ranked_tile_probs] = tileObj.getRankedTiles(resolution=256)
     tbl = tileObj.generateTable(ranked_tile_indices, ranked_tile_probs, CI=confidence_interval, containment=containment, max_rows=max_rows)
     tbl.write(output_csv_file, format="csv", overwrite=True)
-
-# Lists of files for large and small problem instances
-
-large_files = [
-    "GW191103_012549_7dt",
-    "GW191109_010717_7dt",
-    "GW191113_071753_7dt",
-    "GW191126_115259_7dt",
-    "GW191127_050227_7dt",
-    "GW191204_110529_7dt",
-    "GW191216_213338_7dt",
-    "GW191219_163120_7dt",
-    "GW191222_033537_7dt",
-    "GW191230_180458_7dt",
-    "GW200105_162426_7dt",
-    "GW200112_155838_7dt",
-    "GW200128_022011_7dt",
-    "GW200208_222617_7dt",
-    "GW200209_085452_7dt",
-    "GW200210_092254_7dt",
-    "GW200216_220804_7dt",
-    "GW200220_061928_7dt",
-    "GW200220_124850_7dt",
-    "GW200302_015811_7dt",
-    "GW200306_093714_7dt",
-    "GW200308_173609_7dt_separate",
-    "GW200322_091133_7dt_separate",
-    "GW230529_181500_7dt_separate",
-]
-
-small_files = [
-    "GW191105_143521_7dt_separate",
-    "GW191129_134029_7dt_separate",
-    "GW191204_171526_7dt_separate",
-    "GW191215_223052_7dt_separate",
-    "GW191216_213338_7dt_separate",
-    "GW191230_180458_7dt_separate",
-    "GW200115_042309_7dt_separate",
-    "GW200129_065458_7dt_separate",
-    "GW200202_154313_7dt_separate",
-    "GW200209_085452_7dt_separate",
-    "GW200219_094415_7dt_separate",
-    "GW200225_060421_7dt_separate",
-    "GW200316_215756_7dt_separate"
-]
 
 # Invoke create_tiling function for each file in list
 def generate_tiles_from_maps(file_list, which, confidence_interval, containment, max_rows = None) :
@@ -77,6 +36,11 @@ def generate_tiles_from_maps(file_list, which, confidence_interval, containment,
 
 
 if __name__ == "__main__":
+
+    name = "GW200216_220804"
+    telescope = "7dt"
+
+    skymap_file = "../"
 
     # Large instances: 99% containment
     generate_tiles_from_maps(large_files, "large", confidence_interval=0.99, containment=False)
