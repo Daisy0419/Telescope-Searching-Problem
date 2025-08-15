@@ -68,7 +68,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 │   ├── visualize_results.ipynb        # Notebook for Figures 7–10 in paper
 │   ├── run_small_instances.py         # Batch run script for small instances
 │   ├── run_large_instances.py         # Batch run script for large instances
-│   ├── run_instances_moet.py          # Batch run script (MOET-aware)
+│   ├── run_small_instances_moet.py    # Batch run script (MOET-aware)
 │   └── run_multi_deadline.py          # Batch run script for multi-deadline setup
 
 ├── rtss25-sky-tiling.yml               # Python dependencies for tiling code
