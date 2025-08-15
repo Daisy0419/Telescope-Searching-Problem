@@ -3,7 +3,7 @@ This repository contains the source code, datasets, and analysis tools supportin
 
 ## System Requirements
 
-- Linux-based OS
+- OS: Linux (some instructions are Ubuntu-specific)
 - CPU: Minimum dual-core, 8+ cores preferred
 - RAM: 
 - Required Storage: **Total: 4GB**
@@ -21,7 +21,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 - C++ implementations of all algorithms: GCP, ILP, Genetic, Greedy
 - Precomputed results in CSV format for:
   - Small and large problem instances under a single deadline
-  - Small problem instances incorporating worst-case execution time (WCET)
+  - Small problem instances incorporating maximum-observed execution time (MOET)
   - Large problem instances under multi-deadline settings
 - Jupyter notebooks to reproduce plots and figures from the paper
 - Long-running Python scripts to recompute results from scratch
@@ -78,7 +78,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 
 ```
 ## 1 Environment Setup
-You can run the artifact via **Docker (recommended)** or a **Local setup**. A Gurobi license is needed only to run ILP-based experiments.
+You can run the artifact via **Docker (recommended)** or a **Local Setup**. A Gurobi license is needed only to run ILP-based experiments.
 ### 1.1 (Preliminary, Optional) Obtaining a Gurobi License
 
 Our algorithms include an ILP implementation of the orienteering problem, which is solved using the commercially-available Gurobi Optimizer.
@@ -99,7 +99,7 @@ To obtain an academic license:
 3. Navigate to Gurobi's academic license request page. https://portal.gurobi.com/iam/licenses/request/?type=academic
 4. Under "WLS Academic," click, "Generate Now!"
 5. Download the generated `gurobi.lic` file.
-6. Move or copy the file to the `Telescope-Searching-Problem` artifact repository.
+6. Move or copy the file to the path of your choice. All commands listed hereafter assume it is in `~/gurobi.lic`.
 
 
 ### 1.2 (Option A, Preferred) Using the Provided Docker Container
@@ -140,13 +140,24 @@ sudo docker pull ghcr.io/daisy0419/rtss25-op-solver:1.0
 All dependencies are pre-installed, and project binaries are precompiled in the image. You can jump to Reproducing Paper Figures or Running Full Experiments.
 
 ### 1.3 (Option B) Local Installation
-#### 1.3.1 Python Environment Setup
+
+#### 1.3.1 Clone Repository
+
+Clone this repository to the path of your choice. All commands listed hereafter assume it is placed directly into your home directory.
+
+```bash
+cd ~
+git clone https://github.com/Daisy0419/Telescope-Searching-Problem/releases/tag/rtss2025_artifact
+```
+
+#### 1.3.2 Python Environment Setup
+
 We recommend setting up a [conda](https://docs.conda.io/en/latest/) environment for Python.
 
 If you do not have conda installed locally:
 
 ```bash
-cd path/to/Telescope-Search-Problem
+cd ~/Telescope-Search-Problem
 ```
 Download and install Miniconda (change ~/conda to your preferred location)
 ```bash
@@ -175,21 +186,24 @@ conda activate rtss25-telescope-search
 ```
 
 ---
-#### 1.3.2 C++ Environment Setup
+#### 1.3.3 C++ Environment Setup
 
 **(1) Gurobi Optimizer (Required)**
 
-1. Download and extract Gurobi to the directory of your choice.
+The Gurobi Optimizer is used to solve our ILP approach to the orienteering problem.
+
+1. Download and extract Gurobi to the directory of your choice. All commands listed hereafter assume it is placed directly in your home directory.
 
 ```bash
+cd ~
 wget https://packages.gurobi.com/12.0/gurobi12.0.3_linux64.tar.gz
 tar xvfz gurobi12.0.3_linux64.tar.gz
 ```
 
-2. Set the necessary environment variables in your shell (change `~/gurobi1203` to your preferred location)
+2. Set the necessary environment variables in your shell (change `~/gurobi1203` to your preferred location).
 
 ```bash
-export GUROBI_HOME=~/gurobi1203
+export GUROBI_HOME=~/gurobi1203/linux64
 export PATH="${GUROBI_HOME}/bin:$PATH"
 export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 ```
@@ -199,29 +213,25 @@ export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 
 #### (2) LEMON Graph Library (Required)
 
+The Lemon Graph Library is used to compute the minimum-weight perfect matching used in our Greedy Christofides Pathfinding algorithm. 
+
+1. Download, extract, and build the LEMON Graph Library to the directory of your choice. All commands listed hereafter assume it is placed directly in your home directory.
+
 ```bash
 wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
 tar xvfz lemon-1.3.1.tar.gz
 cd lemon-1.3.1
 mkdir build && cd build
 cmake ..
-make
+make -j
 sudo make install
 ```
 
-- **Download**: [LEMON 1.3.1 Source](http://lemon.cs.elte.hu/pub/sources/lemon-doc-1.3.1.tar.gz)
-- **Installation Guide**: [LEMON Installation (Linux)](http://lemon.cs.elte.hu/trac/lemon/wiki/InstallLinux)
+2. Set the necessary environment variables in your shell (change `~/lemon-1.3.1` to your preferred location).
 
-After building LEMON, set the following environment variables in `CMakeLists.txt`:
-```cmake
-set(LEMON_SOURCE_DIR "/your/path/to/lemon-1.3.1")
-set(LEMON_BUILD_DIR "/your/path/to/lemon-1.3.1/build")
-```
-
-Alternatively, you may set the following environment in your shell and comment the two line in `CMakeLists.txt`:
 ```bash
-export LEMON_SOURCE_DIR=/path/to/lemon-1.3.1
-export LEMON_BUILD_DIR=/path/to/lemon-1.3.1/build
+export LEMON_SOURCE_DIR=~/lemon-1.3.1
+export LEMON_BUILD_DIR=~/lemon-1.3.1/build
 ```
 
 **(3) Build the C++ Executables**
@@ -229,6 +239,7 @@ export LEMON_BUILD_DIR=/path/to/lemon-1.3.1/build
 Once all dependencies are installed, you can build the C++ project with:
 
 ```bash
+cd ~/Telescope-Search-Problem
 mkdir build && cd build
 cmake ..
 make -j
@@ -284,7 +295,7 @@ If you have a Gurobi license on your local machine, mount the license into the c
 **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
 
 ```bash
-sudo docker run --rm -it -v "./gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+sudo docker run --rm -it -v "~/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
@@ -401,22 +412,23 @@ All required `.csv` results are stored in `results/recomputed_results`.
 
 ---
 
-## 4 Extensition Test
+## 4 Extensibility of Experiments
 
-### 4.1 Running a Single Algorithm (CLI) with Designates Data and Budget setting
+### 4.1 Running a Single Algorithm with Designated Tiling, Speed, and Time Budget
 
-We provide a CLI to run **one algorithm at a time** on a given instance. Again, if you don't have gurobi license, you won't be able to run ILP algorithm
+We provide a command-line interface (CLI) to run **one algorithm at a time** on a given problem instance.
+As before, a Gurobi license is needed only to run the ILP-based algorithm.
 
-##### Usage
+#### Usage
 
 ```bash
 cd build
 ./op <file> <budget> <alg> [slew_rate=50]
 ```
 
-##### Arguments
+#### Arguments
 
-\<file>: path to the CSV instance (see Dataset format below).
+\<file>: path to a CSV file specifying the set of tiles, with probabilities, for the problem instance (see Dataset format below).
 
 \<budget>: total time budget (slew + dwell).
 
@@ -425,7 +437,7 @@ cd build
 \[slew_rate] (optional): slew time per angular distance unit (default 50).
 
 
-##### Examples
+#### Examples
 Greedy on a small instance, budget = 50, default slew_rate
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy

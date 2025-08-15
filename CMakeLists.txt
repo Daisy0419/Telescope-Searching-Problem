@@ -27,8 +27,8 @@ message(STATUS "Gurobi C++ Library: ${GUROBI_CXX_LIB}")
 set(CMAKE_INSTALL_RPATH ${GUROBI_LIBRARY_DIR})
 
 # ---------- LEMON (adjust paths) ----------
-set(LEMON_SOURCE_DIR "/usr/local")
-set(LEMON_BUILD_DIR  "/usr/local")
+#set(LEMON_SOURCE_DIR "/usr/local")
+#set(LEMON_BUILD_DIR  "/usr/local")
 
 # ---------- Sources ----------
 # Grab all .cpp files
