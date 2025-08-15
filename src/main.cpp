@@ -47,8 +47,8 @@ int main(int argc, char** argv) {
             test_algorithms_large_instances(file, out_file, budget, slew_rate, is_deepslow);
             break;
         case 3:
-            out_file  = "../results/recomputed_results/instances_with_wcet/out.csv";
-            test_algorithms_with_wcet(file, out_file, budget, budget_greedy, budget_genetic, 
+            out_file  = "../results/recomputed_results/instances_with_moet/out.csv";
+            test_algorithms_with_moet(file, out_file, budget, budget_greedy, budget_genetic, 
                                         budget_gcp, slew_rate, is_deepslow);
             break;
         case 4: {

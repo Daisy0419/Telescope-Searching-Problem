@@ -333,9 +333,9 @@ void test_algorithms_large_instances (std::string file, std::string out_file,
 }
 
 
-// wrapper function for large instances accounting wcet
+// wrapper function for large instances accounting moet
 // test algorihms: greedy, genetic, GCP
-void test_algorithms_with_wcet(std::string file, std::string out_file, double budget, 
+void test_algorithms_with_moet(std::string file, std::string out_file, double budget, 
                             double budget_greedy, double budget_genetic, double budget_gcp,
                             double slew_rate, bool is_deepslow) {
 

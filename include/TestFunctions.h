@@ -38,7 +38,7 @@ void test_algorithms_large_instances (std::string file, std::string out_file,
                     double budget, double slew_rate, bool is_deepslow=false);
 
 // test function wrapper for large instances accounting worst case execution time
-void test_algorithms_with_wcet(std::string file, std::string out_file, double budget, 
+void test_algorithms_with_moet(std::string file, std::string out_file, double budget, 
                             double budget_greedy, double budget_genetic, double budget_gcp,
                             double slew_rate, bool is_deepslow=false);
 

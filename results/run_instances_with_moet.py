@@ -28,15 +28,15 @@ if __name__ == "__main__":
         "GW200306_093714_7dt"
     ]
 
-    output_dir = os.path.join("..", "results", "recomputed_results", "instances_with_wcet")
+    output_dir = os.path.join("..", "results", "recomputed_results", "instances_with_moet")
     os.makedirs(output_dir, exist_ok=True)
     default_name = os.path.join(output_dir, "out.csv")
 
     budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-    # run each mao each budget case for 5 time to compute wcet
+    # run each mao each budget case for 5 time to compute moet
     run_times = 5
-    output_sub_dir0 = os.path.join(output_dir, f"get_wcet")
+    output_sub_dir0 = os.path.join(output_dir, f"get_moet")
     os.makedirs(output_sub_dir0, exist_ok=True)
     for skymap in skymaps:
         print(f"\nProcessing skymap: {skymap}")
@@ -44,10 +44,10 @@ if __name__ == "__main__":
         for budget in budgets:
             updated_budget = [budget]
             for method in ["Greedy", "Genetic", "Hoogeveen"]: 
-                updated_budget.append(budget) # not account wcet 
+                updated_budget.append(budget) # not account moet 
             updated_budgets.append(updated_budget)
 
-        dataset = os.path.join(data_path, f"large_wcet/filtered_{skymap}.csv")
+        dataset = os.path.join(data_path, f"large_moet/filtered_{skymap}.csv")
         print(f"Using dataset: {dataset}")
 
         for runtimes in range(run_times):
@@ -61,8 +61,8 @@ if __name__ == "__main__":
             print(f"Warning: {default_name} not found after running {skymap}")
 
 
-    # compute wcet for each map each case
-    output_sub_dir1 = os.path.join(output_dir, f"wcet")
+    # compute moet for each map each case
+    output_sub_dir1 = os.path.join(output_dir, f"moet")
     os.makedirs(output_sub_dir1, exist_ok=True)
     for skymap in skymaps:
         file =f"{output_sub_dir0}/out_{skymap}.csv"
@@ -74,8 +74,8 @@ if __name__ == "__main__":
     
 
 
-    # incorporate wcet to budget and rerun the cases
-    output_sub_dir2 = os.path.join(output_dir, f"result_with_wcet")
+    # incorporate moet to budget and rerun the cases
+    output_sub_dir2 = os.path.join(output_dir, f"result_with_moet")
     os.makedirs(output_sub_dir2, exist_ok=True)
     for skymap in skymaps:
         print(f"\nProcessing skymap: {skymap}")
@@ -91,7 +91,7 @@ if __name__ == "__main__":
                 updated_budget.append(adjusted)
             updated_budgets.append(updated_budget)
 
-        dataset = os.path.join(data_path, f"large_wcet/filtered_{skymap}.csv")
+        dataset = os.path.join(data_path, f"large_moet/filtered_{skymap}.csv")
         print(f"Using dataset: {dataset}")
 
         run(dataset, updated_budgets)

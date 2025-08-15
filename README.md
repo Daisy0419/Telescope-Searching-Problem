@@ -43,8 +43,8 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 ├── data/               # Tiling CSV files for small-scale sky maps
 │   ├── small/          # Tiling CSV files for small-scale sky maps 
 │   ├── large/          # Tiling CSV files for large-scale sky maps 
-│   ├── large_wcet/     # Subset of large-scale maps used in WCET-aware experiments
-│   └── wcet/           # Worst-case execution time measurements
+│   ├── large_moet/     # Subset of large-scale maps used in MOET-aware experiments
+│   └── moet/           # Maximum-observed execution time measurements
 
 ├── results/
 │
@@ -54,13 +54,13 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 │   │   ├── small/                 # FoM results (non-ILP) for small instances
 │   │   ├── small_gurobi/          # ILP-based FoM results for small instances
 │   │   ├── large/                 # FoM results for large instances
-│   │   ├── small_with_wcet/       # WCET-aware FoM for small instances
+│   │   ├── small_with_moet/       # MOET-aware FoM for small instances
 │   │   └── multi_deadline/        # Multi-deadline scenario results
 
 │
 │   ├── recomputed_results/        # Outputs from re-running experiments
 │   │   ├── small/                 
-│   │   ├── small_with_wcet/       
+│   │   ├── small_with_moet/       
 │   │   ├── large/                 
 │   │   ├── multi_deadline/        
 │   │   └── analysis_recomputed_results.ipynb  # Visualization of recomputed results
@@ -68,7 +68,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 │   ├── visualize_results.ipynb        # Notebook for Figures 7–10 in paper
 │   ├── run_small_instances.py         # Batch run script for small instances
 │   ├── run_large_instances.py         # Batch run script for large instances
-│   ├── run_instances_wcet.py          # Batch run script (WCET-aware)
+│   ├── run_instances_moet.py          # Batch run script (MOET-aware)
 │   └── run_multi_deadline.py          # Batch run script for multi-deadline setup
 
 ├── rtss25-sky-tiling.yml               # Python dependencies for tiling code
@@ -275,7 +275,7 @@ jupyter notebook visualize_results.ipynb
 The notebook includes:
 - Average percentage deviation from ILP baseline across deadlines for small instances(Fig.7)
 - Percentage deviation in FoM from the GCP baseline and Computation time vs Deadline presented in log-scaled plot for large instances (Fig. 8)
-- FoM percentage deviation from GCP after accounting for WCET. for five small instances (Fig 9)
+- FoM percentage deviation from GCP after accounting for MOET. for five small instances (Fig 9)
 - Expected FoM progression over the multi deadlines (Fig. 10)
 
 All required `.csv` results are precomputed and stored in `results/precomputed_results`.
@@ -377,12 +377,12 @@ python3 run_large_instances.py
 ```
 Results will be saved to `results/recompute_results/large`.
 
-#### 3.3.3 Small Instances with WCET (~ 20 minutes)
+#### 3.3.3 Small Instances with MOET (~ 20 minutes)
 
 ```bash
-python3 run_small_instances_wcet.py
+python3 run_small_instances_moet.py
 ```
-Results will be saved to `results/recompute_results/instances_with_wcet`.
+Results will be saved to `results/recompute_results/instances_with_moet`.
 
 #### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
 
@@ -400,7 +400,7 @@ Again, you can visualize the result via Jupyter notebook either **inside the con
 conda activate rtss25-telescope-search
 jupyter notebook --ip=0.0.0.0 --no-browser
 ```
-Open http://localhost:8888 in a browser and natigate to **results/visualize_results.ipynb** in sidebar. 
+Open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb** in sidebar. 
 
 - **Locally**
 ```bash
