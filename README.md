@@ -197,7 +197,17 @@ export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 **Note**: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).
 
 
-**(2) LEMON Graph Library (Required)**
+#### (2) LEMON Graph Library (Required)
+
+```bash
+wget http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
+tar xvfz lemon-1.3.1.tar.gz
+cd lemon-1.3.1
+mkdir build && cd build
+cmake ..
+make
+sudo make install
+```
 
 - **Download**: [LEMON 1.3.1 Source](http://lemon.cs.elte.hu/pub/sources/lemon-doc-1.3.1.tar.gz)
 - **Installation Guide**: [LEMON Installation (Linux)](http://lemon.cs.elte.hu/trac/lemon/wiki/InstallLinux)
