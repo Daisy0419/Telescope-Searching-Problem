@@ -20,15 +20,15 @@ if(NOT GUROBI_HOME)
 endif()
 set(GUROBI_INCLUDE_DIR "${GUROBI_HOME}/include")
 set(GUROBI_LIBRARY_DIR "${GUROBI_HOME}/lib")
-set(GUROBI_LIB        "${GUROBI_LIBRARY_DIR}/libgurobi120.so")
-set(GUROBI_CXX_LIB    "${GUROBI_LIBRARY_DIR}/libgurobi_g++8.5.a") # adjust if needed
+find_library(GUROBI_LIB NAMES gurobi120 HINTS "${GUROBI_LIBRARY_DIR}" REQUIRED)
+find_library(GUROBI_CXX_LIB NAMES gurobi_g++8.5 HINTS "${GUROBI_LIBRARY_DIR}" REQUIRED)
 message(STATUS "Gurobi Library: ${GUROBI_LIB}")
 message(STATUS "Gurobi C++ Library: ${GUROBI_CXX_LIB}")
 set(CMAKE_INSTALL_RPATH ${GUROBI_LIBRARY_DIR})
 
-# ---------- LEMON (adjust paths if needed) ----------
-set(LEMON_SOURCE_DIR "/home/research/w.yanwang/lemon-1.3.1")
-set(LEMON_BUILD_DIR  "/home/research/w.yanwang/lemon-1.3.1/build")
+# ---------- LEMON (adjust paths) ----------
+set(LEMON_SOURCE_DIR "/usr/local")
+set(LEMON_BUILD_DIR  "/usr/local")
 
 # ---------- Sources ----------
 # Grab all .cpp files
@@ -58,11 +58,12 @@ set(PROJECT_INCLUDES
     ${LEMON_BUILD_DIR}
 )
 
+set(GRB_LINK_LIBS ${GUROBI_CXX_LIB} ${GUROBI_LIB})
+
 # ---------- Common libs ----------
 set(PROJECT_LIBS
     OpenMP::OpenMP_CXX
-    ${GUROBI_LIB}
-    ${GUROBI_CXX_LIB}
+    ${GRB_LINK_LIBS}
     pthread m dl
     stdc++fs 
 )
