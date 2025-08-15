@@ -197,7 +197,7 @@ export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
 **Note**: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).
 
 
-** (2) LEMON Graph Library (Required) **
+**(2) LEMON Graph Library (Required)**
 
 - **Download**: [LEMON 1.3.1 Source](http://lemon.cs.elte.hu/pub/sources/lemon-doc-1.3.1.tar.gz)
 - **Installation Guide**: [LEMON Installation (Linux)](http://lemon.cs.elte.hu/trac/lemon/wiki/InstallLinux)
@@ -214,8 +214,20 @@ export LEMON_SOURCE_DIR=/path/to/lemon-1.3.1
 export LEMON_BUILD_DIR=/path/to/lemon-1.3.1/build
 ```
 
-## 2 Reproducing Paper Figures
+**(3) Build the C++ Executables**
 
+Once all dependencies are installed, you can build the C++ project with:
+
+```bash
+mkdir build && cd build
+cmake ..
+make -j
+```
+
+--- 
+
+## 2 Reproducing Paper Figures
+you can visualize the result via Jupyter notebook either via **container** or **locally**.
 ### 2.1 Run Jupyter notebook via Docker Container
 ```bash
 docker run --rm -it -p 8888:8888 \
@@ -364,6 +376,7 @@ Results will be saved to `results/recompute_results/multi_deadlines`.
 Again, you can visualize the result via Jupyter notebook either **inside the container** or **locally**.
 - **Inside the container**
 ```bash
+conda activate rtss25-telescope-search
 jupyter notebook --ip=0.0.0.0 --no-browser
 ```
 Open http://localhost:8888 in a browser and natigate to **results/visualize_results.ipynb** in sidebar. 
@@ -371,6 +384,7 @@ Open http://localhost:8888 in a browser and natigate to **results/visualize_resu
 - **Locally**
 ```bash
 cd results/recompute_results
+conda activate rtss25-telescope-search
 jupyter notebook analysis_recomputed_results.ipynb
 ```
 All required `.csv` results are stored in `results/recomputed_results`.
