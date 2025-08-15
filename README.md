@@ -378,7 +378,7 @@ python3 run_large_instances.py
 ```
 Results will be saved to `results/recompute_results/large`.
 
-#### 3.3.3 Small Instances with MOET (~ 20 minutes)
+#### 3.3.3 Small Instances with MOET (~ 40 minutes)
 
 ```bash
 python3 run_small_instances_moet.py
