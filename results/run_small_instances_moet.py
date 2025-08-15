@@ -1,6 +1,7 @@
 import os
 import subprocess
 import pandas as pd
+import sys
 
 def run(dataset, budgets, run, run_times, dataset_idx, num_datasets, run_case=3):
     for i, bset in enumerate(budgets):
@@ -15,6 +16,7 @@ def run(dataset, budgets, run, run_times, dataset_idx, num_datasets, run_case=3)
         except subprocess.CalledProcessError as e:
             print(f"Error running command: {cmd}")
             print(f"Error message: {e.stderr}")
+            sys.exit(1)
 
 if __name__ == "__main__":
     EXECUTABLE = "../build/ts"

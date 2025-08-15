@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 
 def run(dataset, dataset_idx, num_datasets, run_case=4):
     print(f"\nRunning ./ts with dataset={dataset} ({dataset_idx+1} of {num_datasets}), run_case={run_case}")
@@ -10,6 +11,7 @@ def run(dataset, dataset_idx, num_datasets, run_case=4):
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {cmd}")
         print(f"Error message: {e.stderr}")
+        sys.exit(1)
 
 def getFiles(folder_path):
     return [

@@ -14,14 +14,16 @@
 #include <fstream>
 #include <filesystem> 
 #include <numeric>
+#include <stdexcept> 
 
-//print path to stdout
+//save result to stdout
 double print_path(const std::vector<std::vector<double>>& costs, const std::vector<double>& probability, 
                     std::vector<int> rank, std::vector<int> best_path, double padding) {
 
     if (best_path.empty()) {
-        std::cout << "No valid path found." << std::endl;
-        return 0.0;
+        throw std::runtime_error(
+            "No valid path found. Please check your Gurobi license is mounted correctly."
+        );
     }
 
     if (rank.empty()) {

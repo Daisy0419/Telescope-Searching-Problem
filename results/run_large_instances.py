@@ -1,5 +1,6 @@
 import subprocess
 import os
+import sys
 
 def run(dataset, budgets, dataset_idx, num_datasets, run_case=2):
     for i, budget in enumerate(budgets):
@@ -13,6 +14,7 @@ def run(dataset, budgets, dataset_idx, num_datasets, run_case=2):
         except subprocess.CalledProcessError as e:
             print(f"Error running command: {cmd}")
             print(f"Error message: {e.stderr}")
+            sys.exit(1)
 
 
 def getFiles(folder_path):
