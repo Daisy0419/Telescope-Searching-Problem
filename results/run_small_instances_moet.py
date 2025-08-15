@@ -35,7 +35,12 @@ if __name__ == "__main__":
     budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
     # run each map each budget case for 5 time to compute moet
+
     run_times = 5
+    print("*******************************************************************")
+    print(f"Estimating MOET across {run_times} runs for each skymap and budget")
+    print("*******************************************************************")
+
     output_sub_dir0 = os.path.join(output_dir, f"get_moet")
     os.makedirs(output_sub_dir0, exist_ok=True)
     for i, skymap in enumerate(skymaps):
@@ -62,6 +67,10 @@ if __name__ == "__main__":
 
 
     # compute moet for each map each case
+
+    print("***********************************")
+    print(f"Collecting results to compute MOET")
+    print("***********************************")
     output_sub_dir1 = os.path.join(output_dir, f"moet")
     os.makedirs(output_sub_dir1, exist_ok=True)
     for skymap in skymaps:
@@ -75,6 +84,10 @@ if __name__ == "__main__":
 
 
     # incorporate moet to budget and rerun the cases
+
+    print("*********************************************")
+    print(f"Incorporating MOET into budget and rerunning")
+    print("*********************************************")
     output_sub_dir2 = os.path.join(output_dir, f"result_with_moet")
     os.makedirs(output_sub_dir2, exist_ok=True)
     for i, skymap in enumerate(skymaps):

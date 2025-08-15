@@ -40,8 +40,8 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 ├── CMakeLists.txt                   # CMake build configuration
 
 ├── skytiling/          
-│   └── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
-│   └── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
+│   ├── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
+│   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
 │   └── produce_tilings.py          # Creates all tilings
 
 ├── data/               # Tiling CSV files for small-scale sky maps
@@ -80,7 +80,6 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 ```
 
 
-<span style="color:red">Daisy to clean structure based on deduplicated notebooks</span>
 
 ## 1 Environment Setup
 You can run the artifact via **Docker (recommended)** or a **Local Setup**. A Gurobi license is needed only to run ILP-based experiments.
