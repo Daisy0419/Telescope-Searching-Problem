@@ -51,19 +51,16 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 │   ├── figures/                   # Figures 7–10 in paper
 |
 │   ├── precomputed_results/       # Precomputed outputs used in the paper
-│   │   ├── small/                 # FoM results (non-ILP) for small instances
-│   │   ├── small_gurobi/          # ILP-based FoM results for small instances
+│   │   ├── small/                 # FoM results for small instances
 │   │   ├── large/                 # FoM results for large instances
 │   │   ├── small_with_moet/       # MOET-aware FoM for small instances
 │   │   └── multi_deadline/        # Multi-deadline scenario results
-
 │
 │   ├── recomputed_results/        # Outputs from re-running experiments
-│   │   ├── small/                 
+│   │   ├── small/      
+│   │   ├── large/                            
 │   │   ├── small_with_moet/       
-│   │   ├── large/                 
-│   │   ├── multi_deadline/        
-│   │   └── analysis_recomputed_results.ipynb  # Visualization of recomputed results
+│   │   └── multi_deadline/        
 │
 │   ├── visualize_results.ipynb        # Notebook for Figures 7–10 in paper
 │   ├── run_small_instances.py         # Batch run script for small instances
@@ -245,6 +242,10 @@ cmake ..
 make -j
 ```
 
+This produces two binaries in build/. The only difference between them is the main program:
+- **ts** — built from src/main.cpp. Entry point for batch experiments used in the paper, invoked by the Python scripts in results/.
+- **op** — built from src/main_custom.cpp. Entry point for single-case runs, one algorithm on one (skymap, budget, slewrate) instance.
+
 --- 
 
 ## 2 Reproducing Paper Figures
@@ -384,6 +385,33 @@ python3 run_small_instances_moet.py
 ```
 Results will be saved to `results/recompute_results/instances_with_moet`.
 
+This script evaluates algorithms with budgets that account for MOET (Maximum Observed Execution Time). It runs in **three parts**:
+
+(1) Collect raw runs to estimate MOET
+
+For each skymap and each budget in {10,20,…,100}, the script runs Greedy, Genetic, and GCP 5 times each using the same original budget (no MOET applied yet). Results are stored in instances_with_moet/get_moet/.
+
+(2) Compute MOET per (Skymap, Method, Budget) 
+
+Across the 5 runs in (1), it then computes:
+
+```bash
+MOET(Skymap, Method, Budget) = max(TimeSec)
+```
+
+and writes save results to results/recomputed_results/instances_with_moet/moet/<skymap>.csv
+
+(3) Re-run with MOET-adjusted budgets 
+
+For each (Skymap, Method, Budget), the budget is reduced by the corresponding MOET:
+```bash
+adjusted_budget = max(0, original_budget - MOET(Skymap, Method, original_budget))
+```
+It then runs the instances again with these adjusted budgets and save result to
+
+results/recomputed_results/instances_with_moet/result_with_moet/out_<skymap>.csv
+
+
 #### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
 
 ```bash
@@ -428,17 +456,17 @@ cd build
 
 #### Arguments
 
-\<file>: path to a CSV file specifying the set of tiles, with probabilities, for the problem instance (see Dataset format below).
+\<file>: path to a CSV file specifying the set of tiles, with probabilities, for the problem instance (see Input format below).
 
 \<budget>: total time budget (slew + dwell).
 
 \<alg>: one of greedy | genetic | gcp | ilp.
 
-\[slew_rate] (optional): slew time per angular distance unit (default 50).
+\[slew_rate] (optional): slew time per angular distance unit (default 50 degree per second).
 
 
 #### Examples
-Greedy on a small instance, budget = 50, default slew_rate
+Greedy on a small instance, budget = 50 (degree/second), default slew_rate
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy
 ```
@@ -456,6 +484,23 @@ GCP on a large instance
 ILP (Gurobi) on a small instance
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
+```
+##### Input Format
+The input is a CSV tiling file with the following first five columns in order (additional columns after these and are ignored):
+
+(1) Rank — rank of filtered tiles (integer)
+
+(2) index — tile ID in the original tiling (integer; not used but kept for index alignment)
+
+(3) RA — right ascension of the tile center in degrees [0, 360)
+
+(4) Dec — declination of the tile center in degrees [-90, 90]
+
+(5) Probability — probability (or likelihood/prize, double) of this tile 
+
+Header example:
+```bash
+Rank,index,RA,Dec,Probability[, ...]
 ```
 
 ##### Output

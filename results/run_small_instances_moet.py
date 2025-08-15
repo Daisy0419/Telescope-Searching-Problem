@@ -34,7 +34,7 @@ if __name__ == "__main__":
 
     budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
-    # run each mao each budget case for 5 time to compute moet
+    # run each map each budget case for 5 time to compute moet
     run_times = 5
     output_sub_dir0 = os.path.join(output_dir, f"get_moet")
     os.makedirs(output_sub_dir0, exist_ok=True)
