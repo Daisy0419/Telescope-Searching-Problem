@@ -2,10 +2,10 @@ import os
 import subprocess
 import pandas as pd
 
-def run(dataset, budgets, run_case=3):
-    for bset in budgets:
+def run(dataset, budgets, run, run_times, dataset_idx, num_datasets, run_case=3):
+    for i, bset in enumerate(budgets):
         orig_budget, budget_greedy, budget_genetic, budget_gcp = bset
-        print(f"\nRunning ./ts with dataset={dataset}, budget={orig_budget}, run_case={run_case}")
+        print(f"\nRunning ./ts with dataset={dataset} ({dataset_idx+1} of {num_datasets}), budget={orig_budget} ({i+1} of {len(budgets)}), (run {run+1} of {run_times}) run_case={run_case}")
         cmd = [EXECUTABLE, dataset, str(run_case), str(orig_budget), str(budget_greedy), str(budget_genetic), str(budget_gcp)]
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -38,7 +38,7 @@ if __name__ == "__main__":
     run_times = 5
     output_sub_dir0 = os.path.join(output_dir, f"get_moet")
     os.makedirs(output_sub_dir0, exist_ok=True)
-    for skymap in skymaps:
+    for i, skymap in enumerate(skymaps):
         print(f"\nProcessing skymap: {skymap}")
         updated_budgets = []
         for budget in budgets:
@@ -51,7 +51,7 @@ if __name__ == "__main__":
         print(f"Using dataset: {dataset}")
 
         for runtimes in range(run_times):
-            run(dataset, updated_budgets)
+            run(dataset, updated_budgets, run=runtimes, run_times=run_times, dataset_idx=i, num_datasets=len(skymaps))
 
         new_name = os.path.join(output_sub_dir0, f"out_{skymap}.csv")
         if os.path.exists(default_name):
@@ -77,7 +77,7 @@ if __name__ == "__main__":
     # incorporate moet to budget and rerun the cases
     output_sub_dir2 = os.path.join(output_dir, f"result_with_moet")
     os.makedirs(output_sub_dir2, exist_ok=True)
-    for skymap in skymaps:
+    for i, skymap in enumerate(skymaps):
         print(f"\nProcessing skymap: {skymap}")
         updated_budgets = []
         df = pd.read_csv(f"{output_sub_dir1}/{skymap}.csv")
@@ -94,7 +94,7 @@ if __name__ == "__main__":
         dataset = os.path.join(data_path, f"large_moet/filtered_{skymap}.csv")
         print(f"Using dataset: {dataset}")
 
-        run(dataset, updated_budgets)
+        run(dataset, updated_budgets, run=1, run_times = 1, dataset_idx = i, num_datasets = len(skymaps))
 
         new_name = os.path.join(output_sub_dir2, f"out_{skymap}.csv")
         if os.path.exists(default_name):

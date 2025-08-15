@@ -1,9 +1,9 @@
 import subprocess
 import os
 
-def run(dataset, budgets, run_case=2):
-    for budget in budgets:
-        print(f"\nRunning ./ts with dataset={dataset}, budget={budget}, run_case={run_case}")
+def run(dataset, budgets, dataset_idx, num_datasets, run_case=2):
+    for i, budget in enumerate(budgets):
+        print(f"\nRunning ./ts with dataset={dataset} ({dataset_idx+1} of {num_datasets}), budget={budget} ({i+1} of {len(budgets)}), run_case={run_case}")
         cmd = [EXECUTABLE, dataset, str(run_case), str(budget)]
         try:
             result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -30,10 +30,10 @@ if __name__ == "__main__":
     default_name = "recomputed_results/large/out.csv"
     budgets = [10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
     skymaps=getFiles(data_path)
-    for skymap in skymaps:
+    for i, skymap in enumerate(skymaps):
         dataset = os.path.join(data_path, f"{skymap}.csv")
         print(f"dataset: {dataset}")
-        run(dataset, budgets)
+        run(dataset, budgets, dataset_idx = i, num_datasets = len(skymaps))
         new_name = f"recomputed_results/large/out_{skymap}.csv"
         if os.path.exists(default_name):
             os.rename(default_name, new_name)

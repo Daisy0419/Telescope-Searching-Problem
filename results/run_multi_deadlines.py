@@ -1,8 +1,8 @@
 import subprocess
 import os
 
-def run(dataset, run_case=4):
-    print(f"\nRunning ./ts with dataset={dataset}, run_case={run_case}")
+def run(dataset, dataset_idx, num_datasets, run_case=4):
+    print(f"\nRunning ./ts with dataset={dataset} ({dataset_idx+1} of {num_datasets}), run_case={run_case}")
     cmd = [EXECUTABLE, dataset, str(run_case)]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, check=True)
@@ -30,10 +30,10 @@ if __name__ == "__main__":
 
     skymaps = getFiles(data_path)
 
-    for skymap in skymaps:
+    for i, skymap in enumerate(skymaps):
         dataset = os.path.join(data_path, f"{skymap}.csv")
         print(f"Dataset: {dataset}")
-        run(dataset)
+        run(dataset, dataset_idx = i, num_datasets = len(skymaps))
 
         renamed_1 = os.path.join(output_dir, f"out_{skymap}.csv")
         renamed_2 = os.path.join(output_dir, f"multi_{skymap}.csv")
