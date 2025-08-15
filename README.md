@@ -192,9 +192,6 @@ conda activate rtss25-telescope-search
 ---
 #### 1.3.3 C++ Environment Setup
 
-
-<span style="color:red">Daisy to explain two binaries produced</span>
-
 **(1) Gurobi Optimizer (Required)**
 
 The Gurobi Optimizer is used to solve our ILP approach to the orienteering problem.
@@ -252,9 +249,9 @@ cmake ..
 make -j
 ```
 
-This produces two binaries in build/. The only difference between them is the main program:
-- **ts** — built from src/main.cpp. Entry point for batch experiments used in the paper, invoked by the Python scripts in results/.
-- **op** — built from src/main_custom.cpp. Entry point for single-case runs, one algorithm on one (skymap, budget, slewrate) instance.
+This produces two binaries in `build/`. The only difference between them is the `main` function:
+- **ts** — built from `src/main.cpp`. Entry point for batch experiments used in the paper, invoked by the Python scripts in `r`esults/`.
+- **op** — built from `src/main_custom.cpp`. Entry point for single-case runs, one algorithm on one (skymap, budget, slewrate) instance.
 
 --- 
 
@@ -379,7 +376,7 @@ Each Python script corresponds to a different experiment setting.
 If you do not have a Gurobi license, you can still run experiments 3.3.2, 3.3.3, and 3.3.4, which do not rely on ILP solvers.
 
 
-<span style="color:red">Specify to run from results directory</span>
+<span style="color:red">Marion: Specify to run from results directory</span>
 
 
 <span style="color:red">Marion to recompute times</span>
@@ -508,7 +505,7 @@ ILP (Gurobi) on a small instance
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
 ```
-##### Input Format
+#### Input Format
 The input is a CSV tiling file with the following first five columns in order (additional columns after these and are ignored):
 
 (1) Rank — rank of filtered tiles (integer)
