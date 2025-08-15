@@ -27,7 +27,7 @@ if __name__ == "__main__":
 
     skymaps = []
     if run_all:
-        for filename in os.listdir(folder_path):
+        for filename in os.listdir(data_path):
             if filename.endswith(".csv"):
                 skymap = os.path.splitext(filename)[0]
                 skymaps.append(skymap)
