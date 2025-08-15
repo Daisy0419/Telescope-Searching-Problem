@@ -32,13 +32,55 @@ if __name__ == "__main__":
     os.makedirs(output_dir, exist_ok=True)
     default_name = os.path.join(output_dir, "out.csv")
 
-
     budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
 
+    # run each mao each budget case for 5 time to compute wcet
+    run_times = 5
+    output_sub_dir0 = os.path.join(output_dir, f"get_wcet")
+    os.makedirs(output_sub_dir0, exist_ok=True)
     for skymap in skymaps:
         print(f"\nProcessing skymap: {skymap}")
         updated_budgets = []
-        df = pd.read_csv(f"{data_path}/wcet/{skymap}.csv")
+        for budget in budgets:
+            updated_budget = [budget]
+            for method in ["Greedy", "Genetic", "Hoogeveen"]: 
+                updated_budget.append(budget) # not account wcet 
+            updated_budgets.append(updated_budget)
+
+        dataset = os.path.join(data_path, f"large_wcet/filtered_{skymap}.csv")
+        print(f"Using dataset: {dataset}")
+
+        for runtimes in range(run_times):
+            run(dataset, updated_budgets)
+
+        new_name = os.path.join(output_sub_dir0, f"out_{skymap}.csv")
+        if os.path.exists(default_name):
+            os.rename(default_name, new_name)
+            print(f"Saved result to {new_name}")
+        else:
+            print(f"Warning: {default_name} not found after running {skymap}")
+
+
+    # compute wcet for each map each case
+    output_sub_dir1 = os.path.join(output_dir, f"wcet")
+    os.makedirs(output_sub_dir1, exist_ok=True)
+    for skymap in skymaps:
+        file =f"{output_sub_dir0}/out_{skymap}.csv"
+        df = pd.read_csv(file)
+        # Compute max runtime per (Method, Budget)
+        max_runtime = df.groupby(['Method', 'Budget'])['TimeSec'].max().reset_index()
+        runtime_table = max_runtime.pivot(index='Budget', columns='Method', values='TimeSec')
+        max_runtime.to_csv(f"{output_sub_dir1}/{skymap}.csv")
+    
+
+
+    # incorporate wcet to budget and rerun the cases
+    output_sub_dir2 = os.path.join(output_dir, f"result_with_wcet")
+    os.makedirs(output_sub_dir2, exist_ok=True)
+    for skymap in skymaps:
+        print(f"\nProcessing skymap: {skymap}")
+        updated_budgets = []
+        df = pd.read_csv(f"{output_sub_dir1}/{skymap}.csv")
 
         for budget in budgets:
             updated_budget = [budget]
@@ -54,7 +96,7 @@ if __name__ == "__main__":
 
         run(dataset, updated_budgets)
 
-        new_name = os.path.join(output_dir, f"out_{skymap}.csv")
+        new_name = os.path.join(output_sub_dir2, f"out_{skymap}.csv")
         if os.path.exists(default_name):
             os.rename(default_name, new_name)
             print(f"Saved result to {new_name}")
