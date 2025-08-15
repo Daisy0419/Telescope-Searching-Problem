@@ -246,8 +246,8 @@ and then open http://localhost:8888 in a browser and natigate to **results/visua
 
 ```bash
 conda activate rtss25-telescope-search
-cd ~/Telescope-Searching-Problem/results/precomputed_results
-jupyter notebook analysis_precomputed_results.ipynb
+cd ~/Telescope-Searching-Problem/results
+jupyter notebook visualize_results.ipynb
 ```
 
 ### 2.3 Reproducing Result in a Jupyter notebook
@@ -383,9 +383,9 @@ Open http://localhost:8888 in a browser and natigate to **results/visualize_resu
 
 - **Locally**
 ```bash
-cd results/recompute_results
+cd results
 conda activate rtss25-telescope-search
-jupyter notebook analysis_recomputed_results.ipynb
+jupyter notebook visualize_results.ipynb
 ```
 All required `.csv` results are stored in `results/recomputed_results`.
 
