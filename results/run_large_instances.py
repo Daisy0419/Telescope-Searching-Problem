@@ -1,3 +1,5 @@
+run_all = True
+
 import subprocess
 import os
 import sys
@@ -18,11 +20,17 @@ def run(dataset, budgets, dataset_idx, num_datasets, run_case=2):
 
 
 def getFiles(folder_path):
-    skymaps = []
-    for filename in os.listdir(folder_path):
-        if filename.endswith(".csv"):
-            skymap = os.path.splitext(filename)[0]
-            skymaps.append(skymap)
+    if run_all:
+        skymaps = []
+        for filename in os.listdir(folder_path):
+            if filename.endswith(".csv"):
+                skymap = os.path.splitext(filename)[0]
+                skymaps.append(skymap)
+    else:
+        skymaps = [
+            "filtered_GW191103_012549_7dt.csv",
+            "filtered_GW191109_010717_7dt.csv"
+        ]
     return skymaps
 
 if __name__ == "__main__":
@@ -30,7 +38,7 @@ if __name__ == "__main__":
     data_path = "../data/large"
     os.makedirs("recomputed_results/large", exist_ok=True)
     default_name = "recomputed_results/large/out.csv"
-    budgets = [10, 100, 200, 300, 400, 500, 600, 700, 800, 900, 1000, 1100, 1200]
+    budgets = [10, 100, 1000]
     skymaps=getFiles(data_path)
     for i, skymap in enumerate(skymaps):
         dataset = os.path.join(data_path, f"{skymap}.csv")

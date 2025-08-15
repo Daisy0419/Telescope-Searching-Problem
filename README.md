@@ -27,7 +27,7 @@ This artifact addresses the problem of scheduling follow-up observations of astr
   - Small and large problem instances under a single deadline
   - Small problem instances incorporating maximum-observed execution time (MOET)
   - Large problem instances under multi-deadline settings
-- Jupyter notebooks to reproduce plots and figures from the paper
+- A Jupyter notebook to reproduce plots and figures from the paper
 - Long-running Python scripts to recompute results from scratch
 
 
@@ -256,10 +256,12 @@ This produces two binaries in `build/`. The only difference between them is the 
 --- 
 
 ## 2 Reproducing Paper Figures
-You can visualize the result via Jupyter notebook either via **container** or **locally**.
-### 2.1 Run Jupyter notebook via Docker Container
+
+You can visualize the results via Jupyter notebook either via **container** or **locally**.
+
+### 2.1 Run Jupyter Notebook via Docker Container
 ```bash
-docker run --rm -it -p 8888:8888 \
+sudo docker run --rm -it -p 8888:8888 \
   -v "$PWD:/workspace" \
   ghcr.io/daisy0419/rtss25-op-solver:1.0 \
   bash -lc 'conda run -n rtss25-telescope-search \
@@ -279,7 +281,8 @@ cd ~/Telescope-Searching-Problem/results
 jupyter notebook visualize_results.ipynb
 ```
 
-### 2.3 Reproducing Result in a Jupyter notebook
+### 2.3 Reproducing Results in the Jupyter Notebook
+
 The notebook includes:
 - Average percentage deviation from ILP baseline across deadlines for small instances(Fig.7)
 - Percentage deviation in FoM from the GCP baseline and Computation time vs Deadline presented in log-scaled plot for large instances (Fig. 8)
@@ -294,6 +297,8 @@ The notebook saves figures to `results/figures`.
 
 ## 3 Running Full Experiments
 
+<span style="color:red">Marion to update runtime here</span>
+
 To re-run the full set of experiments (~5+ hours total runtime), you may either set up the environment locally or use the provided Docker container. Experiments can then be executed using the provided batch scripts.
 
 ### 3.1 Set Up the Run Environment
@@ -302,16 +307,14 @@ If you have a Gurobi license on your local machine, mount the license into the c
 
 **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
 
-<span style="color:red">Marion to fix: Cannot mount ~/gurobi.lic! Modify command</span>
-
 ```bash
-sudo docker run --rm -it -v "~/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+cd ~
+sudo docker run  -p 8888:8888 --rm -it -v "./gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
 ```bash
-sudo docker run --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
-cd results
+sudo docker run -p 8888:8888 --rm -it ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 #### 3.1.2 Run Experiment Locally
@@ -326,7 +329,7 @@ Optionally, you may regenerate them.
 All commands in this step are run from the `sky_tiling` directory.
 
 ```bash
-cd sky_tiling
+cd ~/Telescope-Search-Problem/sky_tiling
 ```
 
 #### 3.2.1 Precompute FoV Projections (~ 10 minutes)
@@ -375,13 +378,39 @@ Files in `data/small` and `data/large` will be overwritten.
 Each Python script corresponds to a different experiment setting. 
 If you do not have a Gurobi license, you can still run experiments 3.3.2, 3.3.3, and 3.3.4, which do not rely on ILP solvers.
 
+All commands in this step are run from the `results` directory and use the default conda environment.
 
-<span style="color:red">Marion: Specify to run from results directory</span>
+```bash
+conda activate rtss25-telescope-search
+cd ~/Telescope-Search-Problem/results
+```
 
+#### Running Time
 
 <span style="color:red">Marion to recompute times</span>
 
-<span style="color:red">Marion to add a warning about long running times + explain how the scripts are equivalent with different data sources + explain how to modify the script if you want to run on a smaller sample size</span>
+
+Running this complete set of experiments takes ~ XX hours even on a powerful machine with the recommended system requirements. We therefore provide two options for convenience:
+
+**(Option 1)** Run all experiments from a single script
+
+Experiments 3.3.1-3.3.4 may be run sequentially by running the following script:
+
+```bash
+bash run_all.sh
+```
+
+**(Option 2)** Limit the coverage
+
+You may modify the scripts to use fewer problem instances and to test fewer deadlines.
+
+The first line of each script is:
+
+```python
+run_all = True
+```
+
+Change this to `False` to run a limited problem set. The implications for each script are listed under each experiment below.
 
 #### 3.3.1 Small Instances (~ 3 hours)
 ```bash
@@ -389,27 +418,29 @@ python3 run_small_instances.py
 ```
 Results will be saved to `results/recompute_results/small`.
 
+If `run_all = False` then only two small instances, with deadlines 10 and 90, will be run.
+
 #### 3.3.2 Large Instances (~ 30 minutes)
 
 ```bash
 python3 run_large_instances.py
 ```
-Results will be saved to `results/recompute_results/large`.
+Results will be saved to `results/recomputed_results/large`.
+
+If `run_all = False` then only two large instances, with deadlines 10, 100, and 1000, will be run.
 
 #### 3.3.3 Small Instances with MOET (~ 40 minutes)
-
-<span style="color:red">Daisy to add script and explain how to compute MOETs</span>
 
 ```bash
 python3 run_small_instances_moet.py
 ```
-Results will be saved to `results/recompute_results/instances_with_moet`.
+Results will be saved to `results/recomputed_results/instances_with_moet`.
 
 This script evaluates algorithms with budgets that account for MOET (Maximum Observed Execution Time). It runs in **three parts**:
 
 (1) Collect raw runs to estimate MOET
 
-For each skymap and each budget in {10,20,…,100}, the script runs Greedy, Genetic, and GCP 5 times each using the same original budget (no MOET applied yet). Results are stored in instances_with_moet/get_moet/.
+For each skymap and each budget in {10,20,…,100}, the script runs Greedy, Genetic, and GCP 5 times each using the same original budget (no MOET applied yet). Results are stored in `results/recomputed_results/instances_with_moet/get_moet/`.
 
 (2) Compute MOET per (Skymap, Method, Budget) 
 
@@ -419,7 +450,7 @@ Across the 5 runs in (1), it then computes:
 MOET(Skymap, Method, Budget) = max(TimeSec)
 ```
 
-and writes save results to results/recomputed_results/instances_with_moet/moet/<skymap>.csv
+and writes the results to `results/recomputed_results/instances_with_moet/moet/<skymap>.csv`
 
 (3) Re-run with MOET-adjusted budgets 
 
@@ -427,9 +458,10 @@ For each (Skymap, Method, Budget), the budget is reduced by the corresponding MO
 ```bash
 adjusted_budget = max(0, original_budget - MOET(Skymap, Method, original_budget))
 ```
-It then runs the instances again with these adjusted budgets and save result to
+It then runs the instances again with these adjusted budgets and saves the results to
+`results/recomputed_results/instances_with_moet/result_with_moet/out_<skymap>.csv`
 
-results/recomputed_results/instances_with_moet/result_with_moet/out_<skymap>.csv
+If `run_all = False` then only two small instances, with deadlines 10 and 100, will be run. The MOET will only be computed across a single run of each.
 
 
 #### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
@@ -439,23 +471,27 @@ python3 run_multi_deadlines.py
 ```
 Results will be saved to `results/recompute_results/multi_deadlines`.
 
+If `run_all = False` then only two large instances will be run.
+
 ---
 
 ### 3.4. Visualizing the Results
-Again, you can visualize the result via Jupyter notebook either **inside the container** or **locally**.
+Again, you can visualize the results via Jupyter notebook either **inside the container** or **locally**.
+
 - **Inside the container**
 ```bash
 conda activate rtss25-telescope-search
-jupyter notebook --ip=0.0.0.0 --no-browser
+jupyter notebook --ip=0.0.0.0  --port=8888 --no-browser --allow-root --IdentityProvider.token=""
 ```
-Open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb** in sidebar. 
+Open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb**.
 
 - **Locally**
 ```bash
-cd results
 conda activate rtss25-telescope-search
+cd ~/Telescope-Searching-Problem/results
 jupyter notebook visualize_results.ipynb
 ```
+
 All required `.csv` results are stored in `results/recomputed_results`.
 
 ---
@@ -506,7 +542,7 @@ ILP (Gurobi) on a small instance
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 ilp 40
 ```
 #### Input Format
-The input is a CSV tiling file with the following first five columns in order (additional columns after these and are ignored):
+The input is a CSV tiling file with the following first five columns in order (additional columns after these, e.g. CumulativeProb, are ignored):
 
 (1) Rank — rank of filtered tiles (integer)
 
@@ -516,16 +552,12 @@ The input is a CSV tiling file with the following first five columns in order (a
 
 (4) Dec — declination of the tile center in degrees [-90, 90]
 
-(5) Probability — probability (or likelihood/prize, double) of this tile 
+(5) Probability — probability that the TAP originated in this tile (i.e., prize)
 
 Header example:
 ```bash
 Rank,index,RA,Dec,Probability[, ...]
 ```
-
-#### Dataset Input Format
-
-<span style="color:red">Daisy to add this</span>
 
 #### Output
 
@@ -534,6 +566,55 @@ The result will be printed to stdout:
 - Number of nodes
 - Sum probability (FoM)
 - Wall-clock runtime (seconds)
+
+
+### 4.2 Modify Dwell Times
+
+For now, the dwell time calculation, based on air mass as described in Section IX of our paper, is hard-coded. To modify this, you will need to modify `src/ReadData.cpp` then re-build.
+
+#### 4.2.1 Modify reference time
+
+All dwell times use 1 second as a normalized baseline; this is then scaled according to the air mass corresponding to the telescope's pointing direction.
+
+```cpp
+src/ReadData.cpp:
+
+ 190 | double dwelltime_ref = 1.0;
+ ```
+
+ #### 4.2.2 Modify scaling function
+ 
+ The air mass is computed in the function `computeAirMass`, which is then used to compute the relative scaling of the irradiance in `computeScalingFactor`, and then applied to the dwell time in `computeDwellTime`.
+ 
+ ```cpp
+ src/ReadData.cpp:
+
+199 | double airMass = computeAirMass(zenithAngle);
+200 | double scalingFactor = computeScalingFactor(airMass);
+201 | dwell_times[i] = computeDwellTime(dwelltime_ref, scalingFactor);
+```
+
+All of these functions are present in `src/ReadData.cpp` and can be modified as needed. For example, if you want to use a constant dwell time for each tile, you could simply modify as:
+
+ ```cpp
+ src/ReadData.cpp:
+
+200 | double dwell_time = 100;
+201 | dwell_times[i] = dwell_time;
+```
+
+#### 4.2.3 Rebuild
+
+
+- **Inside the container**
+```bash
+cd build
+make -j
+```
+
+- **Locally**
+Follow the steps under **1.3.3 C++ Environment Setup** above.
+
 
 ### 4.2 Add Your Algorithm
 All algorithms share the following interface:
@@ -560,9 +641,6 @@ cd build && make -j
 ```
 
 
-### 4.3 Modify Dwell Time
-
-<span style="color:red">Marion to add this </span>
 
 ### 4.3 Create  Tilings for Different Telescopes
 

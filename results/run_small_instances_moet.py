@@ -1,3 +1,5 @@
+run_all = True
+
 import os
 import subprocess
 import pandas as pd
@@ -22,23 +24,37 @@ if __name__ == "__main__":
     EXECUTABLE = "../build/ts"
     data_path = "../data"
 
-    skymaps = [
-        "GW200208_222617_7dt",
-        "GW200216_220804_7dt",
-        "GW200220_124850_7dt",
-        "GW191113_071753_7dt",
-        "GW200306_093714_7dt"
-    ]
+    skymaps = []
+    if run_all:
+        skymaps = [
+            "GW200208_222617_7dt",
+            "GW200216_220804_7dt",
+            "GW200220_124850_7dt",
+            "GW191113_071753_7dt",
+            "GW200306_093714_7dt"
+        ]
+    else:
+        skymaps = [
+            "GW200208_222617_7dt",
+            "GW200216_220804_7dt",
+        ]
+
 
     output_dir = os.path.join("..", "results", "recomputed_results", "instances_with_moet")
     os.makedirs(output_dir, exist_ok=True)
     default_name = os.path.join(output_dir, "out.csv")
 
-    budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    budgets = []
+    if run_all:
+        budgets = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+    else:
+        budgets = [10,100]
 
     # run each map each budget case for 5 time to compute moet
 
-    run_times = 5
+    run_times = 1
+    if run_all:
+        run_times  = 5
     print("*******************************************************************")
     print(f"Estimating MOET across {run_times} runs for each skymap and budget")
     print("*******************************************************************")

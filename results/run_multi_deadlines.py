@@ -1,3 +1,5 @@
+run_all = True
+
 import subprocess
 import os
 import sys
@@ -29,6 +31,18 @@ if __name__ == "__main__":
 
     default_name1 = os.path.join(output_dir, "out.csv")
     default_name2 = os.path.join(output_dir, "out2.csv")
+
+    skymaps = []
+    if run_all:
+        for filename in os.listdir(folder_path):
+            if filename.endswith(".csv"):
+                skymap = os.path.splitext(filename)[0]
+                skymaps.append(skymap)
+    else:
+        skymaps = [
+            "filtered_GW200322 091133_7dt.csv",
+            "filtered_GW200216 220804_7dt.csv",
+        ]
 
     skymaps = getFiles(data_path)
 

@@ -1,0 +1,4 @@
+python3 run_small_instances.py
+python3 run_large_instances.py
+python3 run_small_instances_moet.py
+python3 run_multi_deadlines.py
