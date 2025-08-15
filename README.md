@@ -4,7 +4,7 @@ This repository contains the source code, datasets, and analysis tools supportin
 ## System Requirements
 
 - OS: Linux (some instructions are Ubuntu-specific)
-- CPU: Minimum dual-core, 8+ cores preferred
+- CPU: Minimum 2-core, 8+ cores preferred (24 cores used in paper)
 - RAM: 
 - Required Storage: **Total: 4GB**
   - Repo: 150MB
@@ -12,6 +12,10 @@ This repository contains the source code, datasets, and analysis tools supportin
 - Optional Storage:
   - Docker: 500MB
   - Docker Container: 3.8
+
+
+<span style="color:red">Daisy to check RAM usage</span>
+<span style="color:red">Marion to compute file sizes of components</span>
 
 
 ## Overview
@@ -74,6 +78,10 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 
 
 ```
+
+
+<span style="color:red">Daisy to clean structure based on deduplicated notebooks</span>
+
 ## 1 Environment Setup
 You can run the artifact via **Docker (recommended)** or a **Local Setup**. A Gurobi license is needed only to run ILP-based experiments.
 ### 1.1 (Preliminary, Optional) Obtaining a Gurobi License
@@ -185,6 +193,9 @@ conda activate rtss25-telescope-search
 ---
 #### 1.3.3 C++ Environment Setup
 
+
+<span style="color:red">Daisy to explain two binaries produced</span>
+
 **(1) Gurobi Optimizer (Required)**
 
 The Gurobi Optimizer is used to solve our ILP approach to the orienteering problem.
@@ -249,7 +260,7 @@ This produces two binaries in build/. The only difference between them is the ma
 --- 
 
 ## 2 Reproducing Paper Figures
-you can visualize the result via Jupyter notebook either via **container** or **locally**.
+You can visualize the result via Jupyter notebook either via **container** or **locally**.
 ### 2.1 Run Jupyter notebook via Docker Container
 ```bash
 docker run --rm -it -p 8888:8888 \
@@ -262,7 +273,7 @@ docker run --rm -it -p 8888:8888 \
       --allow-root'
 ```
 
-and then open http://localhost:8888 in a browser and natigate to **results/visualize_results.ipynb** in sidebar.
+and then open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb** in sidebar.
 
 ### 2.2 Run Jupyter notebook Locally
 
@@ -295,7 +306,7 @@ If you have a Gurobi license on your local machine, mount the license into the c
 
 **License Note**: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.
 
-<span style="color:red">Cannot mount ~/gurobi.lic! Modify command</span>
+<span style="color:red">Marion to fix: Cannot mount ~/gurobi.lic! Modify command</span>
 
 ```bash
 sudo docker run --rm -it -v "~/gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
@@ -364,11 +375,17 @@ Files in `data/small` and `data/large` will be overwritten.
 
 
 ### 3.3 Rerun all Experiments
+
 Each Python script corresponds to a different experiment setting. 
 If you do not have a Gurobi license, you can still run experiments 3.3.2, 3.3.3, and 3.3.4, which do not rely on ILP solvers.
 
 
 <span style="color:red">Specify to run from results directory</span>
+
+
+<span style="color:red">Marion to recompute times</span>
+
+<span style="color:red">Marion to add a warning about long running times + explain how the scripts are equivalent with different data sources + explain how to modify the script if you want to run on a smaller sample size</span>
 
 #### 3.3.1 Small Instances (~ 3 hours)
 ```bash
@@ -384,6 +401,8 @@ python3 run_large_instances.py
 Results will be saved to `results/recompute_results/large`.
 
 #### 3.3.3 Small Instances with MOET (~ 40 minutes)
+
+<span style="color:red">Daisy to add script and explain how to compute MOETs</span>
 
 ```bash
 python3 run_small_instances_moet.py
@@ -467,7 +486,7 @@ cd build
 
 \<alg>: one of greedy | genetic | gcp | ilp.
 
-\[slew_rate] (optional): slew time per angular distance unit (default 50 degree per second).
+\[slew_rate] (optional): slew rate in degrees per unit time (default 50 degrees per second).
 
 
 #### Examples
@@ -508,7 +527,11 @@ Header example:
 Rank,index,RA,Dec,Probability[, ...]
 ```
 
-##### Output
+#### Dataset Input Format
+
+<span style="color:red">Daisy to add this</span>
+
+#### Output
 
 The result will be printed to stdout:
 - Path (node sequence)
@@ -541,3 +564,11 @@ cd build && make -j
 ```
 
 
+### 4.3 Modify Dwell Time
+
+<span style="color:red">Marion to add this </span>
+
+### 4.3 Create  Tilings for Different Telescopes
+
+
+<span style="color:red">Marion to add this </span>
