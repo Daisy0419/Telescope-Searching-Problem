@@ -418,7 +418,7 @@ python3 run_small_instances.py
 ```
 Results will be saved to `results/recompute_results/small`.
 
-If `run_all = False` then only two small instances, with deadlines 10 and 90, will be run.
+If `run_all = False` then only two small instances, with deadlines 10 and 90, will be run. **(< 1 minute)**
 
 #### 3.3.2 Large Instances (~ 30 minutes)
 
@@ -427,7 +427,7 @@ python3 run_large_instances.py
 ```
 Results will be saved to `results/recomputed_results/large`.
 
-If `run_all = False` then only two large instances, with deadlines 10, 100, and 1000, will be run.
+If `run_all = False` then only two large instances, with deadlines 10, 100, and 1000, will be run. **(~ 1 minute)**
 
 #### 3.3.3 Small Instances with MOET (~ 40 minutes)
 
@@ -461,7 +461,7 @@ adjusted_budget = max(0, original_budget - MOET(Skymap, Method, original_budget)
 It then runs the instances again with these adjusted budgets and saves the results to
 `results/recomputed_results/instances_with_moet/result_with_moet/out_<skymap>.csv`
 
-If `run_all = False` then only two small instances, with deadlines 10 and 100, will be run. The MOET will only be computed across a single run of each.
+If `run_all = False` then only two small instances, with deadlines 10 and 100, will be run. The MOET will only be computed across a single run of each. **(~ 1 minute)**
 
 
 #### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
@@ -471,7 +471,7 @@ python3 run_multi_deadlines.py
 ```
 Results will be saved to `results/recompute_results/multi_deadlines`.
 
-If `run_all = False` then only two large instances will be run.
+If `run_all = False` then only two large instances will be run. **(~ 1 minute)**
 
 ---
 

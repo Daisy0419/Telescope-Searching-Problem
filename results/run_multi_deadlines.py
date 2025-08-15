@@ -15,13 +15,6 @@ def run(dataset, dataset_idx, num_datasets, run_case=4):
         print(f"Error message: {e.stderr}")
         sys.exit(1)
 
-def getFiles(folder_path):
-    return [
-        os.path.splitext(f)[0]
-        for f in os.listdir(folder_path)
-        if f.endswith(".csv")
-    ]
-
 if __name__ == "__main__":
     EXECUTABLE = "../build/ts"
     data_path = "../data/large"
@@ -40,11 +33,9 @@ if __name__ == "__main__":
                 skymaps.append(skymap)
     else:
         skymaps = [
-            "filtered_GW200322 091133_7dt.csv",
-            "filtered_GW200216 220804_7dt.csv",
+            "filtered_GW200322_091133_7dt_separate",
+            "filtered_GW200216_220804_7dt",
         ]
-
-    skymaps = getFiles(data_path)
 
     for i, skymap in enumerate(skymaps):
         dataset = os.path.join(data_path, f"{skymap}.csv")

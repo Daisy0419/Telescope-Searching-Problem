@@ -28,8 +28,8 @@ def getFiles(folder_path):
                 skymaps.append(skymap)
     else:
         skymaps = [
-            "filtered_GW191103_012549_7dt.csv",
-            "filtered_GW191109_010717_7dt.csv"
+            "filtered_GW191103_012549_7dt",
+            "filtered_GW191109_010717_7dt"
         ]
     return skymaps
 
