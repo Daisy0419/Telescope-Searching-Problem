@@ -335,6 +335,8 @@ All commands in this step are run from the `sky_tiling` directory.
 cd ~/Telescope-Search-Problem/sky_tiling
 ```
 
+Note that much of the tiling code is modified from the Python 2.7 project at https://github.com/shaonghosh/sky_tiling
+
 #### 3.2.1 Precompute FoV Projections (~ 10 minutes)
 
 Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.
@@ -379,7 +381,7 @@ they will be overwritten by this script.
 
 #### 3.2.4 Generate Tiles (~ 15 seconds)
 
-Intersection of flattened HEALPix maps and precomputed tilings are intersected
+The flattened HEALPix maps and precomputed tilings are intersected
 to produce the tiles, with probabilities, that serve as the inputs to the search problem.
 
 ```bash
@@ -684,5 +686,26 @@ python setup.py --telescope "YourTelescopeName" --fov 30
 New files will be produced in `sky_tiling/tile_center_files` and `sky_tiling/tile_pixel_maps`.
 
 
-#### 4.3.3 Generate tiles from HealPIX maps
+#### 4.3.3 Generate tiles from HealPIX map
 
+A flattened HEALPix map and precomputed tilings are intersected
+to produce the tiles, with probabilities, that serve as the inputs to the search problem.
+
+1. Modify the first 4 lines of `produce_single_tiling.py`:
+
+```python
+name = "GW200216_220804" # Name of the GW event for which you would like to make tiles
+telescope = "7dt" # Replace this with the name you selected for the telescope
+confidence_interval = 0.99 # Only include tiles with cumulative probability covering this value
+max_rows = None # Maximum number of tiles to include, None means no limit
+
+```
+
+2. Run the script:
+
+```bash
+conda activate rtss25-sky-tiling
+python produce_single_tiling.py
+```
+
+The tiling will be generated as `data/custom/{name}_{telescope}.csv`.
