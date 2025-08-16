@@ -54,7 +54,7 @@ int main(int argc, char** argv) {
         case 4: {
             out_file  = "../results/recomputed_results/multi_deadlines/out.csv";
             out_file2 = "../results/recomputed_results/multi_deadlines/out2.csv";
-            std::vector<double> budgets = {50, 100, 200, 300, 400, 500, 600, 700};
+            std::vector<double> budgets = {100, 200, 500};
             run_multi_deadlines(file, out_file, out_file2, budgets, slew_rate, is_deepslow);
             break;
         }
