@@ -1,7 +1,7 @@
 # Artifact for RTSS 2025
 This repository contains the source code, datasets, and analysis tools supporting the paper *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."*
 
-It is available at https://github.com/Daisy0419/Telescope-Searching-Problem/tree/event-timing
+It is available at https://github.com/Daisy0419/Telescope-Searching-Problem/tree/rtss2025_artifact
 
 ## System Requirements
 
