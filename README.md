@@ -258,7 +258,7 @@ make -j
 ```
 
 This produces two binaries in `build/`. The only difference between them is the `main` function:
-- **ts** — built from `src/main.cpp`. Entry point for batch experiments used in the paper, invoked by the Python scripts in `r`esults/`.
+- **ts** — built from `src/main.cpp`. Entry point for batch experiments used in the paper, invoked by the Python scripts in `results/`.
 - **op** — built from `src/main_custom.cpp`. Entry point for single-case runs, one algorithm on one (skymap, budget, slewrate) instance.
 
 --- 
@@ -541,12 +541,12 @@ cd build
 
 
 #### Examples
-Greedy on a small instance, budget = 50 (degree/second), default slew_rate
+Greedy on a small instance, budget = 50, default slew_rate = 50 (degree/second)
 ```bash
 ./op ../data/small/filtered_GW191105_143521_7dt_separate.csv 50 greedy
 ```
 
-Genetic on a large instance with a larger budget and custom slew_rate
+Genetic on a large instance with a larger budget = 500 and custom slew_rate = 30 (degree/second)
 ```bash
 ./op ../data/large/filtered_GW191103_012549_7dt.csv 500 genetic 30
 ```
