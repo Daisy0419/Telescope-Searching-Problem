@@ -1,7 +1,67 @@
-# Artifact for RTSS 2025
-This repository contains the source code, datasets, and analysis tools supporting the paper *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."*
+# Artifact for RTSS 2025: Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena.
+
+This repository contains the source code, datasets, and analysis tools supporting the RTSS 2025 paper, *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."*
 
 It is available at https://github.com/Daisy0419/Telescope-Searching-Problem/tree/rtss2025_artifact
+
+## Table of Contents
+
+- [Artifact for RTSS 2025: Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena.](#artifact-for-rtss-2025-probabilistic-response-time-aware-search-for-transient-astrophysical-phenomena)
+  - [Table of Contents](#table-of-contents)
+  - [System Requirements](#system-requirements)
+  - [Overview](#overview)
+    - [Included Components](#included-components)
+  - [Directory Structure](#directory-structure)
+  - [1 Environment Setup](#1-environment-setup)
+    - [1.1 (Preliminary, Optional) Obtaining a Gurobi License](#11-preliminary-optional-obtaining-a-gurobi-license)
+    - [1.2 (Option A, Preferred) Using the Provided Docker Container](#12-option-a-preferred-using-the-provided-docker-container)
+      - [1.2.1 Install Docker](#121-install-docker)
+      - [1.2.2 Pull the Docker Image](#122-pull-the-docker-image)
+    - [1.3 (Option B) Local Installation](#13-option-b-local-installation)
+      - [1.3.1 Clone Repository](#131-clone-repository)
+      - [1.3.2 Python Environment Setup](#132-python-environment-setup)
+      - [1.3.3 C++ Environment Setup](#133-c-environment-setup)
+      - [(2) LEMON Graph Library (Required)](#2-lemon-graph-library-required)
+  - [2 Reproducing Paper Figures](#2-reproducing-paper-figures)
+    - [2.1 Run Jupyter Notebook via Docker Container](#21-run-jupyter-notebook-via-docker-container)
+    - [2.2 Run Jupyter notebook Locally](#22-run-jupyter-notebook-locally)
+    - [2.3 Reproducing Results in the Jupyter Notebook](#23-reproducing-results-in-the-jupyter-notebook)
+  - [3 Running Full Experiments](#3-running-full-experiments)
+    - [3.1 Set Up the Run Environment](#31-set-up-the-run-environment)
+      - [3.1.1 Run Experiment in a Docker Container](#311-run-experiment-in-a-docker-container)
+      - [3.1.2 Run Experiment Locally](#312-run-experiment-locally)
+    - [3.2 Regenerate Sky Tilings (Data Preparation, Optional)](#32-regenerate-sky-tilings-data-preparation-optional)
+      - [3.2.1 Precompute FoV Projections (~ 10 minutes)](#321-precompute-fov-projections--10-minutes)
+      - [3.2.2 Flatten HealPix (~ 10 seconds)](#322-flatten-healpix--10-seconds)
+      - [3.2.3 Visualize HealPix (~ 15 seconds)](#323-visualize-healpix--15-seconds)
+      - [3.2.4 Generate Tiles (~ 15 seconds)](#324-generate-tiles--15-seconds)
+    - [3.3 Rerun all Experiments](#33-rerun-all-experiments)
+      - [Running Time](#running-time)
+      - [3.3.1 Small Instances (~ 2 hours)](#331-small-instances--2-hours)
+      - [3.3.2 Large Instances (~ 3 hours)](#332-large-instances--3-hours)
+      - [3.3.3 Small Instances with MOET (~ 40 minutes)](#333-small-instances-with-moet--40-minutes)
+      - [3.3.4 Multi-Deadline Large Instances (~ 1 minute)](#334-multi-deadline-large-instances--1-minute)
+    - [3.4. Visualizing the Results](#34-visualizing-the-results)
+  - [4 Extensibility of Experiments](#4-extensibility-of-experiments)
+    - [4.1 Running a Single Algorithm with Designated Tiling, Speed, and Time Budget](#41-running-a-single-algorithm-with-designated-tiling-speed-and-time-budget)
+      - [Usage](#usage)
+      - [Arguments](#arguments)
+      - [Examples](#examples)
+      - [Input Format](#input-format)
+      - [Output](#output)
+    - [4.2 Modify Dwell Times](#42-modify-dwell-times)
+      - [4.2.1 Modify reference time](#421-modify-reference-time)
+      - [4.2.2 Modify scaling function](#422-modify-scaling-function)
+      - [4.2.3 Rebuild](#423-rebuild)
+    - [4.3 Add Custom Algorithm](#43-add-custom-algorithm)
+      - [4.3.1 Write Your Algorithm](#431-write-your-algorithm)
+      - [4.3.2 Call Your Algorithm](#432-call-your-algorithm)
+      - [4.3.3 Rebuild](#433-rebuild)
+    - [4.4 Create Tilings for Different Telescope FoVs](#44-create-tilings-for-different-telescope-fovs)
+      - [4.4.1 Enter directory and activate conda environment](#441-enter-directory-and-activate-conda-environment)
+      - [4.4.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere](#442-precompute-tile-boundaries-by-projecting-telescopes-fov-onto-unit-sphere)
+      - [4.4.3 Generate tiles from HealPIX map](#443-generate-tiles-from-healpix-map)
+
 
 ## System Requirements
 
@@ -43,7 +103,8 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 
 ├── skytiling/          
 │   ├── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
-│   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
+│   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix
+|   |                                 to flat HEALPix format
 │   ├── visualize_healpix.py        # Generate images of HEALPix maps
 │   ├── produce_tilings.py          # Creates all tilings
 │   └── produce_single_tiling.py    # Generates tiling from one HEALPix map for one telescope
@@ -142,7 +203,8 @@ sudo apt-get update
 2. Install the latest Docker packages.
 
 ```bash
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+sudo apt-get install docker-ce docker-ce-cli \
+  containerd.io docker-buildx-plugin docker-compose-plugin
 ```
 
 #### 1.2.2 Pull the Docker Image
@@ -279,7 +341,7 @@ sudo docker run --rm -it -p 8888:8888 \
       --allow-root'
 ```
 
-and then open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb** in sidebar.
+Then open http://localhost:8888 and navigate to **results/visualize_results.ipynb** in the sidebar.
 
 ### 2.2 Run Jupyter notebook Locally
 
@@ -315,7 +377,8 @@ If you have a Gurobi license on your local machine, mount the license into the c
 
 ```bash
 cd ~
-sudo docker run  -p 8888:8888 --rm -it -v "./gurobi.lic:/licenses/gurobi.lic:ro" -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+sudo docker run  -p 8888:8888 --rm -it -v "./gurobi.lic:/licenses/gurobi.lic:ro" \
+ -e GRB_LICENSE_FILE=/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
 ```
 
 If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:
@@ -500,7 +563,8 @@ Again, you can visualize the results via Jupyter notebook either **inside the co
 - **Inside the container**
 ```bash
 conda activate rtss25-telescope-search
-jupyter notebook --ip=0.0.0.0  --port=8888 --no-browser --allow-root --IdentityProvider.token=""
+jupyter notebook --ip=0.0.0.0  --port=8888 \
+  --no-browser --allow-root --IdentityProvider.token=""
 ```
 Open http://localhost:8888 in a browser and navigate to **results/visualize_results.ipynb**.
 
@@ -666,22 +730,22 @@ Your algorithm will be called from `src/main_custom.cpp`.
 
 ```cpp
 92 | if (alg_lc == "greedy") {
-93 |     (void)run_and_report("Greedy", [&]{
-94 |         return prizeGreedyPathTwoFixed(costs, probability, eff_budget, start_idx, end_idx);
-95 |     }, costs, probability, ranks, padding);
+93 |   (void)run_and_report("Greedy", [&]{
+94 |     return prizeGreedyPathTwoFixed(costs, probability, eff_budget, start_idx, end_idx);
+95 |   }, costs, probability, ranks, padding);
 96 | }
 97 | else if (alg_lc == "genetic") {
-98 |     (void)run_and_report("Genetic", [&]{
-99 |         return genetic_optimization_st(costs, probability, eff_budget, start_idx, end_idx);
-100 |     }, costs, probability, ranks, padding);
+98 |   (void)run_and_report("Genetic", [&]{
+99 |     return genetic_optimization_st(costs, probability, eff_budget, start_idx, end_idx);
+100 |   }, costs, probability, ranks, padding);
 101 | }
       /***
       **** Your algorithm here!
       ***/
 102 | else if (alg_lc == "myalgo") {
-103 |     (void)run_and_report("MyAlgo", [&]{
-104 |         return my_algo(costs, probability, eff_budget, start_idx, end_idx);
-105 |     }, costs, probability, ranks, padding);
+103 |   (void)run_and_report("MyAlgo", [&]{
+104 |     return my_algo(costs, probability, eff_budget, start_idx, end_idx);
+105 |   }, costs, probability, ranks, padding);
 106 | }
 ```
 
@@ -741,13 +805,14 @@ New files will be produced in `sky_tiling/tile_center_files` and `sky_tiling/til
 A flattened HEALPix map and precomputed tilings are intersected
 to produce the tiles, with probabilities, that serve as the inputs to the search problem.
 
-1. Modify the first 4 lines of `produce_single_tiling.py`:
+1. Modify the first 5 lines of `produce_single_tiling.py`:
 
 ```python
 1 | name = "GW200216_220804" # Name of the GW event for which you would like to make tiles
 2 | telescope = "7dt" # Replace this with the name you selected for the telescope
-3 | confidence_interval = 0.99 # Only include tiles with cumulative probability covering this value
-4 | max_rows = None # Maximum number of tiles to include, None means no limit
+3 | confidence_interval = 0.99 # Include highest-probability tiles until
+4 |                            # cumulative probability exceeds this value
+5 | max_rows = None # Maximum number of tiles to include, None means no limit
 
 ```
 

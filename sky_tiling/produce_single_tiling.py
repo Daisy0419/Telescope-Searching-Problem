@@ -1,6 +1,7 @@
 name = "GW200216_220804" # Name of the GW event for which you would like to make tiles
 telescope = "7dt" # Replace this with the name you selected for the telescope
-confidence_interval = 0.99 # Only include tiles with cumulative probability covering this value
+confidence_interval = 0.99 # Include highest-probability tiles until
+                           # cumulative probability exceeds this value
 max_rows = None # Maximum number of tiles to include, None means no limit
 
 import numpy as np

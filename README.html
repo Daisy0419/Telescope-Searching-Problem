@@ -1,0 +1,642 @@
+<!DOCTYPE html><html><head>
+      <title>README</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:////home/msudvarg/.vscode-server/extensions/shd101wyy.markdown-preview-enhanced-0.8.19/crossnote/dependencies/katex/katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="artifact-for-rtss-2025-probabilistic-response-time-aware-search-for-transient-astrophysical-phenomena">Artifact for RTSS 2025: Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena. </h1>
+<p>This repository contains the source code, datasets, and analysis tools supporting the RTSS 2025 paper, <em>"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."</em></p>
+<p>It is available at <a href="https://github.com/Daisy0419/Telescope-Searching-Problem/tree/rtss2025_artifact">https://github.com/Daisy0419/Telescope-Searching-Problem/tree/rtss2025_artifact</a></p>
+<h2 id="table-of-contents">Table of Contents </h2>
+<ul>
+<li><a href="#artifact-for-rtss-2025-probabilistic-response-time-aware-search-for-transient-astrophysical-phenomena">Artifact for RTSS 2025: Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena.</a>
+<ul>
+<li><a href="#table-of-contents">Table of Contents</a></li>
+<li><a href="#system-requirements">System Requirements</a></li>
+<li><a href="#overview">Overview</a>
+<ul>
+<li><a href="#included-components">Included Components</a></li>
+</ul>
+</li>
+<li><a href="#directory-structure">Directory Structure</a></li>
+<li><a href="#1-environment-setup">1 Environment Setup</a>
+<ul>
+<li><a href="#11-preliminary-optional-obtaining-a-gurobi-license">1.1 (Preliminary, Optional) Obtaining a Gurobi License</a></li>
+<li><a href="#12-option-a-preferred-using-the-provided-docker-container">1.2 (Option A, Preferred) Using the Provided Docker Container</a>
+<ul>
+<li><a href="#121-install-docker">1.2.1 Install Docker</a></li>
+<li><a href="#122-pull-the-docker-image">1.2.2 Pull the Docker Image</a></li>
+</ul>
+</li>
+<li><a href="#13-option-b-local-installation">1.3 (Option B) Local Installation</a>
+<ul>
+<li><a href="#131-clone-repository">1.3.1 Clone Repository</a></li>
+<li><a href="#132-python-environment-setup">1.3.2 Python Environment Setup</a></li>
+<li><a href="#133-c-environment-setup">1.3.3 C++ Environment Setup</a></li>
+<li><a href="#2-lemon-graph-library-required">(2) LEMON Graph Library (Required)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#2-reproducing-paper-figures">2 Reproducing Paper Figures</a>
+<ul>
+<li><a href="#21-run-jupyter-notebook-via-docker-container">2.1 Run Jupyter Notebook via Docker Container</a></li>
+<li><a href="#22-run-jupyter-notebook-locally">2.2 Run Jupyter notebook Locally</a></li>
+<li><a href="#23-reproducing-results-in-the-jupyter-notebook">2.3 Reproducing Results in the Jupyter Notebook</a></li>
+</ul>
+</li>
+<li><a href="#3-running-full-experiments">3 Running Full Experiments</a>
+<ul>
+<li><a href="#31-set-up-the-run-environment">3.1 Set Up the Run Environment</a>
+<ul>
+<li><a href="#311-run-experiment-in-a-docker-container">3.1.1 Run Experiment in a Docker Container</a></li>
+<li><a href="#312-run-experiment-locally">3.1.2 Run Experiment Locally</a></li>
+</ul>
+</li>
+<li><a href="#32-regenerate-sky-tilings-data-preparation-optional">3.2 Regenerate Sky Tilings (Data Preparation, Optional)</a>
+<ul>
+<li><a href="#321-precompute-fov-projections--10-minutes">3.2.1 Precompute FoV Projections (~ 10 minutes)</a></li>
+<li><a href="#322-flatten-healpix--10-seconds">3.2.2 Flatten HealPix (~ 10 seconds)</a></li>
+<li><a href="#323-visualize-healpix--15-seconds">3.2.3 Visualize HealPix (~ 15 seconds)</a></li>
+<li><a href="#324-generate-tiles--15-seconds">3.2.4 Generate Tiles (~ 15 seconds)</a></li>
+</ul>
+</li>
+<li><a href="#33-rerun-all-experiments">3.3 Rerun all Experiments</a>
+<ul>
+<li><a href="#running-time">Running Time</a></li>
+<li><a href="#331-small-instances--2-hours">3.3.1 Small Instances (~ 2 hours)</a></li>
+<li><a href="#332-large-instances--3-hours">3.3.2 Large Instances (~ 3 hours)</a></li>
+<li><a href="#333-small-instances-with-moet--40-minutes">3.3.3 Small Instances with MOET (~ 40 minutes)</a></li>
+<li><a href="#334-multi-deadline-large-instances--1-minute">3.3.4 Multi-Deadline Large Instances (~ 1 minute)</a></li>
+</ul>
+</li>
+<li><a href="#34-visualizing-the-results">3.4. Visualizing the Results</a></li>
+</ul>
+</li>
+<li><a href="#4-extensibility-of-experiments">4 Extensibility of Experiments</a>
+<ul>
+<li><a href="#41-running-a-single-algorithm-with-designated-tiling-speed-and-time-budget">4.1 Running a Single Algorithm with Designated Tiling, Speed, and Time Budget</a>
+<ul>
+<li><a href="#usage">Usage</a></li>
+<li><a href="#arguments">Arguments</a></li>
+<li><a href="#examples">Examples</a></li>
+<li><a href="#input-format">Input Format</a></li>
+<li><a href="#output">Output</a></li>
+</ul>
+</li>
+<li><a href="#42-modify-dwell-times">4.2 Modify Dwell Times</a>
+<ul>
+<li><a href="#421-modify-reference-time">4.2.1 Modify reference time</a></li>
+<li><a href="#422-modify-scaling-function">4.2.2 Modify scaling function</a></li>
+<li><a href="#423-rebuild">4.2.3 Rebuild</a></li>
+</ul>
+</li>
+<li><a href="#43-add-custom-algorithm">4.3 Add Custom Algorithm</a>
+<ul>
+<li><a href="#431-write-your-algorithm">4.3.1 Write Your Algorithm</a></li>
+<li><a href="#432-call-your-algorithm">4.3.2 Call Your Algorithm</a></li>
+<li><a href="#433-rebuild">4.3.3 Rebuild</a></li>
+</ul>
+</li>
+<li><a href="#44-create-tilings-for-different-telescope-fovs">4.4 Create Tilings for Different Telescope FoVs</a>
+<ul>
+<li><a href="#441-enter-directory-and-activate-conda-environment">4.4.1 Enter directory and activate conda environment</a></li>
+<li><a href="#442-precompute-tile-boundaries-by-projecting-telescopes-fov-onto-unit-sphere">4.4.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere</a></li>
+<li><a href="#443-generate-tiles-from-healpix-map">4.4.3 Generate tiles from HealPIX map</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="system-requirements">System Requirements </h2>
+<ul>
+<li>OS: Linux (some instructions are Ubuntu-specific)</li>
+<li>CPU: Minimum 2 cores, <strong>8+ cores preferred</strong> (24 physical/48 logical cores used in paper)</li>
+<li>RAM: <strong>8GB</strong></li>
+<li>Required Storage, Option A, Docker Container: <strong>Total: 5.6GB</strong>
+<ul>
+<li>Docker package install: 500MB</li>
+<li>Docker container: 5.1GB</li>
+</ul>
+</li>
+<li>Required Storage, Option B, Local Install: <strong>Total: 4.1GB</strong>
+<ul>
+<li>Repo: 200MB</li>
+<li>Miniconda: 800MB</li>
+<li>Conda environments: 2.8GB</li>
+<li>Gurobi: 200MB</li>
+<li>LEMON: 70MB</li>
+</ul>
+</li>
+</ul>
+<h2 id="overview">Overview </h2>
+<p>This artifact addresses the problem of scheduling follow-up observations of astrophysical transients under real-time constraints. The task is to select and order sky tiles for telescope observations to maximize the expected figure of merit (FoM) associated with successful detection of an afterglow within one or more hard deadlines and given dwell-time and slew-time constraints.</p>
+<h3 id="included-components">Included Components </h3>
+<ul>
+<li>C++ implementations of all algorithms: GCP, ILP, Genetic, Greedy</li>
+<li>Precomputed results in CSV format for:
+<ul>
+<li>Small and large problem instances under a single deadline</li>
+<li>Small problem instances incorporating maximum-observed execution time (MOET)</li>
+<li>Large problem instances under multi-deadline settings</li>
+</ul>
+</li>
+<li>A Jupyter notebook to reproduce plots and figures from the paper</li>
+<li>Long-running Python scripts to recompute results from scratch</li>
+</ul>
+<h2 id="directory-structure">Directory Structure </h2>
+<pre data-role="codeBlock" data-info="" class="language-text"><code>.
+├── include/                         # C++ header files
+├── src/                             # C++ source implementations
+├── CMakeLists.txt                   # CMake build configuration
+
+├── skytiling/          
+│   ├── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
+│   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix
+|   |                                 to flat HEALPix format
+│   ├── visualize_healpix.py        # Generate images of HEALPix maps
+│   ├── produce_tilings.py          # Creates all tilings
+│   └── produce_single_tiling.py    # Generates tiling from one HEALPix map for one telescope
+
+├── data/                         # Tiling CSV files for small-scale sky maps
+│   ├── small/                    # Tiling CSV files for small-scale sky maps 
+│   ├── large/                    # Tiling CSV files for large-scale sky maps 
+│   ├── large_moet/               # Subset of large-scale maps used in MOET-aware experiments
+│   ├── ligo_healpix/             # HEALPix likelihood maps from LIGO
+│   ├── ligo_healpix_flattened/   # Flattened HEALPix maps
+│   ├── ligo_healpix_images/      # Image (.png) representations of the HEALPix maps
+│   └── moet/                     # Maximum-observed execution time measurements
+
+├── results/
+│
+│   ├── figures/                   # Figures 7–10 in paper
+|
+│   ├── precomputed_results/       # Precomputed outputs used in the paper
+│   │   ├── small/                 # FoM results for small instances
+│   │   ├── large/                 # FoM results for large instances
+│   │   ├── small_with_moet/       # MOET-aware FoM for small instances
+│   │   └── multi_deadline/        # Multi-deadline scenario results
+│
+│   ├── recomputed_results/        # Outputs from re-running experiments
+│   │   ├── small/      
+│   │   ├── large/                            
+│   │   ├── small_with_moet/       
+│   │   └── multi_deadline/        
+│
+│   ├── visualize_results.ipynb        # Notebook for Figures 7–10 in paper
+│   ├── run_small_instances.py         # Batch run script for small instances
+│   ├── run_large_instances.py         # Batch run script for large instances
+│   ├── run_small_instances_moet.py    # Batch run script (MOET-aware)
+│   ├── run_multi_deadline.py          # Batch run script for multi-deadline setup
+│   └── run_all.sh                     # Runs all four scripts sequentially
+
+├── rtss25-sky-tiling.yml               # Python dependencies for tiling code
+├── rtss25-telescope-search.yml         # Python dependencies
+└── README.md
+
+
+</code></pre><h2 id="1-environment-setup">1 Environment Setup </h2>
+<p>You can run the artifact via <strong>Docker (recommended)</strong> or a <strong>Local Setup</strong>. A Gurobi license is needed only to run ILP-based experiments.</p>
+<h3 id="11-preliminary-optional-obtaining-a-gurobi-license">1.1 (Preliminary, Optional) Obtaining a Gurobi License </h3>
+<p>Our algorithms include an ILP implementation of the orienteering problem, which is solved using the commercially-available Gurobi Optimizer.</p>
+<p>Gurobi requires a license (<code>gurobi.lic</code>) to run.</p>
+<ul>
+<li>Refer to: <a href="https://support.gurobi.com/hc/en-us/articles/12872879801105">How to Retrieve and Set Up a Gurobi License</a></li>
+<li><strong>Note:</strong> If you do not have a Gurobi license, you can still run experiments 3.2, 3.3, and 3.4 below, which do not invoke the ILP solver.</li>
+</ul>
+<p>If you are an academic user, Gurobi provides <strong>free academic licenses</strong>:</p>
+<ul>
+<li><a href="https://www.gurobi.com/academia/academic-program-and-licenses/">Free Academic License</a></li>
+<li><strong>Note</strong>: If you're using an academic license and intend to run the experiments using our provided Docker container, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.</li>
+</ul>
+<p>To obtain an academic license:</p>
+<ol>
+<li>Navigate to the Gurobi portal. <a href="https://portal.gurobi.com/">https://portal.gurobi.com/</a></li>
+<li>Login or register to create a free Gurobi account using your academic email address.</li>
+<li>Navigate to Gurobi's academic license request page. <a href="https://portal.gurobi.com/iam/licenses/request/?type=academic">https://portal.gurobi.com/iam/licenses/request/?type=academic</a></li>
+<li>Under "WLS Academic," click, "Generate Now!"</li>
+<li>Download the generated <code>gurobi.lic</code> file.</li>
+<li>Move or copy the file to the path of your choice. All commands listed hereafter assume it is in <code>~/gurobi.lic</code>.</li>
+</ol>
+<h3 id="12-option-a-preferred-using-the-provided-docker-container">1.2 (Option A, Preferred) Using the Provided Docker Container </h3>
+<h4 id="121-install-docker">1.2.1 Install Docker </h4>
+<p>You may install Docker according to <a href="https://docs.docker.com/engine/install/">these instructions</a>. Here, we include the instructions for Ubuntu distributions:</p>
+<ol>
+<li>Set up Docker's <code>apt</code> repository:</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token comment"># Add Docker's official GPG key:</span>
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> ca-certificates <span class="token function">curl</span>
+<span class="token function">sudo</span> <span class="token function">install</span> <span class="token parameter variable">-m</span> 0755 <span class="token parameter variable">-d</span> /etc/apt/keyrings
+<span class="token function">sudo</span> <span class="token function">curl</span> <span class="token parameter variable">-fsSL</span> https://download.docker.com/linux/ubuntu/gpg <span class="token parameter variable">-o</span> /etc/apt/keyrings/docker.asc
+<span class="token function">sudo</span> <span class="token function">chmod</span> a+r /etc/apt/keyrings/docker.asc
+
+<span class="token comment"># Add the repository to Apt sources:</span>
+<span class="token builtin class-name">echo</span> <span class="token punctuation">\</span>
+  <span class="token string">"deb [arch=<span class="token variable"><span class="token variable">$(</span>dpkg --print-architecture<span class="token variable">)</span></span> signed-by=/etc/apt/keyrings/docker.asc] \
+  https://download.docker.com/linux/ubuntu \
+  <span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">.</span> /etc/os-release <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">echo</span> <span class="token string">"<span class="token variable">${UBUNTU_CODENAME<span class="token operator">:-</span>$VERSION_CODENAME}</span>"</span><span class="token variable">)</span></span> stable"</span> <span class="token operator">|</span> <span class="token punctuation">\</span>
+  <span class="token function">sudo</span> <span class="token function">tee</span> /etc/apt/sources.list.d/docker.list <span class="token operator">&gt;</span> /dev/null
+<span class="token function">sudo</span> <span class="token function">apt-get</span> update
+</code></pre><ol start="2">
+<li>Install the latest Docker packages.</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> docker-ce docker-ce-cli <span class="token punctuation">\</span>
+  containerd.io docker-buildx-plugin docker-compose-plugin
+</code></pre><h4 id="122-pull-the-docker-image">1.2.2 Pull the Docker Image </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">sudo</span> <span class="token function">docker</span> pull ghcr.io/daisy0419/rtss25-op-solver:1.0
+</code></pre><p>All dependencies are pre-installed, and project binaries are precompiled in the image. You can jump to Reproducing Paper Figures or Running Full Experiments.</p>
+<h3 id="13-option-b-local-installation">1.3 (Option B) Local Installation </h3>
+<h4 id="131-clone-repository">1.3.1 Clone Repository </h4>
+<p>Clone the repository to the path of your choice. All commands listed hereafter assume it is placed directly into your home directory.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~
+<span class="token function">git</span> clone <span class="token parameter variable">-b</span> rtss2025_artifact https://github.com/Daisy0419/Telescope-Searching-Problem/
+</code></pre><h4 id="132-python-environment-setup">1.3.2 Python Environment Setup </h4>
+<p>We recommend setting up a <a href="https://docs.conda.io/en/latest/">conda</a> environment for Python.</p>
+<p>If you do not have conda installed locally:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~/Telescope-Search-Problem
+</code></pre><p>Download and install Miniconda (change ~/conda to your preferred location)</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">CONDA_DIR</span><span class="token operator">=~</span>/conda
+<span class="token function">wget</span> <span class="token parameter variable">-q</span> https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh <span class="token parameter variable">-O</span> miniconda.sh
+<span class="token function">bash</span> miniconda.sh <span class="token parameter variable">-b</span> <span class="token parameter variable">-p</span> <span class="token string">"<span class="token variable">${CONDA_DIR}</span>"</span>
+<span class="token function">rm</span> miniconda.sh
+</code></pre><p>Make conda available in your shell</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">.</span> <span class="token string">"<span class="token variable">${CONDA_DIR}</span>/etc/profile.d/conda.sh"</span>
+conda config <span class="token parameter variable">--system</span> <span class="token parameter variable">--set</span> channel_priority flexible
+</code></pre><p>Once conda is available, create the python environments using provided yaml files:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda <span class="token function">env</span> create <span class="token parameter variable">-f</span> rtss25-sky-tiling.yml
+conda <span class="token function">env</span> create <span class="token parameter variable">-f</span> rtss25-telescope-search.yml
+</code></pre><p>Activate <strong>rtss25-sky-tiling</strong> before running tiling scripts or <strong>rtss25-telescope-search</strong> before running all other scripts:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-sky-tiling
+<span class="token comment"># or</span>
+conda activate rtss25-telescope-search
+</code></pre><hr>
+<h4 id="133-c-environment-setup">1.3.3 C++ Environment Setup </h4>
+<p><strong>(1) Gurobi Optimizer (Required)</strong></p>
+<p>The Gurobi Optimizer is used to solve our ILP approach to the orienteering problem.</p>
+<ol>
+<li>Download and extract Gurobi to the directory of your choice. All commands listed hereafter assume it is placed directly in your home directory.</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~
+<span class="token function">wget</span> https://packages.gurobi.com/12.0/gurobi12.0.3_linux64.tar.gz
+<span class="token function">tar</span> xvfz gurobi12.0.3_linux64.tar.gz
+</code></pre><ol start="2">
+<li>Set the necessary environment variables in your shell (change <code>~/gurobi1203</code> to your preferred location).</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">GUROBI_HOME</span><span class="token operator">=~</span>/gurobi1203/linux64
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GUROBI_HOME}</span>/bin:<span class="token environment constant">$PATH</span>"</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LD_LIBRARY_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GUROBI_HOME}</span>/lib:<span class="token variable">$LD_LIBRARY_PATH</span>"</span>
+</code></pre><p><strong>Note</strong>: If you don't have Gurobi license and you do not plan to run experiments involving Gurobi, you still need to install Gurobi in order to compile the project code (due to build-time linking requirements).</p>
+<h4 id="2-lemon-graph-library-required">(2) LEMON Graph Library (Required) </h4>
+<p>The Lemon Graph Library is used to compute the minimum-weight perfect matching used in our Greedy Christofides Pathfinding algorithm.</p>
+<ol>
+<li>Download, extract, and build the LEMON Graph Library to the directory of your choice. All commands listed hereafter assume it is placed directly in your home directory.</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">wget</span> http://lemon.cs.elte.hu/pub/sources/lemon-1.3.1.tar.gz
+<span class="token function">tar</span> xvfz lemon-1.3.1.tar.gz
+<span class="token builtin class-name">cd</span> lemon-1.3.1
+<span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+cmake <span class="token punctuation">..</span>
+<span class="token function">make</span> <span class="token parameter variable">-j</span>
+<span class="token function">sudo</span> <span class="token function">make</span> <span class="token function">install</span>
+</code></pre><ol start="2">
+<li>Set the necessary environment variables in your shell (change <code>~/lemon-1.3.1</code> to your preferred location).</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">LEMON_SOURCE_DIR</span><span class="token operator">=~</span>/lemon-1.3.1
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LEMON_BUILD_DIR</span><span class="token operator">=~</span>/lemon-1.3.1/build
+</code></pre><p><strong>(3) Build the C++ Executables</strong></p>
+<p>Once all dependencies are installed, you can build the C++ project with:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~/Telescope-Search-Problem
+<span class="token function">mkdir</span> build <span class="token operator">&amp;&amp;</span> <span class="token builtin class-name">cd</span> build
+cmake <span class="token punctuation">..</span>
+<span class="token function">make</span> <span class="token parameter variable">-j</span>
+</code></pre><p>This produces two binaries in <code>build/</code>. The only difference between them is the <code>main</code> function:</p>
+<ul>
+<li><strong>ts</strong> — built from <code>src/main.cpp</code>. Entry point for batch experiments used in the paper, invoked by the Python scripts in <code>results/</code>.</li>
+<li><strong>op</strong> — built from <code>src/main_custom.cpp</code>. Entry point for single-case runs, one algorithm on one (skymap, budget, slewrate) instance.</li>
+</ul>
+<hr>
+<h2 id="2-reproducing-paper-figures">2 Reproducing Paper Figures </h2>
+<p>You can visualize the results via Jupyter notebook either via <strong>container</strong> or <strong>locally</strong>.</p>
+<h3 id="21-run-jupyter-notebook-via-docker-container">2.1 Run Jupyter Notebook via Docker Container </h3>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">sudo</span> <span class="token function">docker</span> run <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">-p</span> <span class="token number">8888</span>:8888 <span class="token punctuation">\</span>
+  <span class="token parameter variable">-v</span> <span class="token string">"<span class="token environment constant">$PWD</span>:/workspace"</span> <span class="token punctuation">\</span>
+  ghcr.io/daisy0419/rtss25-op-solver:1.0 <span class="token punctuation">\</span>
+  <span class="token function">bash</span> <span class="token parameter variable">-lc</span> <span class="token string">'conda run -n rtss25-telescope-search \
+    jupyter lab --ip=0.0.0.0 --port=8888 --no-browser \
+      --IdentityProvider.token="" \
+      --ServerApp.root_dir=/workspace \
+      --allow-root'</span>
+</code></pre><p>Then open <a href="http://localhost:8888">http://localhost:8888</a> and navigate to <strong>results/visualize_results.ipynb</strong> in the sidebar.</p>
+<h3 id="22-run-jupyter-notebook-locally">2.2 Run Jupyter notebook Locally </h3>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+<span class="token builtin class-name">cd</span> ~/Telescope-Searching-Problem/results
+jupyter notebook visualize_results.ipynb
+</code></pre><h3 id="23-reproducing-results-in-the-jupyter-notebook">2.3 Reproducing Results in the Jupyter Notebook </h3>
+<p>The notebook includes:</p>
+<ul>
+<li>Average percentage deviation from ILP baseline across deadlines for small instances(Fig.7)</li>
+<li>Percentage deviation in FoM from the GCP baseline and Computation time vs Deadline presented in log-scaled plot for large instances (Fig. 8)</li>
+<li>FoM percentage deviation from GCP after accounting for MOET. for five small instances (Fig 9)</li>
+<li>Expected FoM progression over the multi deadlines (Fig. 10)</li>
+</ul>
+<p>All required <code>.csv</code> results are precomputed and stored in <code>results/precomputed_results</code>.</p>
+<p>The notebook saves figures to <code>results/figures</code>.</p>
+<hr>
+<h2 id="3-running-full-experiments">3 Running Full Experiments </h2>
+<p>To re-run the full set of experiments (~6 hours total runtime even on a machine with the recommended specs), you may either set up the environment locally or use the provided Docker container. Experiments can then be executed using the provided batch scripts.</p>
+<h3 id="31-set-up-the-run-environment">3.1 Set Up the Run Environment </h3>
+<h4 id="311-run-experiment-in-a-docker-container">3.1.1 Run Experiment in a Docker Container </h4>
+<p>If you have a Gurobi license on your local machine, mount the license into the container.</p>
+<p><strong>License Note</strong>: If you're using an academic license, be sure to request an Academic WLS License (floating license). Named-User Academic Licenses are not compatible with Docker containers.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~
+<span class="token function">sudo</span> <span class="token function">docker</span> run  <span class="token parameter variable">-p</span> <span class="token number">8888</span>:8888 <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> <span class="token parameter variable">-v</span> <span class="token string">"./gurobi.lic:/licenses/gurobi.lic:ro"</span> <span class="token punctuation">\</span>
+ <span class="token parameter variable">-e</span> <span class="token assign-left variable">GRB_LICENSE_FILE</span><span class="token operator">=</span>/licenses/gurobi.lic ghcr.io/daisy0419/rtss25-op-solver:1.0
+</code></pre><p>If you do not have a Gurobi license, you can still run experiments that do not rely on ILP-based solvers:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">sudo</span> <span class="token function">docker</span> run <span class="token parameter variable">-p</span> <span class="token number">8888</span>:8888 <span class="token parameter variable">--rm</span> <span class="token parameter variable">-it</span> ghcr.io/daisy0419/rtss25-op-solver:1.0
+</code></pre><h4 id="312-run-experiment-locally">3.1.2 Run Experiment Locally </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~/Telescope-Searching-Problem
+</code></pre><h3 id="32-regenerate-sky-tilings-data-preparation-optional">3.2 Regenerate Sky Tilings (Data Preparation, Optional) </h3>
+<p>The sky tiles used for the small and large problem instances evaluated are already stored in the <code>data/small</code> and <code>data/large</code> directories.<br>
+Optionally, you may regenerate them.<br>
+All commands in this step are run from the <code>sky_tiling</code> directory.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~/Telescope-Search-Problem/sky_tiling
+</code></pre><p>Note that much of the tiling code is modified from the Python 2.7 project at <a href="https://github.com/shaonghosh/sky_tiling">https://github.com/shaonghosh/sky_tiling</a></p>
+<h4 id="321-precompute-fov-projections--10-minutes">3.2.1 Precompute FoV Projections (~ 10 minutes) </h4>
+<p>Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-sky-tiling
+<span class="token function">bash</span> precompute_tile_maps.sh
+</code></pre><p>This step is optional.<br>
+Files already exist in <code>sky_tiling/tile_center_files</code> and <code>sky_tiling/tile_pixel_maps</code>.</p>
+<p>Recomputed files appear in those same directories, with file names containing <code>recomputed</code>.</p>
+<h4 id="322-flatten-healpix--10-seconds">3.2.2 Flatten HealPix (~ 10 seconds) </h4>
+<p>Multi-order hierarchical HEALPix maps in <code>data/ligo_healpix</code><br>
+need to be flattened into a non-hierarchical format.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+python flatten_healpix.py
+</code></pre><p>This step is optional.<br>
+Files already exist in <code>data/ligo_healpix_flattened</code>;<br>
+they will be overwritten by this script.</p>
+<h4 id="323-visualize-healpix--15-seconds">3.2.3 Visualize HealPix (~ 15 seconds) </h4>
+<p>Just for visualization purposes, we generate PNG image<br>
+representations of the flattened HEALPix maps.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+python visualize_healpix.py
+</code></pre><p>This step is optional.<br>
+Files already exist in <code>data/ligo_healpix_images</code>;<br>
+they will be overwritten by this script.</p>
+<h4 id="324-generate-tiles--15-seconds">3.2.4 Generate Tiles (~ 15 seconds) </h4>
+<p>The flattened HEALPix maps and precomputed tilings are intersected<br>
+to produce the tiles, with probabilities, that serve as the inputs to the search problem.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-sky-tiling
+python produce_tilings.py
+</code></pre><p>Files in <code>data/small</code> and <code>data/large</code> will be overwritten.</p>
+<h3 id="33-rerun-all-experiments">3.3 Rerun all Experiments </h3>
+<p>Each Python script corresponds to a different experiment setting.<br>
+If you do not have a Gurobi license, you can still run experiments 3.3.2, 3.3.3, and 3.3.4, which do not rely on ILP solvers.</p>
+<p>All commands in this step are run from the <code>results</code> directory and use the default conda environment.</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+<span class="token builtin class-name">cd</span> ~/Telescope-Search-Problem/results
+</code></pre><h4 id="running-time">Running Time </h4>
+<p>Running this complete set of experiments takes ~6 hours even on a powerful machine with the recommended system requirements. We therefore provide two options for convenience:</p>
+<p><strong>(Option 1)</strong> Run all experiments from a single script</p>
+<p>Experiments 3.3.1-3.3.4 may be run sequentially by running the following script:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token function">bash</span> run_all.sh
+</code></pre><p><strong>(Option 2)</strong> Limit the coverage</p>
+<p>You may modify the scripts to use fewer problem instances and to test fewer deadlines.</p>
+<p>The first line of each script is:</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>run_all <span class="token operator">=</span> <span class="token boolean">True</span>
+</code></pre><p>Change this to <code>False</code> to run a limited problem set. The implications for each script are listed under each experiment below.</p>
+<h4 id="331-small-instances--2-hours">3.3.1 Small Instances (~ 2 hours) </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python3 run_small_instances.py
+</code></pre><p>Results will be saved to <code>results/recompute_results/small</code>.</p>
+<p>If <code>run_all = False</code> then only two small instances, with deadlines 10 and 90, will be run. <strong>(&lt; 1 minute)</strong></p>
+<h4 id="332-large-instances--3-hours">3.3.2 Large Instances (~ 3 hours) </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python3 run_large_instances.py
+</code></pre><p>Results will be saved to <code>results/recomputed_results/large</code>.</p>
+<p>If <code>run_all = False</code> then only two large instances, with deadlines 10, 100, and 1000, will be run. <strong>(~ 1 minute)</strong></p>
+<h4 id="333-small-instances-with-moet--40-minutes">3.3.3 Small Instances with MOET (~ 40 minutes) </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python3 run_small_instances_moet.py
+</code></pre><p>Results will be saved to <code>results/recomputed_results/instances_with_moet</code>.</p>
+<p>This script evaluates algorithms with budgets that account for MOET (Maximum Observed Execution Time). It runs in <strong>three parts</strong>:</p>
+<p>(1) Collect raw runs to estimate MOET</p>
+<p>For each skymap and each budget in {10,20,…,100}, the script runs Greedy, Genetic, and GCP 5 times each using the same original budget (no MOET applied yet). Results are stored in <code>results/recomputed_results/instances_with_moet/get_moet/</code>.</p>
+<p>(2) Compute MOET per (Skymap, Method, Budget)</p>
+<p>Across the 5 runs in (1), it then computes:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>MOET<span class="token punctuation">(</span>Skymap, Method, Budget<span class="token punctuation">)</span> <span class="token operator">=</span> max<span class="token punctuation">(</span>TimeSec<span class="token punctuation">)</span>
+</code></pre><p>and writes the results to <code>results/recomputed_results/instances_with_moet/moet/&lt;skymap&gt;.csv</code></p>
+<p>(3) Re-run with MOET-adjusted budgets</p>
+<p>For each (Skymap, Method, Budget), the budget is reduced by the corresponding MOET:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>adjusted_budget <span class="token operator">=</span> max<span class="token punctuation">(</span><span class="token number">0</span>, original_budget - MOET<span class="token punctuation">(</span>Skymap, Method, original_budget<span class="token punctuation">))</span>
+</code></pre><p>It then runs the instances again with these adjusted budgets and saves the results to<br>
+<code>results/recomputed_results/instances_with_moet/result_with_moet/out_&lt;skymap&gt;.csv</code></p>
+<p>If <code>run_all = False</code> then only two small instances, with deadlines 10 and 100, will be run. The MOET will only be computed across a single run of each. <strong>(~ 1 minute)</strong></p>
+<h4 id="334-multi-deadline-large-instances--1-minute">3.3.4 Multi-Deadline Large Instances (~ 1 minute) </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python3 run_multi_deadlines.py
+</code></pre><p>Results will be saved to <code>results/recompute_results/multi_deadlines</code>.</p>
+<p>If <code>run_all = False</code> then only two large instances will be run. <strong>(~ 10 seconds)</strong></p>
+<hr>
+<h3 id="34-visualizing-the-results">3.4. Visualizing the Results </h3>
+<p>Again, you can visualize the results via Jupyter notebook either <strong>inside the container</strong> or <strong>locally</strong>.</p>
+<ul>
+<li><strong>Inside the container</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+jupyter notebook <span class="token parameter variable">--ip</span><span class="token operator">=</span><span class="token number">0.0</span>.0.0  <span class="token parameter variable">--port</span><span class="token operator">=</span><span class="token number">8888</span> <span class="token punctuation">\</span>
+  --no-browser --allow-root <span class="token parameter variable">--IdentityProvider.token</span><span class="token operator">=</span><span class="token string">""</span>
+</code></pre><p>Open <a href="http://localhost:8888">http://localhost:8888</a> in a browser and navigate to <strong>results/visualize_results.ipynb</strong>.</p>
+<ul>
+<li><strong>Locally</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-telescope-search
+<span class="token builtin class-name">cd</span> ~/Telescope-Searching-Problem/results
+jupyter notebook visualize_results.ipynb
+</code></pre><p>All required <code>.csv</code> results are stored in <code>results/recomputed_results</code>.</p>
+<hr>
+<h2 id="4-extensibility-of-experiments">4 Extensibility of Experiments </h2>
+<h3 id="41-running-a-single-algorithm-with-designated-tiling-speed-and-time-budget">4.1 Running a Single Algorithm with Designated Tiling, Speed, and Time Budget </h3>
+<p>We provide a command-line interface (CLI) to run <strong>one algorithm at a time</strong> on a given problem instance.<br>
+As before, a Gurobi license is needed only to run the ILP-based algorithm.</p>
+<h4 id="usage">Usage </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> build
+./op <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>budget<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>alg<span class="token operator">&gt;</span> <span class="token punctuation">[</span>slew_rate<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">]</span>
+</code></pre><h4 id="arguments">Arguments </h4>
+<p>&lt;file&gt;: path to a CSV file specifying the set of tiles, with probabilities, for the problem instance (see Input format below).</p>
+<p>&lt;budget&gt;: total time budget (slew + dwell).</p>
+<p>&lt;alg&gt;: one of greedy | genetic | gcp | ilp.</p>
+<p>[slew_rate] (optional): slew rate in degrees per unit time (default 50 degrees per second).</p>
+<h4 id="examples">Examples </h4>
+<p>Greedy on a small instance, budget = 50, default slew_rate</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>./op <span class="token punctuation">..</span>/data/small/filtered_GW191105_143521_7dt_separate.csv <span class="token number">50</span> greedy
+</code></pre><p>Genetic on a large instance with a larger budget and custom slew_rate</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>./op <span class="token punctuation">..</span>/data/large/filtered_GW191103_012549_7dt.csv <span class="token number">500</span> genetic <span class="token number">30</span>
+</code></pre><p>GCP on a large instance</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>./op <span class="token punctuation">..</span>/data/large/filtered_GW191109_010717_7dt.csv <span class="token number">200</span> gcp
+</code></pre><p>ILP (Gurobi) on a small instance</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>./op <span class="token punctuation">..</span>/data/small/filtered_GW191105_143521_7dt_separate.csv <span class="token number">50</span> ilp <span class="token number">40</span>
+</code></pre><h4 id="input-format">Input Format </h4>
+<p>The input is a CSV tiling file with the following first five columns in order (additional columns after these, e.g. CumulativeProb, are ignored):</p>
+<p>(1) Rank — rank of filtered tiles (integer)</p>
+<p>(2) index — tile ID in the original tiling (integer; not used but kept for index alignment)</p>
+<p>(3) RA — right ascension of the tile center in degrees [0, 360)</p>
+<p>(4) Dec — declination of the tile center in degrees [-90, 90]</p>
+<p>(5) Probability — probability that the TAP originated in this tile (i.e., prize)</p>
+<p>Header example:</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>Rank,index,RA,Dec,Probability<span class="token punctuation">[</span>, <span class="token punctuation">..</span>.<span class="token punctuation">]</span>
+</code></pre><h4 id="output">Output </h4>
+<p>The result will be printed to stdout:</p>
+<ul>
+<li>Path (node sequence)</li>
+<li>Number of nodes</li>
+<li>Sum probability (FoM)</li>
+<li>Wall-clock runtime (seconds)</li>
+</ul>
+<h3 id="42-modify-dwell-times">4.2 Modify Dwell Times </h3>
+<p>For now, the dwell time calculation, based on air mass as described in Section IX of our paper, is hard-coded. To modify this, you will need to modify <code>src/ReadData.cpp</code> then re-build.</p>
+<h4 id="421-modify-reference-time">4.2.1 Modify reference time </h4>
+<p>All dwell times use 1 second as a normalized baseline; this is then scaled according to the air mass corresponding to the telescope's pointing direction.</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>src<span class="token operator">/</span>ReadData<span class="token punctuation">.</span>cpp<span class="token operator">:</span>
+
+ <span class="token number">190</span> <span class="token operator">|</span> <span class="token keyword keyword-double">double</span> dwelltime_ref <span class="token operator">=</span> <span class="token number">1.0</span><span class="token punctuation">;</span>
+</code></pre><h4>4.2.2 Modify scaling function</h4>
+<p>The air mass is computed in the function <code>computeAirMass</code>, which is then used to compute the relative scaling of the irradiance in <code>computeScalingFactor</code>, and then applied to the dwell time in <code>computeDwellTime</code>.</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>src<span class="token operator">/</span>ReadData<span class="token punctuation">.</span>cpp<span class="token operator">:</span>
+
+<span class="token number">199</span> <span class="token operator">|</span> <span class="token keyword keyword-double">double</span> airMass <span class="token operator">=</span> <span class="token function">computeAirMass</span><span class="token punctuation">(</span>zenithAngle<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">200</span> <span class="token operator">|</span> <span class="token keyword keyword-double">double</span> scalingFactor <span class="token operator">=</span> <span class="token function">computeScalingFactor</span><span class="token punctuation">(</span>airMass<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">201</span> <span class="token operator">|</span> dwell_times<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">computeDwellTime</span><span class="token punctuation">(</span>dwelltime_ref<span class="token punctuation">,</span> scalingFactor<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><p>All of these functions are present in <code>src/ReadData.cpp</code> and can be modified as needed. For example, if you want to use a constant dwell time for each tile, you could simply modify as:</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>src<span class="token operator">/</span>ReadData<span class="token punctuation">.</span>cpp<span class="token operator">:</span>
+
+<span class="token number">200</span> <span class="token operator">|</span> <span class="token keyword keyword-double">double</span> dwell_time <span class="token operator">=</span> <span class="token number">100</span><span class="token punctuation">;</span>
+<span class="token number">201</span> <span class="token operator">|</span> dwell_times<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> dwell_time<span class="token punctuation">;</span>
+</code></pre><h4 id="423-rebuild">4.2.3 Rebuild </h4>
+<ul>
+<li><strong>Inside the container</strong></li>
+</ul>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> build
+<span class="token function">make</span> <span class="token parameter variable">-j</span>
+</code></pre><ul>
+<li><strong>Locally</strong><br>
+Follow the steps under <strong>1.3.3 C++ Environment Setup</strong> above.</li>
+</ul>
+<h3 id="43-add-custom-algorithm">4.3 Add Custom Algorithm </h3>
+<p>Here, we describe how to add your own algorithm for solving the s-t Orienteering Problem.</p>
+<p>All algorithms have a wrapper function that share the following signature:</p>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code>std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword keyword-int">int</span><span class="token operator">&gt;</span> <span class="token function">my_algo</span><span class="token punctuation">(</span><span class="token keyword keyword-const">const</span> std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span>std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword keyword-double">double</span><span class="token operator">&gt;&gt;</span><span class="token operator">&amp;</span> costs<span class="token punctuation">,</span>
+                         <span class="token keyword keyword-const">const</span> std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword keyword-double">double</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span> prize<span class="token punctuation">,</span>
+                         <span class="token keyword keyword-double">double</span> budget<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> s<span class="token punctuation">,</span> <span class="token keyword keyword-int">int</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre><ul>
+<li><code>costs</code> is a reference to a complete, symmetric matrix of edge costs, i.e., <code>costs[i][j]</code> is the movement cost from vertex <code>i</code> to <code>j</code>.</li>
+<li><code>prize</code> is a reference to an array of prizes, corresponding to tile probabilities.</li>
+<li><code>budget</code> is the time deadline for the search, i.e., the deadline.</li>
+<li><code>s</code> and <code>t</code> are the indices of the starting and ending vertices.</li>
+</ul>
+<h4 id="431-write-your-algorithm">4.3.1 Write Your Algorithm </h4>
+<ol>
+<li>Create source and header files for your algorithm in <code>src/</code> and <code>include/</code>.</li>
+<li>Write your algorithm, making sure it conforms to the above signature.</li>
+</ol>
+<h4 id="432-call-your-algorithm">4.3.2 Call Your Algorithm </h4>
+<p>Your algorithm will be called from <code>src/main_custom.cpp</code>.</p>
+<ol>
+<li>Modify <code>src/main_custom.cpp</code> to <code>#include</code> your header file.</li>
+<li>Add a dispatch branch in the conditional logic to call your algorithm.</li>
+</ol>
+<pre data-role="codeBlock" data-info="cpp" class="language-cpp cpp"><code><span class="token number">92</span> <span class="token operator">|</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>alg_lc <span class="token operator">==</span> <span class="token string">"greedy"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token number">93</span> <span class="token operator">|</span>   <span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token function">run_and_report</span><span class="token punctuation">(</span><span class="token string">"Greedy"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">]</span><span class="token punctuation">{</span>
+<span class="token number">94</span> <span class="token operator">|</span>     <span class="token keyword keyword-return">return</span> <span class="token function">prizeGreedyPathTwoFixed</span><span class="token punctuation">(</span>costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> eff_budget<span class="token punctuation">,</span> start_idx<span class="token punctuation">,</span> end_idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">95</span> <span class="token operator">|</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> ranks<span class="token punctuation">,</span> padding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">96</span> <span class="token operator">|</span> <span class="token punctuation">}</span>
+<span class="token number">97</span> <span class="token operator">|</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>alg_lc <span class="token operator">==</span> <span class="token string">"genetic"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token number">98</span> <span class="token operator">|</span>   <span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token function">run_and_report</span><span class="token punctuation">(</span><span class="token string">"Genetic"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">]</span><span class="token punctuation">{</span>
+<span class="token number">99</span> <span class="token operator">|</span>     <span class="token keyword keyword-return">return</span> <span class="token function">genetic_optimization_st</span><span class="token punctuation">(</span>costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> eff_budget<span class="token punctuation">,</span> start_idx<span class="token punctuation">,</span> end_idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">100</span> <span class="token operator">|</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> ranks<span class="token punctuation">,</span> padding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">101</span> <span class="token operator">|</span> <span class="token punctuation">}</span>
+      <span class="token comment">/***
+      **** Your algorithm here!
+      ***/</span>
+<span class="token number">102</span> <span class="token operator">|</span> <span class="token keyword keyword-else">else</span> <span class="token keyword keyword-if">if</span> <span class="token punctuation">(</span>alg_lc <span class="token operator">==</span> <span class="token string">"myalgo"</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token number">103</span> <span class="token operator">|</span>   <span class="token punctuation">(</span><span class="token keyword keyword-void">void</span><span class="token punctuation">)</span><span class="token function">run_and_report</span><span class="token punctuation">(</span><span class="token string">"MyAlgo"</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">]</span><span class="token punctuation">{</span>
+<span class="token number">104</span> <span class="token operator">|</span>     <span class="token keyword keyword-return">return</span> <span class="token function">my_algo</span><span class="token punctuation">(</span>costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> eff_budget<span class="token punctuation">,</span> start_idx<span class="token punctuation">,</span> end_idx<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">105</span> <span class="token operator">|</span>   <span class="token punctuation">}</span><span class="token punctuation">,</span> costs<span class="token punctuation">,</span> probability<span class="token punctuation">,</span> ranks<span class="token punctuation">,</span> padding<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token number">106</span> <span class="token operator">|</span> <span class="token punctuation">}</span>
+</code></pre><h4 id="433-rebuild">4.3.3 Rebuild </h4>
+<ol>
+<li>If running <strong>Locally</strong> (i.e., <strong>not</strong> inside the Docker comtainer), set Gurobi environment variables:</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">export</span> <span class="token assign-left variable">GUROBI_HOME</span><span class="token operator">=~</span>/gurobi1203/linux64
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GUROBI_HOME}</span>/bin:<span class="token environment constant">$PATH</span>"</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">LD_LIBRARY_PATH</span><span class="token operator">=</span><span class="token string">"<span class="token variable">${GUROBI_HOME}</span>/lib:<span class="token variable">$LD_LIBRARY_PATH</span>"</span>
+</code></pre><ol start="2">
+<li>Rebuild:</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> build
+cmake <span class="token punctuation">..</span>
+<span class="token function">make</span> <span class="token parameter variable">-j</span>
+</code></pre><ol start="3">
+<li>Run with your algorithm according to the details in <strong>4.1 Running a Single Algorithm</strong> above:</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>./op <span class="token operator">&lt;</span>file<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>budget<span class="token operator">&gt;</span> myalgo <span class="token punctuation">[</span>slew_rate<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">]</span>
+</code></pre><h3 id="44-create-tilings-for-different-telescope-fovs">4.4 Create Tilings for Different Telescope FoVs </h3>
+<p>The above instructions detail how to test our algorithms with different configurations for telescope dwell times and slew speeds. You may also generate new tilings for telescopes with different (square) fields of view.</p>
+<h4 id="441-enter-directory-and-activate-conda-environment">4.4.1 Enter directory and activate conda environment </h4>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code><span class="token builtin class-name">cd</span> ~/Telescope-Searching-Problem/sky_tiling
+conda activate rtss25-sky-tiling
+</code></pre><h4 id="442-precompute-tile-boundaries-by-projecting-telescopes-fov-onto-unit-sphere">4.4.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere </h4>
+<p>Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.</p>
+<p>Pick a name of your choice to replace <code>YourTelescopeName</code> and specify the fov in degrees (e.g., 30):</p>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>python setup.py <span class="token parameter variable">--telescope</span> <span class="token string">"YourTelescopeName"</span> <span class="token parameter variable">--fov</span> <span class="token number">30</span>
+</code></pre><p>New files will be produced in <code>sky_tiling/tile_center_files</code> and <code>sky_tiling/tile_pixel_maps</code>.</p>
+<h4 id="443-generate-tiles-from-healpix-map">4.4.3 Generate tiles from HealPIX map </h4>
+<p>A flattened HEALPix map and precomputed tilings are intersected<br>
+to produce the tiles, with probabilities, that serve as the inputs to the search problem.</p>
+<ol>
+<li>Modify the first 5 lines of <code>produce_single_tiling.py</code>:</li>
+</ol>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token number">1</span> <span class="token operator">|</span> name <span class="token operator">=</span> <span class="token string">"GW200216_220804"</span> <span class="token comment"># Name of the GW event for which you would like to make tiles</span>
+<span class="token number">2</span> <span class="token operator">|</span> telescope <span class="token operator">=</span> <span class="token string">"7dt"</span> <span class="token comment"># Replace this with the name you selected for the telescope</span>
+<span class="token number">3</span> <span class="token operator">|</span> confidence_interval <span class="token operator">=</span> <span class="token number">0.99</span> <span class="token comment"># Include highest-probability tiles until</span>
+<span class="token number">4</span> <span class="token operator">|</span>                            <span class="token comment"># cumulative probability exceeds this value</span>
+<span class="token number">5</span> <span class="token operator">|</span> max_rows <span class="token operator">=</span> <span class="token boolean">None</span> <span class="token comment"># Maximum number of tiles to include, None means no limit</span>
+
+</code></pre><ol start="2">
+<li>Run the script:</li>
+</ol>
+<pre data-role="codeBlock" data-info="bash" class="language-bash bash"><code>conda activate rtss25-sky-tiling
+python produce_single_tiling.py
+</code></pre><p>The tiling will be generated as <code>data/custom/{name}_{telescope}.csv</code>.</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
