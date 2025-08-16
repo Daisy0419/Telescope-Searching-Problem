@@ -1,6 +1,8 @@
 # Artifact for RTSS 2025
 This repository contains the source code, datasets, and analysis tools supporting the paper *"Probabilistic Response-Time-Aware Search for Transient Astrophysical Phenomena."*
 
+It is available at https://github.com/Daisy0419/Telescope-Searching-Problem/tree/event-timing
+
 ## System Requirements
 
 - OS: Linux (some instructions are Ubuntu-specific)
@@ -152,7 +154,7 @@ All dependencies are pre-installed, and project binaries are precompiled in the 
 
 #### 1.3.1 Clone Repository
 
-Clone this repository to the path of your choice. All commands listed hereafter assume it is placed directly into your home directory.
+Clone the repository to the path of your choice. All commands listed hereafter assume it is placed directly into your home directory.
 
 ```bash
 cd ~
@@ -635,44 +637,94 @@ make -j
 Follow the steps under **1.3.3 C++ Environment Setup** above.
 
 
-### 4.2 Add Your Algorithm
-All algorithms share the following interface:
+### 4.3 Add Custom Algorithm
+
+Here, we describe how to add your own algorithm for solving the s-t Orienteering Problem.
+
+
+All algorithms have a wrapper function that share the following signature:
 ```cpp
 std::vector<int> my_algo(const std::vector<std::vector<double>>& costs,
                          const std::vector<double>& prize,
                          double budget, int s, int t);
 ```
 
+- `costs` is a reference to a complete, symmetric matrix of edge costs, i.e., `costs[i][j]` is the movement cost from vertex `i` to `j`.
+- `prize` is a reference to an array of prizes, corresponding to tile probabilities.
+- `budget` is the time deadline for the search, i.e., the deadline.
+- `s` and `t` are the indices of the starting and ending vertices.
 
-Once have your algoritm added, add a dispatch branch in main_custom.cpp:
+#### 4.3.1 Write Your Algorithm
+
+1. Create source and header files for your algorithm in `src/` and `include/`.
+2. Write your algorithm, making sure it conforms to the above signature.
+
+#### 4.3.2 Call Your Algorithm
+
+Your algorithm will be called from `src/main_custom.cpp`. 
+
+1. Modify `src/main_custom.cpp` to `#include` your header file.
+2. Add a dispatch branch in the conditional logic to call your algorithm.
 
 ```cpp
-else if (alg_lc == "myalgo") {
-    (void)run_and_report("MyAlgo", [&]{
-        return my_algo(costs, probability, eff_budget, start_idx, end_idx);
-    }, costs, probability, ranks, padding);
-}
+92 | if (alg_lc == "greedy") {
+93 |     (void)run_and_report("Greedy", [&]{
+94 |         return prizeGreedyPathTwoFixed(costs, probability, eff_budget, start_idx, end_idx);
+95 |     }, costs, probability, ranks, padding);
+96 | }
+97 | else if (alg_lc == "genetic") {
+98 |     (void)run_and_report("Genetic", [&]{
+99 |         return genetic_optimization_st(costs, probability, eff_budget, start_idx, end_idx);
+100 |     }, costs, probability, ranks, padding);
+101 | }
+      /***
+      **** Your algorithm here!
+      ***/
+102 | else if (alg_lc == "myalgo") {
+103 |     (void)run_and_report("MyAlgo", [&]{
+104 |         return my_algo(costs, probability, eff_budget, start_idx, end_idx);
+105 |     }, costs, probability, ranks, padding);
+106 | }
 ```
-Rebuild:
+
+#### 4.3.3 Rebuild
+
+1. If running **Locally** (i.e., **not** inside the Docker comtainer), set Gurobi environment variables:
+
 ```bash
-cd build && make -j
-./op Data/small/foo.csv 100 myalgo
+export GUROBI_HOME=~/gurobi1203/linux64
+export PATH="${GUROBI_HOME}/bin:$PATH"
+export LD_LIBRARY_PATH="${GUROBI_HOME}/lib:$LD_LIBRARY_PATH"
+```
+
+2. Rebuild:
+
+```bash
+cd build
+cmake ..
+make -j
+```
+
+3. Run with your algorithm according to the details in **4.1 Running a Single Algorithm** above:
+
+```bash
+./op <file> <budget> myalgo [slew_rate=50]
 ```
 
 
 
-### 4.3 Create Tilings for Different Telescope FoVs
+### 4.4 Create Tilings for Different Telescope FoVs
 
 The above instructions detail how to test our algorithms with different configurations for telescope dwell times and slew speeds. You may also generate new tilings for telescopes with different (square) fields of view. 
 
-#### 4.3.1 Enter directory and activate conda environment
+#### 4.4.1 Enter directory and activate conda environment
 
 ```bash
 cd ~/Telescope-Searching-Problem/sky_tiling
 conda activate rtss25-sky-tiling
 ```
 
-#### 4.3.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere
+#### 4.4.2 Precompute tile boundaries by projecting telescope's FoV onto unit sphere
 
 Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.
 
@@ -686,7 +738,7 @@ python setup.py --telescope "YourTelescopeName" --fov 30
 New files will be produced in `sky_tiling/tile_center_files` and `sky_tiling/tile_pixel_maps`.
 
 
-#### 4.3.3 Generate tiles from HealPIX map
+#### 4.4.3 Generate tiles from HealPIX map
 
 A flattened HEALPix map and precomputed tilings are intersected
 to produce the tiles, with probabilities, that serve as the inputs to the search problem.
@@ -694,10 +746,10 @@ to produce the tiles, with probabilities, that serve as the inputs to the search
 1. Modify the first 4 lines of `produce_single_tiling.py`:
 
 ```python
-name = "GW200216_220804" # Name of the GW event for which you would like to make tiles
-telescope = "7dt" # Replace this with the name you selected for the telescope
-confidence_interval = 0.99 # Only include tiles with cumulative probability covering this value
-max_rows = None # Maximum number of tiles to include, None means no limit
+1 | name = "GW200216_220804" # Name of the GW event for which you would like to make tiles
+2 | telescope = "7dt" # Replace this with the name you selected for the telescope
+3 | confidence_interval = 0.99 # Only include tiles with cumulative probability covering this value
+4 | max_rows = None # Maximum number of tiles to include, None means no limit
 
 ```
 
