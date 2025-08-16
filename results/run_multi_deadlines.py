@@ -13,7 +13,6 @@ def run(dataset, dataset_idx, num_datasets, run_case=4):
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {cmd}")
         print(f"Error message: {e.stderr}")
-        sys.exit(1)
 
 if __name__ == "__main__":
     EXECUTABLE = "../build/ts"
