@@ -8,15 +8,16 @@ It is available at https://github.com/Daisy0419/Telescope-Searching-Problem/tree
 - OS: Linux (some instructions are Ubuntu-specific)
 - CPU: Minimum 2 cores, **8+ cores preferred** (24 physical/48 logical cores used in paper)
 - RAM: **8GB**
-- Required Storage: **Total: 4GB**
-  - Repo: 150MB
-  - Conda environments: 3.8GB
-- Optional Storage:
-  - Docker: 500MB
-  - Docker Container: 3.8
+- Required Storage, Option A, Docker Container: **Total: 5.6GB**
+  - Docker package install: 500MB
+  - Docker container: 5.1GB
+- Required Storage, Option B, Local Install: **Total: 4.1GB**
+  - Repo: 200MB
+  - Miniconda: 800MB
+  - Conda environments: 2.8GB
+  - Gurobi: 200MB
+  - LEMON: 70MB
 
-
-<span style="color:red">Marion to compute file sizes of components</span>
 
 
 ## Overview
@@ -408,10 +409,7 @@ cd ~/Telescope-Search-Problem/results
 
 #### Running Time
 
-<span style="color:red">Marion to recompute times</span>
-
-
-Running this complete set of experiments takes ~ XX hours even on a powerful machine with the recommended system requirements. We therefore provide two options for convenience:
+Running this complete set of experiments takes ~6 hours even on a powerful machine with the recommended system requirements. We therefore provide two options for convenience:
 
 **(Option 1)** Run all experiments from a single script
 
