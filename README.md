@@ -41,14 +41,18 @@ This artifact addresses the problem of scheduling follow-up observations of astr
 ├── skytiling/          
 │   ├── precompute_tile_maps.sh     # Precomputes tile boundaries by projecting telescope FoV
 │   ├── flatten_healpix.py          # Convert multi-order hierarchical HEALPix to flat HEALPix format
-│   ├── produce_single_tiling.py   # Generates tiling from one HEALPix map for one telescope
-│   └── produce_tilings.py          # Creates all tilings
+│   ├── visualize_healpix.py        # Generate images of HEALPix maps
+│   ├── produce_tilings.py          # Creates all tilings
+│   └── produce_single_tiling.py    # Generates tiling from one HEALPix map for one telescope
 
-├── data/               # Tiling CSV files for small-scale sky maps
-│   ├── small/          # Tiling CSV files for small-scale sky maps 
-│   ├── large/          # Tiling CSV files for large-scale sky maps 
-│   ├── large_moet/     # Subset of large-scale maps used in MOET-aware experiments
-│   └── moet/           # Maximum-observed execution time measurements
+├── data/                         # Tiling CSV files for small-scale sky maps
+│   ├── small/                    # Tiling CSV files for small-scale sky maps 
+│   ├── large/                    # Tiling CSV files for large-scale sky maps 
+│   ├── large_moet/               # Subset of large-scale maps used in MOET-aware experiments
+│   ├── ligo_healpix/             # HEALPix likelihood maps from LIGO
+│   ├── ligo_healpix_flattened/   # Flattened HEALPix maps
+│   ├── ligo_healpix_images/      # Image (.png) representations of the HEALPix maps
+│   └── moet/                     # Maximum-observed execution time measurements
 
 ├── results/
 │
@@ -357,6 +361,20 @@ python flatten_healpix.py
 
 This step is optional.
 Files already exist in `data/ligo_healpix_flattened`;
+they will be overwritten by this script.
+
+#### 3.2.2 Visualize HealPix (~ 15 seconds)
+
+Just for visualization purposes, we generate PNG image
+representations of the flattened HEALPix maps.
+
+```bash
+conda activate rtss25-telescope-search
+python visualize_healpix.py
+```
+
+This step is optional.
+Files already exist in `data/ligo_healpix_images`;
 they will be overwritten by this script.
 
 #### 3.2.3 Generate Tiles (~ 15 seconds)
