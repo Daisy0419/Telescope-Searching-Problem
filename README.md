@@ -4,8 +4,8 @@ This repository contains the source code, datasets, and analysis tools supportin
 ## System Requirements
 
 - OS: Linux (some instructions are Ubuntu-specific)
-- CPU: Minimum 2-core, 8+ cores preferred (24 cores used in paper)
-- RAM: 
+- CPU: Minimum 2 cores, **8+ cores preferred** (24 physical/48 logical cores used in paper)
+- RAM: **8GB**
 - Required Storage: **Total: 4GB**
   - Repo: 150MB
   - Conda environments: 3.8GB
@@ -14,7 +14,6 @@ This repository contains the source code, datasets, and analysis tools supportin
   - Docker Container: 3.8
 
 
-<span style="color:red">Daisy to check RAM usage</span>
 <span style="color:red">Marion to compute file sizes of components</span>
 
 
@@ -299,9 +298,7 @@ The notebook saves figures to `results/figures`.
 
 ## 3 Running Full Experiments
 
-<span style="color:red">Marion to update runtime here</span>
-
-To re-run the full set of experiments (~5+ hours total runtime), you may either set up the environment locally or use the provided Docker container. Experiments can then be executed using the provided batch scripts.
+To re-run the full set of experiments (~6 hours total runtime even on a machine with the recommended specs), you may either set up the environment locally or use the provided Docker container. Experiments can then be executed using the provided batch scripts.
 
 ### 3.1 Set Up the Run Environment
 #### 3.1.1 Run Experiment in a Docker Container
@@ -414,7 +411,7 @@ run_all = True
 
 Change this to `False` to run a limited problem set. The implications for each script are listed under each experiment below.
 
-#### 3.3.1 Small Instances (~ 3 hours)
+#### 3.3.1 Small Instances (~ 2 hours)
 ```bash
 python3 run_small_instances.py
 ```
@@ -422,7 +419,7 @@ Results will be saved to `results/recompute_results/small`.
 
 If `run_all = False` then only two small instances, with deadlines 10 and 90, will be run. **(< 1 minute)**
 
-#### 3.3.2 Large Instances (~ 30 minutes)
+#### 3.3.2 Large Instances (~ 3 hours)
 
 ```bash
 python3 run_large_instances.py
@@ -466,14 +463,14 @@ It then runs the instances again with these adjusted budgets and saves the resul
 If `run_all = False` then only two small instances, with deadlines 10 and 100, will be run. The MOET will only be computed across a single run of each. **(~ 1 minute)**
 
 
-#### 3.3.4 Multi-Deadline Large Instances (~ 30 minutes)
+#### 3.3.4 Multi-Deadline Large Instances (~ 1 minute)
 
 ```bash
 python3 run_multi_deadlines.py
 ```
 Results will be saved to `results/recompute_results/multi_deadlines`.
 
-If `run_all = False` then only two large instances will be run. **(~ 1 minute)**
+If `run_all = False` then only two large instances will be run. **(~ 10 seconds)**
 
 ---
 
