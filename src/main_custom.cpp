@@ -106,10 +106,10 @@ int main(int argc, char** argv) {
     }
     else if (alg_lc == "ilp" || alg_lc == "gurobi") {
         // Optional warm start via GCP
-        std::vector<int> warm = GCP(costs, probability, eff_budget, start_idx, end_idx);
+        // std::vector<int> warm = GCP(costs, probability, eff_budget, start_idx, end_idx);
         (void)run_and_report("Gurobi", [&]{
             return gurobiSolveST(costs, probability, start_idx, end_idx,
-                                 eff_budget, accu_thr, time_limit, warm);
+                                 eff_budget, accu_thr, time_limit, {});
         }, costs, probability, ranks, padding);
     }
     else {
