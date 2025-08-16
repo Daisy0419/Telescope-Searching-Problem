@@ -156,7 +156,7 @@ Clone this repository to the path of your choice. All commands listed hereafter 
 
 ```bash
 cd ~
-git clone https://github.com/Daisy0419/Telescope-Searching-Problem/releases/tag/rtss2025_artifact
+git clone -b rtss2025_artifact https://github.com/Daisy0419/Telescope-Searching-Problem/
 ```
 
 #### 1.3.2 Python Environment Setup
@@ -363,7 +363,7 @@ This step is optional.
 Files already exist in `data/ligo_healpix_flattened`;
 they will be overwritten by this script.
 
-#### 3.2.2 Visualize HealPix (~ 15 seconds)
+#### 3.2.3 Visualize HealPix (~ 15 seconds)
 
 Just for visualization purposes, we generate PNG image
 representations of the flattened HEALPix maps.
@@ -377,7 +377,7 @@ This step is optional.
 Files already exist in `data/ligo_healpix_images`;
 they will be overwritten by this script.
 
-#### 3.2.3 Generate Tiles (~ 15 seconds)
+#### 3.2.4 Generate Tiles (~ 15 seconds)
 
 Intersection of flattened HEALPix maps and precomputed tilings are intersected
 to produce the tiles, with probabilities, that serve as the inputs to the search problem.

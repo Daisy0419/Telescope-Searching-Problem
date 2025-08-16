@@ -4,6 +4,7 @@ confidence_interval = 0.99
 max_rows = None
 
 import numpy as np
+import os
 import bin.rankedTilesGenerator as rankedTilesGenerator
 
 
@@ -37,10 +38,10 @@ def generate_tiles_from_maps(file_list, which, confidence_interval, containment,
 
 if __name__ == "__main__":
 
-    name = "GW200216_220804"
-    telescope = "7dt"
 
-    skymap_file = "../"
+    # Create directory for output files
+    skymap_dir = "../data/custom"
+    os.makedirs(skymap_dir, exist_ok=True)
 
     # Large instances: 99% containment
     generate_tiles_from_maps(large_files, "large", confidence_interval=0.99, containment=False)
