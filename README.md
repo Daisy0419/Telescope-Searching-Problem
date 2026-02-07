@@ -791,10 +791,10 @@ conda activate rtss25-sky-tiling
 Each telescope's FoV is projected onto the unit sphere to precompute tile boundaries.
 
 
-Pick a name of your choice to replace `YourTelescopeName` and specify the fov in degrees (e.g., 30):
+Pick a name of your choice to replace `YourTelescopeName` and `YourSiteName` and specify the fov in degrees (e.g., 30):
 
 ```bash
-python setup.py --telescope "YourTelescopeName" --fov 30
+python setup.py --telescope "YourTelescopeName" --fov 30 --work ./tile_pixel_maps --site "YourSiteName" --timemag None --extension png
 ```
 
 New files will be produced in `sky_tiling/tile_center_files` and `sky_tiling/tile_pixel_maps`.
